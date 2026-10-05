@@ -1,0 +1,42 @@
+# Virtual Environment
+.venv/
+env/
+venv/
+
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# OS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Video & Raw Data (Never commit large raw media files into Git)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/samples/*
+!data/samples/.gitkeep
+outputs/*
+!outputs/.gitkeep
+
+# Ignore common video formats anywhere in the repo
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# Model weights
+*.pt
+*.pth
+*.onnx
+*.weights
+
+# IDEs
+.idea/
+.vscode/
+*.swp
