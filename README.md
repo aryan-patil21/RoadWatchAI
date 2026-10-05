@@ -60,7 +60,7 @@ pip install -r requirements.txt
 - [x] **Milestone 2: Basic Vehicle Detection** (Pretrained YOLO model inference)
 - [x] **Milestone 3: Object Tracking** (Persistent vehicle IDs across frames)
 - [x] **Milestone 4: Road Geometry & Relative Position**
-- [ ] **Milestone 5: Behavioural Feature Extraction**
+- [x] **Milestone 5: Behavioural Feature Extraction**
 - [ ] **Milestone 6: Risk Model Prototype**
 - [ ] **Milestone 7: Custom Dataset Curation**
 - [ ] **Milestone 8: Warning Engine**

@@ -61,5 +61,29 @@
   2. *Ground Contact Point*: The bottom edge of the bounding box $(cx, y_2)$ is far more informative than the geometric center because it represents the physical contact point with the road surface.
 - **Next Step**: Milestone 5 — Behavioural Feature Extraction. Aggregate vehicle observations into numerical feature vectors (approach rate, velocity proxy, lateral velocity, acceleration proxy) ready for machine learning risk models.
 
+## Experiment 05: Milestone 5 - Behavioural Feature Extraction
+- **Objective**: Convert frame-by-frame temporal tracking and geometric snapshots into numerical behavioural feature vectors ($v_{\text{long}}$, $v_{\text{lat}}$, approach rate, acceleration, TTC proxy, cutting indicators) and export a complete tabular dataset for ML risk modeling.
+- **Dataset**: `data/raw/sample_dashcam.mp4` (200 frames, 8.0 seconds).
+- **Method**: Implemented [`BehaviouralFeatureExtractor`](file:///Users/apple/Desktop/RoadwatchAI/src/feature_extractor.py) and [`BehaviourPipeline`](file:///Users/apple/Desktop/RoadwatchAI/src/behaviour_pipeline.py).
+  - Used a rolling window ($\Delta t \approx 0.32$s) with temporal smoothing to eliminate sensor bump noise.
+  - Calculated:
+    - Longitudinal velocity proxy: $v_{\text{long}} = \Delta y_2 / \Delta t$
+    - Lateral velocity proxy: $v_{\text{lat}} = \Delta cx / \Delta t$
+    - Approach rate: $\Delta P / \Delta t$
+    - Longitudinal acceleration proxy: $a = \Delta v_{\text{long}} / \Delta t$
+    - Time-to-Collision proxy: $TTC = (1 - P) / (\text{approach\_rate})$
+    - Lane cutting flag: triggered by rapid lateral shifts across the ego corridor.
+  - Exported numerical tabular dataset to `outputs/behavioural_features.csv` (283 samples).
+  - Generated annotated video `outputs/annotated_behaviour_sample.mp4` and sample frame `outputs/behaviour_frame_sample.jpg`.
+- **Result**:
+  - Processing speed: **24.8 FPS** on Apple Silicon M4 with real-time video rendering.
+  - Correctly differentiated between steady cruising ($TTC = \text{SAFE}$) and closing gaps ($TTC < 4.5$s).
+  - Vehicle #1 approach rate accurately recorded peaking at $+0.125$/s with closing velocities up to $37.5$ px/s.
+- **Key Concepts Learned**:
+  1. *From Pixels to Numbers*: Raw RGB frames $(480, 854, 3)$ contain millions of uncurated numbers. Feature extraction condenses that visual chaos into structured rows of high-signal physical variables that standard ML algorithms (Random Forest, XGBoost, Logistic Regression) can easily classify.
+  2. *Temporal Windowing & Noise Filtering*: Instantaneous differences between frame $t$ and frame $t-1$ are noisy due to road bumps and camera vibration. Rolling windows over $5-8$ frames ($\approx 0.2-0.3$s) produce smooth, reliable derivatives.
+- **Next Step**: Milestone 6 — Risk Model Prototype. Implement an interpretable, rule-based baseline risk engine (LOW, MEDIUM, HIGH) and prepare for machine learning comparison.
+
+
 
 
