@@ -56,7 +56,7 @@ pip install -r requirements.txt
 
 ## Development Milestones
 - [x] **Milestone 0: Development Environment** (Audit, directory structure, Python 3.11 venv)
-- [ ] **Milestone 1: Video Input & Frame Inspection** (OpenCV basics, dashcam video loading)
+- [x] **Milestone 1: Video Input & Frame Inspection** (OpenCV basics, dashcam video loading)
 - [ ] **Milestone 2: Basic Vehicle Detection** (Pretrained YOLO model inference)
 - [ ] **Milestone 3: Object Tracking** (Persistent vehicle IDs across frames)
 - [ ] **Milestone 4: Road Geometry & Relative Position**
