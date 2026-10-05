@@ -43,4 +43,23 @@
   3. *ID Switching & Occlusion*: When a vehicle is briefly hidden behind another or leaves camera boundaries, the tracker holds its state for a grace period before terminating the ID.
 - **Next Step**: Milestone 4 — Road Geometry and Relative Position. Extract image-space spatial metrics: bounding-box center $(X, Y)$, relative distance proxy (box height/area), and approach/retreat direction.
 
+## Experiment 04: Milestone 4 - Road Geometry & Relative Position
+- **Objective**: Extract spatial properties (lateral lane zones, monocular proximity proxies, longitudinal approach/receding trends, and lateral shifts) and export structured telemetry.
+- **Dataset**: `data/raw/sample_dashcam.mp4` (200 frames, 8.0 seconds).
+- **Method**: Implemented [`RoadGeometryAnalyzer`](file:///Users/apple/Desktop/RoadwatchAI/src/road_geometry.py) and [`SpatialPipeline`](file:///Users/apple/Desktop/RoadwatchAI/src/spatial_pipeline.py).
+  - Divided camera field into `LEFT_ZONE`, `EGO_LANE` (travel corridor), and `RIGHT_ZONE`.
+  - Computed optical proximity proxy using bounding-box height ratio and ground-plane contact point $(cx, y_2)$.
+  - Calculated longitudinal derivative $\Delta h / \Delta t$ and $\Delta y_2 / \Delta t$ to classify vehicles as `APPROACHING`, `RECEDING`, or `STABLE`.
+  - Rendered guidelines and dynamic tags on `outputs/annotated_geometry_sample.mp4`.
+  - Exported structured telemetry logs to `outputs/spatial_telemetry_sample.json` and `outputs/spatial_telemetry_sample.csv`.
+- **Result**:
+  - Processing speed: **31.1 FPS** on Apple Silicon M4.
+  - Successfully logged 285 structured telemetry records.
+  - Correctly flagged lead vehicle #1 approaching when accelerating towards it, and identified when it was situated in the rider's left zone vs. ego lane.
+- **Key Concepts Learned**:
+  1. *Scale Ambiguity in Monocular Vision*: Without depth sensors (LiDAR/Stereo) or extrinsic pitch calibration, exact metric distance in meters cannot be assumed; optical proxies (bounding box scale and ground-plane $Y$) provide reliable relative proximity.
+  2. *Ground Contact Point*: The bottom edge of the bounding box $(cx, y_2)$ is far more informative than the geometric center because it represents the physical contact point with the road surface.
+- **Next Step**: Milestone 5 — Behavioural Feature Extraction. Aggregate vehicle observations into numerical feature vectors (approach rate, velocity proxy, lateral velocity, acceleration proxy) ready for machine learning risk models.
+
+
 

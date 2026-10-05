@@ -59,7 +59,7 @@ pip install -r requirements.txt
 - [x] **Milestone 1: Video Input & Frame Inspection** (OpenCV basics, dashcam video loading)
 - [x] **Milestone 2: Basic Vehicle Detection** (Pretrained YOLO model inference)
 - [x] **Milestone 3: Object Tracking** (Persistent vehicle IDs across frames)
-- [ ] **Milestone 4: Road Geometry & Relative Position**
+- [x] **Milestone 4: Road Geometry & Relative Position**
 - [ ] **Milestone 5: Behavioural Feature Extraction**
 - [ ] **Milestone 6: Risk Model Prototype**
 - [ ] **Milestone 7: Custom Dataset Curation**
