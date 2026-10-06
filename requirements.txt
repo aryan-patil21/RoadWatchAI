@@ -10,4 +10,8 @@ ultralytics>=8.1.0
 # Object Tracking (Milestone 3)
 lapx>=0.5.12
 
+# Risk Modeling (Milestone 6)
+scikit-learn>=1.3.0
+
+
 

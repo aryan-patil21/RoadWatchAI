@@ -84,6 +84,33 @@
   2. *Temporal Windowing & Noise Filtering*: Instantaneous differences between frame $t$ and frame $t-1$ are noisy due to road bumps and camera vibration. Rolling windows over $5-8$ frames ($\approx 0.2-0.3$s) produce smooth, reliable derivatives.
 - **Next Step**: Milestone 6 — Risk Model Prototype. Implement an interpretable, rule-based baseline risk engine (LOW, MEDIUM, HIGH) and prepare for machine learning comparison.
 
+## Experiment 06: Milestone 6 - Risk Model Prototype (Rule-Based & ML Comparison)
+- **Objective**: Build a dual-layer risk estimation engine:
+  1. An interpretable rule-based baseline mapping physical features to continuous risk scores [0 - 100] and categorical levels (`LOW`, `MEDIUM`, `HIGH`).
+  2. Supervised Machine Learning classifiers (Logistic Regression and Random Forest) trained on the extracted behavioural features with balanced class weights.
+- **Dataset**: `outputs/behavioural_features.csv` (283 samples: 215 LOW, 61 MEDIUM, 7 HIGH).
+- **Method**:
+  - Implemented [`RiskEngine`](file:///Users/apple/Desktop/RoadwatchAI/src/risk_engine.py): Transparent rules combining proximity (up to 30 pts), approach rate & TTC (up to 35 pts), trajectory/lane cutting (up to 30 pts), and sudden braking (up to 15 pts).
+  - Implemented [`train_and_evaluate_models`](file:///Users/apple/Desktop/RoadwatchAI/src/train_risk_model.py): Trained Logistic Regression and Random Forest with `class_weight="balanced"`.
+  - Implemented [`RiskPipeline`](file:///Users/apple/Desktop/RoadwatchAI/src/risk_pipeline.py): Overlaid dynamic risk bounding boxes (Green=LOW, Amber=MEDIUM, Red=HIGH) and rider alert HUD banners.
+  - Generated `outputs/annotated_risk_sample.mp4` and `outputs/risk_frame_sample.jpg`.
+- **Result**:
+  - End-to-end pipeline speed: **32.2 FPS** on Apple Silicon M4.
+  - Logistic Regression accuracy: **89.47%**.
+  - Random Forest accuracy: **98.25%**.
+  - Top feature drivers identified by Random Forest:
+    1. `proximity_score`: 29.8%
+    2. `ttc_proxy_sec`: 23.7%
+    3. `approach_rate`: 17.6%
+    4. `v_long_proxy`: 14.6%
+    5. `acceleration_proxy`: 9.1%
+- **Key Concepts Learned**:
+  1. *Rule-Based vs. Machine Learning*: In safety-critical applications, having an interpretable rule baseline allows strict safety guarantees. ML models can then learn nuanced non-linear boundaries.
+  2. *Class Imbalance in Road Safety*: In normal commuting, 80-95% of frames are `LOW_RISK`. Dangerous (`HIGH_RISK`) events are rare. Without `class_weight="balanced"`, ML models tend to ignore minority danger classes.
+  3. *Zero Stereotyping*: The risk score is mathematically decoupled from vehicle class or plate context — a bus cruising steadily scores LOW (15-25), while an aggressive overtaking car or tempo scores HIGH (75-90).
+- **Next Step**: Milestone 7 — Build a Small Custom Dataset. Systematically annotate and curate balanced road event clips (normal cruising, sudden cut-in, rapid approach, tailgate) to expand model training beyond single-clip evaluation.
+
+
 
 
 

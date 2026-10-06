@@ -61,7 +61,7 @@ pip install -r requirements.txt
 - [x] **Milestone 3: Object Tracking** (Persistent vehicle IDs across frames)
 - [x] **Milestone 4: Road Geometry & Relative Position**
 - [x] **Milestone 5: Behavioural Feature Extraction**
-- [ ] **Milestone 6: Risk Model Prototype**
+- [x] **Milestone 6: Risk Model Prototype**
 - [ ] **Milestone 7: Custom Dataset Curation**
 - [ ] **Milestone 8: Warning Engine**
 - [ ] **Milestone 9: Backend API (FastAPI)**
