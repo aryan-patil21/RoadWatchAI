@@ -68,10 +68,11 @@ pip install -r requirements.txt
 - [x] **Milestone 5: Behavioural Feature Extraction**
 - [x] **Milestone 6: Risk Model Prototype**
 - [x] **Milestone 7: Custom Dataset Curation**
-- [ ] **Milestone 8: Warning Engine**
+- [x] **Milestone 8: Warning Engine**
 - [ ] **Milestone 9: Backend API (FastAPI)**
 - [ ] **Milestone 10: iOS Client Prototype (SwiftUI)**
 - [ ] **Milestone 11: End-to-End Pipeline Integration**
 - [ ] **Milestone 12: Real-Time Stream Performance Profiling**
 - [ ] **Milestone 13: Advanced Features & Context Analysis**
+
 
