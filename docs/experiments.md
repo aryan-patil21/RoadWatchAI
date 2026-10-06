@@ -160,6 +160,28 @@
   3. *Cooldown with Escalation*: Silencing repeat alerts is safe only if an escalation bypass exists for rapid increases in danger.
 - **Next Step**: Milestone 9 — Backend API. Wrap the detection, tracking, risk, and warning engines in a lightweight, high-performance FastAPI service ready for iOS integration.
 
+## Experiment 09: Milestone 9 - Backend API (FastAPI REST & WebSocket Service)
+- **Objective**: Expose the computer vision and warning intelligence over high-performance asynchronous HTTP and WebSocket endpoints to enable cross-platform clients (iOS app, web dashboard, external dashcam controllers).
+- **Dataset**: `outputs/sample_frame_00000.jpg` and live frame streams.
+- **Method**:
+  - Implemented [`generate_all_sound_assets`](file:///Users/apple/Desktop/RoadwatchAI/src/generate_sound_assets.py): Synthesized open-source, royalty-free 16-bit PCM WAV chimes (`assets/sounds/chime_caution.wav` and `assets/sounds/chime_critical.wav`) using pure standard library Python.
+  - Implemented [`app`](file:///Users/apple/Desktop/RoadwatchAI/src/api.py) with FastAPI and Uvicorn:
+    - `GET /health`: System telemetry, device acceleration (MPS), frames processed, alert totals.
+    - `POST /api/v1/analyze/frame`: Multipart image upload endpoint returning tracked vehicles, risk scores, and active alerts.
+    - `GET /api/v1/alerts/active`: Current rider HUD alert status.
+    - `GET /api/v1/alerts/history`: Complete session alert history.
+    - `GET /api/v1/sounds/{name}`: Serves open-source .WAV alert chimes to mobile clients.
+    - `WebSocket /api/v1/ws/alerts`: Push channel streaming live alerts at 10Hz without polling.
+- **Result**:
+  - All endpoints verified via `fastapi.testclient.TestClient`.
+  - Image frame ingestion, full vision pipeline execution, and JSON payload serialization completed with 200 OK responses.
+  - Open-source audio cues successfully served over HTTP.
+- **Key Concepts Learned**:
+  1. *Decoupled Client-Server Architecture*: The AI engine operates as an independent backend service. Frontend clients (iOS, Android, Web) focus entirely on user experience and native hardware rendering.
+  2. *WebSockets vs. HTTP Polling*: On a moving two-wheeler, polling HTTP endpoints 25 times per second creates massive battery and network overhead; WebSockets maintain a persistent low-latency duplex connection, pushing data only when events occur.
+- **Next Step**: Milestone 10 — iOS Client Prototype. Build the RoadWatch iOS interface in SwiftUI with audio/visual/haptic alerts connecting to this FastAPI service.
+
+
 
 
 

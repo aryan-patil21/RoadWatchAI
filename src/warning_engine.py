@@ -34,11 +34,13 @@ class RiderAlert:
     suggested_action: str
     risk_score: float
     direction: str  # 'left', 'center', 'right'
+    sound_cue: str = "assets/sounds/chime_caution.wav"
 
     def to_dict(self) -> Dict[str, Any]:
         d = asdict(self)
         d["level"] = self.level.value
         return d
+
 
 
 class WarningEngine:
@@ -112,6 +114,7 @@ class WarningEngine:
         )
 
         if level == AlertLevel.CRITICAL:
+            sound_cue = "assets/sounds/chime_critical.wav"
             title = f"DANGER: High-Risk {cls_name.upper()} {dir_label.upper()}"
             if "cutting" in primary_factor.lower():
                 message = f"{cls_name.capitalize()} cutting abruptly across your lane."
@@ -123,6 +126,7 @@ class WarningEngine:
                 message = f"{cls_name.capitalize()} closing distance rapidly ({dir_label})."
                 action = "Slow down and give vehicle wide berth."
         else:  # CAUTION
+            sound_cue = "assets/sounds/chime_caution.wav"
             title = f"CAUTION: {cls_name.capitalize()} {dir_label}"
             message = f"{cls_name.capitalize()} nearby ({primary_factor})."
             action = "Monitor vehicle and maintain safe buffer."
@@ -138,7 +142,9 @@ class WarningEngine:
             suggested_action=action,
             risk_score=score,
             direction=direction,
+            sound_cue=sound_cue,
         )
+
 
     def process_frame(
         self,
