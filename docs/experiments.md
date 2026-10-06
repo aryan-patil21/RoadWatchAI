@@ -110,6 +110,28 @@
   3. *Zero Stereotyping*: The risk score is mathematically decoupled from vehicle class or plate context — a bus cruising steadily scores LOW (15-25), while an aggressive overtaking car or tempo scores HIGH (75-90).
 - **Next Step**: Milestone 7 — Build a Small Custom Dataset. Systematically annotate and curate balanced road event clips (normal cruising, sudden cut-in, rapid approach, tailgate) to expand model training beyond single-clip evaluation.
 
+## Experiment 07: Milestone 7 - Custom Dataset Curation & Leakage-Free Splitting
+- **Objective**: Establish an objective kinematic road-event taxonomy, annotate behavioural samples, and generate train/validation/test splits using Entity Grouping to guarantee zero Video Data Leakage.
+- **Dataset**: `outputs/behavioural_features.csv` (283 samples across 11 tracked vehicles).
+- **Method**:
+  - Authored [`docs/dataset.md`](file:///Users/apple/Desktop/RoadwatchAI/docs/dataset.md) documenting objective physical thresholds for 6 distinct road manoeuvres: `normal_driving`, `close_following` (tailgating), `rapid_approach`, `unsafe_lane_change`, `sudden_braking`, and `parallel_cruising`.
+  - Implemented [`create_custom_dataset`](file:///Users/apple/Desktop/RoadwatchAI/src/dataset_generator.py) applying `GroupShuffleSplit` on `vehicle_id`.
+  - Partitioned samples:
+    - Train: 182 samples (7 unique vehicle entities)
+    - Val: 59 samples
+    - Test: 42 samples (2 unique vehicle entities)
+  - Verified cross-split vehicle overlap: 0 overlapping vehicle IDs.
+  - Exported `data/processed/roadwatch_dataset_all.csv`, `train.csv`, `val.csv`, `test.csv`, and `dataset_metadata.json`.
+- **Result**:
+  - Event Distribution: Parallel Cruising: 152, Closing Distance: 56, Rapid Approach: 42, Normal Driving: 12, Sudden Braking: 11, Close Following: 10.
+  - Safety Level Distribution: NORMAL: 164, CAUTION: 66, HIGH_RISK: 53.
+  - Data Leakage check: `is_leakage_free: True` (0 entity overlap).
+- **Key Concepts Learned**:
+  1. *Video Data Leakage*: In time-series vision, random train/test splitting contaminates test sets with near-identical adjacent frames. Grouping by vehicle identity guarantees models are evaluated on completely unseen vehicles.
+  2. *Objective Kinematic Criteria*: Replacing vague human intuition ("this driver looks aggressive") with explicit math (approach rate $> 0.12$/s, $TTC \le 4.0$s) ensures fairness and reproducibility.
+- **Next Step**: Milestone 8 — Warning Engine. Build thresholding, debouncing, and alert cooldown logic to prevent alert fatigue on riders.
+
+
 
 
 

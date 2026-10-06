@@ -2,12 +2,17 @@
 
 > **AI-powered road safety and driver-behaviour analysis system for two-wheeler commuters.**
 
+[![GitHub](https://img.shields.io/badge/GitHub-aryan--patil21%2FRoadWatchAI-blue?logo=github)](https://github.com/aryan-patil21/RoadWatchAI)
+[![Python 3.11](https://img.shields.io/badge/Python-3.11-green?logo=python)](https://www.python.org/)
+[![Apple Silicon](https://img.shields.io/badge/Hardware-Apple%20Silicon%20(M4)-orange?logo=apple)](https://developer.apple.com/metal/)
+
 ## Core Philosophy
 RoadWatch AI analyzes **observable driving behaviour** (rapid approach, unsafe following distance, aggressive lane changes, swerving) to estimate immediate road-safety risks and warn the rider.
 
 **Behaviour → Measurable Features → Risk Estimation → Warning**
 
 We evaluate **observable actions**, not vehicle brands, models, or stereotypes.
+
 
 ---
 
@@ -62,10 +67,11 @@ pip install -r requirements.txt
 - [x] **Milestone 4: Road Geometry & Relative Position**
 - [x] **Milestone 5: Behavioural Feature Extraction**
 - [x] **Milestone 6: Risk Model Prototype**
-- [ ] **Milestone 7: Custom Dataset Curation**
+- [x] **Milestone 7: Custom Dataset Curation**
 - [ ] **Milestone 8: Warning Engine**
 - [ ] **Milestone 9: Backend API (FastAPI)**
 - [ ] **Milestone 10: iOS Client Prototype (SwiftUI)**
 - [ ] **Milestone 11: End-to-End Pipeline Integration**
 - [ ] **Milestone 12: Real-Time Stream Performance Profiling**
 - [ ] **Milestone 13: Advanced Features & Context Analysis**
+
