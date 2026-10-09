@@ -16,7 +16,7 @@ import sys
 import time
 import argparse
 import threading
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List, Tuple
 import cv2
 import requests
 import subprocess
@@ -73,6 +73,7 @@ class LiveStreamRunner:
             cooldown_seconds=cooldown_seconds,
         )
 
+        self.alert_audio_events: List[Tuple[float, str]] = []
         self.running = False
         self.stats = {
             "total_frames": 0,
@@ -217,6 +218,10 @@ class LiveStreamRunner:
                     else:
                         self.stats["caution_alerts"] += 1
 
+                    # Log relative seconds from start of output clip for audio muxing
+                    clip_relative_sec = (processed_count - 1) / self.target_fps
+                    self.alert_audio_events.append((clip_relative_sec, new_alert.level.value))
+
                     # Trigger open-source sound chime live on Mac speakers in background thread
                     if self.enable_sound_chimes:
                         self._play_sound_chime(new_alert.level.value)
@@ -262,21 +267,96 @@ class LiveStreamRunner:
         total_elapsed = time.time() - overall_start
         self.stats["processed_frames"] = frame_idx
         self.stats["total_frames"] = limit_frames
-        self.stats["average_fps"] = round(frame_idx / total_elapsed, 2) if total_elapsed > 0 else 0
+        self.stats["average_fps"] = round(processed_count / total_elapsed, 2) if total_elapsed > 0 else 0
+
+        # Mux synchronized audio track directly into the video file so it plays sound anywhere
+        if self.save_annotated_stream and os.path.exists(self.output_stream_path):
+            self._mux_audio_into_video(total_duration_sec=processed_count / self.target_fps)
 
         print("-" * 66)
         print("  Stream Runner Execution Completed")
         print("-" * 66)
-        print(f" Processed Frames : {self.stats['processed_frames']} / {self.stats['total_frames']}")
+        print(f" Processed Frames : {processed_count} / {limit_frames}")
         print(f" Processing Time  : {total_elapsed:.2f} seconds")
         print(f" Average Speed    : {self.stats['average_fps']} FPS")
         print(f" Peak Vehicles    : {self.stats['active_vehicles_peak']} tracked simultaneously")
         print(f" Fired Warnings   : {self.stats['total_alerts']} ({self.stats['caution_alerts']} Caution, {self.stats['critical_alerts']} Critical)")
         if self.save_annotated_stream:
-            print(f" Output Video     : {self.output_stream_path}")
+            print(f" Output Video (with Audio Track): {self.output_stream_path}")
         print("=" * 66)
 
         return self.stats
+
+    def _mux_audio_into_video(self, total_duration_sec: float) -> None:
+        """Constructs an exact-duration audio track with alert beeps and muxes into MP4."""
+        import wave, struct
+        try:
+            import imageio_ffmpeg
+            ffmpeg_exe = imageio_ffmpeg.get_ffmpeg_exe()
+        except Exception:
+            ffmpeg_exe = "ffmpeg"
+
+        sample_rate = 44100
+        total_samples = int(sample_rate * total_duration_sec)
+        audio_buffer = [0.0] * max(total_samples, 44100)
+
+        # Load raw wav samples for caution and critical beeps
+        def load_wav_samples(path):
+            if not os.path.exists(path):
+                return []
+            with wave.open(path, "r") as wf:
+                n_frames = wf.getnframes()
+                raw = wf.readframes(n_frames)
+                ints = struct.unpack(f"<{n_frames}h", raw)
+                return [val / 32767.0 for val in ints]
+
+        caution_samples = load_wav_samples("assets/sounds/chime_caution.wav")
+        critical_samples = load_wav_samples("assets/sounds/chime_critical.wav")
+
+        # Overlay each warning beep at its exact timestamp
+        for event_time_sec, alert_level in self.alert_audio_events:
+            start_idx = int(event_time_sec * sample_rate)
+            beep_samples = critical_samples if alert_level == "CRITICAL" else caution_samples
+            for i, s in enumerate(beep_samples):
+                pos = start_idx + i
+                if pos < len(audio_buffer):
+                    audio_buffer[pos] = max(-1.0, min(1.0, audio_buffer[pos] + s))
+
+        # Write composite WAV file
+        temp_wav_path = self.output_stream_path.replace(".mp4", "_audio.wav")
+        with wave.open(temp_wav_path, "w") as out_wf:
+            out_wf.setnchannels(1)
+            out_wf.setsampwidth(2)
+            out_wf.setframerate(sample_rate)
+            raw_out = bytearray()
+            for s in audio_buffer:
+                val = int(max(-1.0, min(1.0, s)) * 32767)
+                raw_out.extend(struct.pack("<h", val))
+            out_wf.writeframes(raw_out)
+
+        # Mux audio and video using ffmpeg
+        temp_mux_path = self.output_stream_path.replace(".mp4", "_muxed.mp4")
+        cmd = [
+            ffmpeg_exe,
+            "-y",
+            "-i", self.output_stream_path,
+            "-i", temp_wav_path,
+            "-c:v", "copy",
+            "-c:a", "aac",
+            "-b:a", "192k",
+            "-shortest",
+            temp_mux_path,
+        ]
+        try:
+            res = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            if res.returncode == 0 and os.path.exists(temp_mux_path):
+                os.replace(temp_mux_path, self.output_stream_path)
+                print(f"✓ Embedded synchronized audio track directly into '{self.output_stream_path}'")
+        except Exception as e:
+            print(f"[Warning] Audio muxing skipped: {e}")
+        finally:
+            if os.path.exists(temp_wav_path):
+                os.remove(temp_wav_path)
 
     def _play_sound_chime(self, level: str) -> None:
         """Plays open-source sound chime asynchronously without blocking vision loop."""
