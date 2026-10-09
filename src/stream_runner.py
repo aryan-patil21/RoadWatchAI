@@ -334,15 +334,18 @@ class LiveStreamRunner:
                 raw_out.extend(struct.pack("<h", val))
             out_wf.writeframes(raw_out)
 
-        # Mux audio and video using ffmpeg
+        # Mux audio and video using ffmpeg with H.264 + stereo AAC for native Apple QuickTime playback
         temp_mux_path = self.output_stream_path.replace(".mp4", "_muxed.mp4")
         cmd = [
             ffmpeg_exe,
             "-y",
             "-i", self.output_stream_path,
             "-i", temp_wav_path,
-            "-c:v", "copy",
+            "-c:v", "libx264",
+            "-preset", "fast",
+            "-pix_fmt", "yuv420p",
             "-c:a", "aac",
+            "-ac", "2",
             "-b:a", "192k",
             "-shortest",
             temp_mux_path,
@@ -351,7 +354,7 @@ class LiveStreamRunner:
             res = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             if res.returncode == 0 and os.path.exists(temp_mux_path):
                 os.replace(temp_mux_path, self.output_stream_path)
-                print(f"✓ Embedded synchronized audio track directly into '{self.output_stream_path}'")
+                print(f"✓ Embedded synchronized H.264 + stereo AAC audio track into '{self.output_stream_path}'")
         except Exception as e:
             print(f"[Warning] Audio muxing skipped: {e}")
         finally:
