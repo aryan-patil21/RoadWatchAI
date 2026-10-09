@@ -147,11 +147,12 @@ class BehaviouralFeatureExtractor:
 
             # 7. Aggressive Lane Cutting Indicator
             # High lateral speed moving into or across ego corridor
+            # CRITICAL: Far-away horizon objects (proximity < 0.35) have natural perspective drift and must NOT be flagged as lane cutting
             in_ego_lane = self.ego_min_x <= cx <= self.ego_max_x
-            moving_toward_ego = (cx < self.ego_min_x and v_lat > 30.0) or (
-                cx > self.ego_max_x and v_lat < -30.0
+            moving_toward_ego = (cx < self.ego_min_x and v_lat > 35.0) or (
+                cx > self.ego_max_x and v_lat < -35.0
             )
-            if abs(v_lat) > 40.0 and (in_ego_lane or moving_toward_ego):
+            if abs(v_lat) > 40.0 and (in_ego_lane or moving_toward_ego) and proximity_score > 0.35:
                 is_cutting_lane = 1
 
             # 8. Sudden Braking / Rapid Deceleration Indicator

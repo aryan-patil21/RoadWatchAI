@@ -19,6 +19,7 @@ import threading
 from typing import Optional, Dict, Any
 import cv2
 import requests
+import subprocess
 
 # Ensure root directory is on sys.path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -28,13 +29,15 @@ from src.road_geometry import RoadGeometryAnalyzer
 from src.feature_extractor import BehaviouralFeatureExtractor
 from src.risk_engine import RiskEngine
 from src.warning_engine import WarningEngine, RiderAlert
+from src.lane_detector import LaneDepartureDetector
 from src.api import pipeline_state
 
 
 class LiveStreamRunner:
     """
     Simulates a live dashcam hardware stream connected directly to the RoadWatch AI engine.
-    Updates the shared backend state and prints real-time cockpit telemetry.
+    Updates the shared backend state, sounds live warning chimes, detects lane departures,
+    and renders continuous cockpit HUD telemetry.
     """
 
     def __init__(
@@ -47,6 +50,8 @@ class LiveStreamRunner:
         pace_stream: bool = True,
         save_annotated_stream: bool = True,
         output_stream_path: str = "outputs/stream_runner_output.mp4",
+        enable_sound_chimes: bool = True,
+        enable_ldw: bool = True,
     ):
         self.video_path = video_path
         self.target_fps = target_fps
@@ -54,10 +59,13 @@ class LiveStreamRunner:
         self.pace_stream = pace_stream
         self.save_annotated_stream = save_annotated_stream
         self.output_stream_path = output_stream_path
+        self.enable_sound_chimes = enable_sound_chimes
+        self.enable_ldw = enable_ldw
 
-        # Vision & Risk Modules
+        # Vision, Lane & Risk Modules
         self.tracker = VehicleTracker(conf_threshold=conf_threshold)
         self.geometry = RoadGeometryAnalyzer()
+        self.lane_detector = LaneDepartureDetector() if enable_ldw else None
         self.feature_extractor: Optional[BehaviouralFeatureExtractor] = None
         self.risk_engine = RiskEngine()
         self.warning_engine = WarningEngine(
@@ -180,11 +188,17 @@ class LiveStreamRunner:
                         "primary_factor": risk_eval["primary_factor"],
                     })
 
-                # 5. Warning Engine (Debouncing, Cooldown, Prioritization)
+                # 5. Lane Departure Warning (LDW) Analysis
+                ldw_info = {"status": "NORMAL", "offset_px": 0.0}
+                if self.lane_detector:
+                    ldw_info = self.lane_detector.process_frame(frame)
+                    self.lane_detector.draw_lanes(annotated_frame, ldw_info)
+
+                # 6. Warning Engine (Debouncing, Cooldown, Prioritization)
                 new_alert = self.warning_engine.process_frame(frame_idx, timestamp_sec, vehicle_evaluations)
                 active_alert = self.warning_engine.active_display_alert
 
-                # 6. Synchronize with FastAPI backend shared pipeline state
+                # 7. Synchronize with FastAPI backend shared pipeline state
                 pipeline_state.frame_counter = frame_idx
                 if new_alert:
                     alert_dict = new_alert.to_dict()
@@ -195,14 +209,18 @@ class LiveStreamRunner:
                     else:
                         self.stats["caution_alerts"] += 1
 
+                    # Trigger open-source sound chime live on Mac speakers in background thread
+                    if self.enable_sound_chimes:
+                        self._play_sound_chime(new_alert.level.value)
+
                 pipeline_state.warning_engine = self.warning_engine
 
                 if len(tracks) > self.stats["active_vehicles_peak"]:
                     self.stats["active_vehicles_peak"] = len(tracks)
 
-                # Render Cockpit HUD on output video stream
+                # Render Continuous Cockpit HUD on output video stream
                 if out_writer:
-                    self._render_hud(annotated_frame, frame_idx, timestamp_sec, active_alert, len(tracks))
+                    self._render_hud(annotated_frame, frame_idx, timestamp_sec, active_alert, len(tracks), ldw_info)
                     out_writer.write(annotated_frame)
 
                 # Print terminal status update every 25 frames (1 second of video)
@@ -210,12 +228,13 @@ class LiveStreamRunner:
                     elapsed = time.time() - overall_start
                     fps_current = frame_idx / elapsed if elapsed > 0 else 0
                     hud_status = "NORMAL" if not active_alert else f"{active_alert.level.value} ({active_alert.direction.upper()})"
+                    ldw_tag = f" | LDW: {ldw_info['status']}" if ldw_info['status'] != "NORMAL" else ""
                     alert_tag = f" -> FIRED: {new_alert.title}" if new_alert else ""
                     print(
                         f"Frame {frame_idx:04d}/{limit_frames:04d} | "
                         f"Time: {timestamp_sec:5.2f}s | "
                         f"Vehicles: {len(tracks):2d} | "
-                        f"HUD: {hud_status:12s} | "
+                        f"HUD: {hud_status:12s}{ldw_tag} | "
                         f"Speed: {fps_current:4.1f} FPS{alert_tag}"
                     )
 
@@ -251,6 +270,17 @@ class LiveStreamRunner:
 
         return self.stats
 
+    def _play_sound_chime(self, level: str) -> None:
+        """Plays open-source sound chime asynchronously without blocking vision loop."""
+        sound_file = "assets/sounds/chime_critical.wav" if level == "CRITICAL" else "assets/sounds/chime_caution.wav"
+        if os.path.exists(sound_file):
+            def _play():
+                try:
+                    subprocess.run(["/usr/bin/afplay", sound_file], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                except Exception:
+                    pass
+            threading.Thread(target=_play, daemon=True).start()
+
     def _render_hud(
         self,
         frame: cv2.Mat,
@@ -258,44 +288,76 @@ class LiveStreamRunner:
         timestamp_sec: float,
         alert: Optional[RiderAlert],
         vehicle_count: int,
+        ldw_info: Dict[str, Any],
     ) -> None:
-        """Renders cockpit banner and metrics on the frame."""
+        """Renders continuous, high-visibility Cockpit banner and lane radar on the frame."""
         h, w = frame.shape[:2]
 
-        # Top status bar
-        cv2.rectangle(frame, (0, 0), (w, 42), (20, 20, 20), -1)
-        status_text = (
-            f"ROADWATCH AI LIVE  |  FRAME: {frame_idx:04d}  |  "
-            f"TIME: {timestamp_sec:5.2f}s  |  TRACKED: {vehicle_count} VEHICLES"
-        )
-        cv2.putText(frame, status_text, (16, 26), cv2.FONT_HERSHEY_SIMPLEX, 0.55, (220, 220, 220), 1, cv2.LINE_AA)
+        # 1. Continuous Safety Status Banner at top (Green / Amber / Red)
+        if alert and alert.level.value == "CRITICAL":
+            # 🔴 Critical Emergency Alert
+            banner_color = (0, 0, 200)
+            status_text = f"🚨 EMERGENCY: {alert.title.upper()} ({int(alert.risk_score)} pts)"
+            sub_text = f"ACTION: {alert.suggested_action}"
+            cv2.rectangle(frame, (0, 0), (w, 52), banner_color, -1)
+            cv2.putText(frame, status_text, (16, 24), cv2.FONT_HERSHEY_SIMPLEX, 0.58, (255, 255, 255), 2, cv2.LINE_AA)
+            cv2.putText(frame, sub_text, (16, 44), cv2.FONT_HERSHEY_SIMPLEX, 0.44, (240, 240, 240), 1, cv2.LINE_AA)
+        elif alert and alert.level.value == "CAUTION":
+            # 🟡 Caution Hazard
+            banner_color = (0, 130, 240)
+            status_text = f"⚠️ CAUTION: {alert.title.upper()} ({int(alert.risk_score)} pts)"
+            sub_text = f"ACTION: {alert.suggested_action}"
+            cv2.rectangle(frame, (0, 0), (w, 52), banner_color, -1)
+            cv2.putText(frame, status_text, (16, 24), cv2.FONT_HERSHEY_SIMPLEX, 0.58, (255, 255, 255), 2, cv2.LINE_AA)
+            cv2.putText(frame, sub_text, (16, 44), cv2.FONT_HERSHEY_SIMPLEX, 0.44, (240, 240, 240), 1, cv2.LINE_AA)
+        else:
+            # 🟢 Normal Safe Conditions (Continuous Peaceful Indicator)
+            banner_color = (25, 80, 25)
+            status_text = f"ROAD CONDITIONS NORMAL | ZERO THREATS DETECTED"
+            sub_text = f"FRAME: {frame_idx:04d} | TIME: {timestamp_sec:4.1f}s | ACTIVE TARGETS: {vehicle_count}"
+            cv2.rectangle(frame, (0, 0), (w, 46), banner_color, -1)
+            cv2.putText(frame, status_text, (16, 22), cv2.FONT_HERSHEY_SIMPLEX, 0.54, (120, 255, 120), 2, cv2.LINE_AA)
+            cv2.putText(frame, sub_text, (16, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.42, (200, 240, 200), 1, cv2.LINE_AA)
 
-        # Cockpit Hazard Banner
-        if alert:
-            is_critical = (alert.level.value == "CRITICAL")
-            bg_color = (0, 0, 220) if is_critical else (0, 140, 255)
-            cv2.rectangle(frame, (w // 2 - 250, 48), (w // 2 + 250, 108), bg_color, -1)
-            cv2.rectangle(frame, (w // 2 - 250, 48), (w // 2 + 250, 108), (255, 255, 255), 2)
+        # 2. Lane Departure Warning (LDW) Strip
+        ldw_status = ldw_info.get("status", "NORMAL")
+        if ldw_status != "NORMAL":
+            ldw_color = (0, 140, 255)
+            direction_str = "LEFT" if ldw_status == "DRIFT_LEFT" else "RIGHT"
+            cv2.rectangle(frame, (w // 2 - 180, 56), (w // 2 + 180, 86), ldw_color, -1)
             cv2.putText(
                 frame,
-                f"[{alert.level.value}] {alert.title.upper()}",
-                (w // 2 - 240, 74),
+                f"LANE DRIFT: VEERING {direction_str}",
+                (w // 2 - 160, 77),
                 cv2.FONT_HERSHEY_SIMPLEX,
-                0.55,
+                0.50,
                 (255, 255, 255),
                 2,
                 cv2.LINE_AA,
             )
-            cv2.putText(
-                frame,
-                f"{alert.suggested_action}",
-                (w // 2 - 240, 98),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.45,
-                (240, 240, 240),
-                1,
-                cv2.LINE_AA,
-            )
+
+        # 3. 3-Zone Lane Radar Widget (Bottom Center)
+        radar_y = h - 28
+        lane_w = 90
+        center_x = w // 2
+
+        active_dir = alert.direction.lower() if alert else ""
+
+        # Left Zone Box
+        left_color = (0, 0, 200) if active_dir == "left" else (40, 40, 40)
+        cv2.rectangle(frame, (center_x - lane_w * 2, radar_y), (center_x - lane_w, radar_y + 22), left_color, -1)
+        cv2.putText(frame, "LEFT", (center_x - lane_w * 2 + 25, radar_y + 16), cv2.FONT_HERSHEY_SIMPLEX, 0.40, (255, 255, 255), 1, cv2.LINE_AA)
+
+        # Ego Zone Box
+        ego_color = (0, 0, 200) if active_dir in ["ahead", "center"] else (40, 40, 40)
+        cv2.rectangle(frame, (center_x - lane_w // 2, radar_y), (center_x + lane_w // 2, radar_y + 22), ego_color, -1)
+        cv2.putText(frame, "EGO PATH", (center_x - 36, radar_y + 16), cv2.FONT_HERSHEY_SIMPLEX, 0.40, (255, 255, 255), 1, cv2.LINE_AA)
+
+        # Right Zone Box
+        right_color = (0, 0, 200) if active_dir == "right" else (40, 40, 40)
+        cv2.rectangle(frame, (center_x + lane_w, radar_y), (center_x + lane_w * 2, radar_y + 22), right_color, -1)
+        cv2.putText(frame, "RIGHT", (center_x + lane_w + 22, radar_y + 16), cv2.FONT_HERSHEY_SIMPLEX, 0.40, (255, 255, 255), 1, cv2.LINE_AA)
+
 
 
 def main():

@@ -63,19 +63,21 @@ class RiskEngine:
             factors.append("very close proximity")
 
         # 2. Approach Rate & Time-To-Collision (up to 35 points)
-        if approach_rate > 0.15:
-            score += 25.0
-            factors.append("rapid approach")
-        elif approach_rate > 0.05:
-            score += 15.0
-            factors.append("closing distance")
+        # Objects far on the horizon (proximity < 0.30) naturally expand slowly and pose no immediate collision threat
+        if proximity > 0.30:
+            if approach_rate > 0.15:
+                score += 25.0
+                factors.append("rapid approach")
+            elif approach_rate > 0.05:
+                score += 15.0
+                factors.append("closing distance")
 
-        if ttc < 2.5:
-            score += 20.0
-            factors.append(f"critical TTC ({ttc:.1f}s)")
-        elif ttc < 5.0:
-            score += 10.0
-            factors.append(f"low TTC ({ttc:.1f}s)")
+            if ttc < 2.5:
+                score += 20.0
+                factors.append(f"critical TTC ({ttc:.1f}s)")
+            elif ttc < 5.0:
+                score += 10.0
+                factors.append(f"low TTC ({ttc:.1f}s)")
 
         # 3. Trajectory Conflict & Lane Cutting (up to 30 points)
         # Check whether vehicle is diverging away from rider's path (e.g. opposing traffic across divider)
