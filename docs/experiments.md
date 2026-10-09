@@ -225,3 +225,48 @@
   2. *Adaptive Pacing*: Benchmarking requires unconstrained hardware execution, but client testing requires strict 25 FPS pacing to mirror realistic rider experience.
 - **Next Step**: Milestone 12 — Real-Time Stream Performance Profiling. Measure per-stage latency breakdowns (inference, tracking, feature calculation, risk modeling, network serialization, client render) and identify potential bottlenecks.
 
+## Experiment 12: Milestone 12 - Real-Time Stream Performance Profiling & Latency Breakdown
+- **Objective**: Rigorously profile stage-by-stage execution latencies, identify computational bottlenecks, and measure percentile distributions ($p50, p95, p99$), frame jitter, and throughput headroom under peak tracking workloads on Apple Silicon M4 Metal Performance Shaders (MPS).
+- **Components Developed**:
+  - [`StreamProfiler`](file:///Users/apple/Desktop/RoadwatchAI/src/profiler.py): Precision profiler tracking per-frame timestamps across 9 granular pipeline stages:
+    1. Frame Ingestion & Decode (`cv2.VideoCapture`)
+    2. YOLOv8 Detection + ByteTrack Multi-Object Association
+    3. Road Geometry & Spatial Positioning (horizon/vanishing point projection)
+    4. Kinematic Feature Extraction ($v_{\text{long}}, v_{\text{lat}}, \text{TTC}$, approach rate)
+    5. Hybrid Risk Engine (spatial + kinematic + divergence gating)
+    6. Lane Corridor & Departure Warning (LDW Hough perspective math)
+    7. Warning Engine (debouncing, cooldown, prioritization)
+    8. Cockpit HUD Rendering (`cv2.rectangle`, `cv2.putText`, status banners)
+    9. Frame Encoding & Disk Serialization (`cv2.VideoWriter`)
+  - Warmup Routine: Eliminates Apple MPS shader compilation spikes on initial frames to ensure accurate jitter estimation.
+  - QuickTime-Native Benchmark Output: Automatically encodes test output to H.264 (`yuv420p`) + Stereo AAC (`44.1 kHz`) with synchronized automotive alert beeps.
+  - Automated Unit Testing: [`TestStreamProfiler`](file:///Users/apple/Desktop/RoadwatchAI/tests/test_profiler.py) verifying stage timing calculations, percentile accuracy, and JSON/Markdown export generation.
+- **Profiling Benchmark Results (220 frames, starting at frame #1050)**:
+  - **Hardware Backend**: Apple Silicon (M4) via Metal Performance Shaders (MPS)
+  - **Resolution**: 854 x 480
+  - **Target FPS Budget**: 25.0 FPS (Budget: 40.00 ms/frame)
+  - **Achieved Throughput**: **41.62 FPS** (1.66x faster than real-time video playback)
+  - **Latency Percentiles**:
+    - Median ($p50$): **23.58 ms**
+    - Tail ($p95$): **30.43 ms**
+    - Peak Spike ($p99$): **36.61 ms**
+    - Frame Jitter ($\sigma$): **7.18 ms**
+  - **Real-Time Headroom**: **+9.57 ms** buffer at the 95th percentile relative to the 40 ms budget.
+  - **Stage-by-Stage Breakdown**:
+    | Stage | Mean (ms) | p50 (ms) | p95 (ms) | % of Pipeline | Bottleneck Analysis |
+    |---|---|---|---|---|---|
+    | `1_frame_decode` | 0.23 ms | 0.22 ms | 0.30 ms | 0.9% | Negligible CPU read overhead |
+    | `2_yolo_bytetrack` | 19.19 ms | 18.98 ms | 24.26 ms | **79.9%** | **Primary Computational Load** (Neural weights on MPS) |
+    | `3_road_geometry` | 0.01 ms | 0.01 ms | 0.02 ms | <0.1% | Instant vectorized spatial projection |
+    | `4_kinematic_features`| 0.01 ms | 0.01 ms | 0.02 ms | 0.1% | Highly optimized rolling window math |
+    | `5_risk_engine` | 0.01 ms | 0.00 ms | 0.01 ms | <0.1% | Zero-latency rule & regression scoring |
+    | `6_lane_corridor_ldw` | 2.68 ms | 2.67 ms | 3.13 ms | **11.1%** | Secondary load (Canny + Hough transforms) |
+    | `7_warning_engine` | 0.00 ms | 0.00 ms | 0.01 ms | <0.1% | Instant state machine evaluations |
+    | `8_cockpit_hud_render`| 0.05 ms | 0.04 ms | 0.06 ms | 0.2% | Ultra-lightweight OpenCV rasterization |
+    | `9_frame_encode_write`| 1.85 ms | 1.81 ms | 2.14 ms | 7.7% | Video frame serialization |
+- **Key Concepts Learned**:
+  1. *Perception Dominance*: 79.9% of total pipeline latency is consumed by YOLOv8 + ByteTrack. The mathematical feature extraction, risk scoring, and warning state machine together consume less than 0.3% of the frame budget.
+  2. *Predictable Real-Time Execution*: With a $p95$ of 30.43 ms against a 40 ms threshold, RoadWatch AI operates safely within real-time limits on Apple Silicon without dropping frames during high-traffic maneuvers.
+  3. *Optimization Path for Milestone 13*: To push throughput beyond 60 FPS for high-refresh mobile displays, quantizing YOLO to CoreML Int8 / FP16 on the Apple Neural Engine (ANE) and ROI-cropping for lane detection will yield immediate latency gains.
+
+
