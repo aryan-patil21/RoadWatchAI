@@ -84,7 +84,7 @@ class LiveStreamRunner:
             "active_vehicles_peak": 0,
         }
 
-    def run(self, max_frames: Optional[int] = None) -> Dict[str, Any]:
+    def run(self, max_frames: Optional[int] = None, start_frame: int = 0) -> Dict[str, Any]:
         """
         Executes stream loop, updating FastAPI pipeline_state in real time.
         """
@@ -99,7 +99,12 @@ class LiveStreamRunner:
         height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         video_fps = float(cap.get(cv2.CAP_PROP_FPS)) or 25.0
         total_video_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-        limit_frames = min(total_video_frames, max_frames) if max_frames else total_video_frames
+
+        if start_frame > 0:
+            cap.set(cv2.CAP_PROP_POS_FRAMES, start_frame)
+
+        remaining_frames = total_video_frames - start_frame
+        limit_frames = min(remaining_frames, max_frames) if max_frames else remaining_frames
 
         # Configure geometry and feature extractor bounds
         self.geometry.frame_width = width
@@ -126,22 +131,25 @@ class LiveStreamRunner:
         print(f" Source Video       : {self.video_path}")
         print(f" Frame Resolution   : {width} x {height}")
         print(f" Stream Rate        : {self.target_fps} FPS ({'Paced real-time' if self.pace_stream else 'Max throughput'})")
+        print(f" Start Frame        : {start_frame}")
         print(f" Total Frames       : {limit_frames}")
         print(f" Target Device      : {self.tracker.device.upper()}")
         print("-" * 66)
 
         self.running = True
-        frame_idx = 0
+        frame_idx = start_frame
+        processed_count = 0
         overall_start = time.time()
 
         try:
             while cap.isOpened() and self.running:
                 loop_start = time.time()
                 success, frame = cap.read()
-                if not success or (max_frames and frame_idx >= max_frames):
+                if not success or (max_frames and processed_count >= max_frames):
                     break
 
                 frame_idx += 1
+                processed_count += 1
                 timestamp_sec = round(frame_idx / self.target_fps, 2)
 
                 # 1. Multi-Object Tracking (YOLOv8 + ByteTrack)
@@ -295,31 +303,31 @@ class LiveStreamRunner:
 
         # 1. Continuous Safety Status Banner at top (Green / Amber / Red)
         if alert and alert.level.value == "CRITICAL":
-            # 🔴 Critical Emergency Alert
-            banner_color = (0, 0, 200)
-            status_text = f"🚨 EMERGENCY: {alert.title.upper()} ({int(alert.risk_score)} pts)"
+            # 🔴 Critical Emergency Alert (Red)
+            banner_color = (0, 0, 205)
+            status_text = f"[EMERGENCY] {alert.title.upper()} ({int(alert.risk_score)} pts)"
             sub_text = f"ACTION: {alert.suggested_action}"
             cv2.rectangle(frame, (0, 0), (w, 52), banner_color, -1)
             cv2.putText(frame, status_text, (16, 24), cv2.FONT_HERSHEY_SIMPLEX, 0.58, (255, 255, 255), 2, cv2.LINE_AA)
             cv2.putText(frame, sub_text, (16, 44), cv2.FONT_HERSHEY_SIMPLEX, 0.44, (240, 240, 240), 1, cv2.LINE_AA)
         elif alert and alert.level.value == "CAUTION":
-            # 🟡 Caution Hazard
-            banner_color = (0, 130, 240)
-            status_text = f"⚠️ CAUTION: {alert.title.upper()} ({int(alert.risk_score)} pts)"
+            # 🟡 Caution Hazard (Amber)
+            banner_color = (0, 140, 255)
+            status_text = f"[CAUTION] {alert.title.upper()} ({int(alert.risk_score)} pts)"
             sub_text = f"ACTION: {alert.suggested_action}"
             cv2.rectangle(frame, (0, 0), (w, 52), banner_color, -1)
             cv2.putText(frame, status_text, (16, 24), cv2.FONT_HERSHEY_SIMPLEX, 0.58, (255, 255, 255), 2, cv2.LINE_AA)
             cv2.putText(frame, sub_text, (16, 44), cv2.FONT_HERSHEY_SIMPLEX, 0.44, (240, 240, 240), 1, cv2.LINE_AA)
         else:
-            # 🟢 Normal Safe Conditions (Continuous Peaceful Indicator)
-            banner_color = (25, 80, 25)
-            status_text = f"ROAD CONDITIONS NORMAL | ZERO THREATS DETECTED"
+            # 🟢 Normal Safe Conditions (Clean Green)
+            banner_color = (25, 90, 25)
+            status_text = "ROAD CONDITIONS NORMAL | ZERO THREATS DETECTED"
             sub_text = f"FRAME: {frame_idx:04d} | TIME: {timestamp_sec:4.1f}s | ACTIVE TARGETS: {vehicle_count}"
             cv2.rectangle(frame, (0, 0), (w, 46), banner_color, -1)
-            cv2.putText(frame, status_text, (16, 22), cv2.FONT_HERSHEY_SIMPLEX, 0.54, (120, 255, 120), 2, cv2.LINE_AA)
+            cv2.putText(frame, status_text, (16, 22), cv2.FONT_HERSHEY_SIMPLEX, 0.54, (140, 255, 140), 2, cv2.LINE_AA)
             cv2.putText(frame, sub_text, (16, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.42, (200, 240, 200), 1, cv2.LINE_AA)
 
-        # 2. Lane Departure Warning (LDW) Strip
+        # 2. Lane Departure Warning (LDW) Banner
         ldw_status = ldw_info.get("status", "NORMAL")
         if ldw_status != "NORMAL":
             ldw_color = (0, 140, 255)
@@ -336,27 +344,25 @@ class LiveStreamRunner:
                 cv2.LINE_AA,
             )
 
-        # 3. 3-Zone Lane Radar Widget (Bottom Center)
-        radar_y = h - 28
-        lane_w = 90
-        center_x = w // 2
-
-        active_dir = alert.direction.lower() if alert else ""
-
-        # Left Zone Box
-        left_color = (0, 0, 200) if active_dir == "left" else (40, 40, 40)
-        cv2.rectangle(frame, (center_x - lane_w * 2, radar_y), (center_x - lane_w, radar_y + 22), left_color, -1)
-        cv2.putText(frame, "LEFT", (center_x - lane_w * 2 + 25, radar_y + 16), cv2.FONT_HERSHEY_SIMPLEX, 0.40, (255, 255, 255), 1, cv2.LINE_AA)
-
-        # Ego Zone Box
-        ego_color = (0, 0, 200) if active_dir in ["ahead", "center"] else (40, 40, 40)
-        cv2.rectangle(frame, (center_x - lane_w // 2, radar_y), (center_x + lane_w // 2, radar_y + 22), ego_color, -1)
-        cv2.putText(frame, "EGO PATH", (center_x - 36, radar_y + 16), cv2.FONT_HERSHEY_SIMPLEX, 0.40, (255, 255, 255), 1, cv2.LINE_AA)
-
-        # Right Zone Box
-        right_color = (0, 0, 200) if active_dir == "right" else (40, 40, 40)
-        cv2.rectangle(frame, (center_x + lane_w, radar_y), (center_x + lane_w * 2, radar_y + 22), right_color, -1)
-        cv2.putText(frame, "RIGHT", (center_x + lane_w + 22, radar_y + 16), cv2.FONT_HERSHEY_SIMPLEX, 0.40, (255, 255, 255), 1, cv2.LINE_AA)
+        # 3. Cockpit Spatial Direction Pill (Only visible when a hazard has a clear direction)
+        if alert and alert.direction:
+            dir_text = f"< HAZARD FROM {alert.direction.upper()} >"
+            pill_w = 260
+            pill_x = (w - pill_w) // 2
+            pill_y = h - 34
+            pill_bg = (0, 0, 200) if alert.level.value == "CRITICAL" else (0, 140, 255)
+            cv2.rectangle(frame, (pill_x, pill_y), (pill_x + pill_w, pill_y + 26), pill_bg, -1)
+            cv2.rectangle(frame, (pill_x, pill_y), (pill_x + pill_w, pill_y + 26), (255, 255, 255), 1)
+            cv2.putText(
+                frame,
+                dir_text,
+                (pill_x + 22, pill_y + 18),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.46,
+                (255, 255, 255),
+                2,
+                cv2.LINE_AA,
+            )
 
 
 
@@ -364,6 +370,7 @@ def main():
     parser = argparse.ArgumentParser(description="RoadWatch AI Live End-to-End Stream Runner")
     parser.add_argument("--video", type=str, default="data/raw/sample_dashcam.mp4", help="Video path")
     parser.add_argument("--frames", type=int, default=200, help="Max frames to run")
+    parser.add_argument("--start-frame", type=int, default=0, help="Frame index to start from")
     parser.add_argument("--no-pace", action="store_true", help="Run at max hardware speed instead of 25 FPS")
     args = parser.parse_args()
 
@@ -372,7 +379,7 @@ def main():
         pace_stream=not args.no_pace,
         save_annotated_stream=True,
     )
-    runner.run(max_frames=args.frames)
+    runner.run(max_frames=args.frames, start_frame=args.start_frame)
 
 
 if __name__ == "__main__":

@@ -1,12 +1,10 @@
 """
 RoadWatch AI - Open-Source Audio Asset Generator
 ------------------------------------------------
-Generates platform-agnostic, 100% royalty-free, open-source 16-bit PCM .WAV audio cues
-using Python's standard library (wave, math, struct) with zero external audio dependencies.
-
-Outputs:
-- assets/sounds/chime_caution.wav: Ascending two-tone melodic chime for CAUTION alerts.
-- assets/sounds/chime_critical.wav: Rapid, urgent multi-tone pulse for CRITICAL danger alerts.
+Generates platform-agnostic, 100% royalty-free, open-source 16-bit PCM .WAV audio cues.
+Now configured with sharp, urgent, high-visibility automotive warning beeps:
+- Caution: Rapid dual-pulse acoustic warning beep (880 Hz).
+- Critical: Urgent, piercing triple-pulse emergency hazard alarm (1175 Hz - 1480 Hz) at high amplitude.
 """
 
 import os
@@ -22,7 +20,7 @@ def generate_synthesized_wav(
     sample_rate: int = 44100,
 ):
     """
-    Synthesizes sine wave audio samples with smooth exponential envelope to avoid clicks.
+    Synthesizes crisp, punchy square/sine hybrid audio tones with minimal onset delay.
     """
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
@@ -37,15 +35,15 @@ def generate_synthesized_wav(
 
         for i in range(num_samples):
             t = i / sample_rate
-            # Smooth attack and decay envelope to prevent harsh pops/clicks
-            # Attack over first 5% of duration, decay over remaining 95%
-            attack_len = int(num_samples * 0.08)
-            if i < attack_len:
-                envelope = i / max(1, attack_len)
-            else:
-                envelope = math.exp(-3.5 * (i - attack_len) / (num_samples - attack_len))
+            # Sharp automotive alert envelope: rapid 2ms rise, sustained body, crisp release
+            rise = min(1.0, i / (sample_rate * 0.005))
+            fall = min(1.0, (num_samples - i) / (sample_rate * 0.008))
+            envelope = rise * fall
 
-            sample_val = amp * envelope * math.sin(2.0 * math.pi * freq * t)
+            # Rich harmonic tone (fundamental + 3rd harmonic) for cutting through road noise
+            fundamental = math.sin(2.0 * math.pi * freq * t)
+            harmonic = 0.25 * math.sin(2.0 * math.pi * (freq * 2.0) * t)
+            sample_val = amp * envelope * (0.8 * fundamental + harmonic)
             total_samples.append(sample_val)
 
     # Encode to 16-bit signed PCM integers (-32768 to 32767)
@@ -62,28 +60,30 @@ def generate_synthesized_wav(
 
         wav_file.writeframes(raw_bytes)
 
-    print(f"✓ Generated open-source sound: {output_path} ({len(total_samples) / sample_rate:.2f}s)")
+    print(f"✓ Generated strong warning sound: {output_path} ({len(total_samples) / sample_rate:.2f}s)")
 
 
 def generate_all_sound_assets(target_dir: str = "assets/sounds"):
-    """Generates both Caution and Critical open-source audio cues."""
-    # 1. Caution Chime: Ascending D5 (587 Hz) -> A5 (880 Hz)
+    """Generates sharp, loud Caution beep and Critical alarm cues."""
+    # 1. Caution Beep: Sharp two-pulse warning beep (880 Hz A5)
     caution_path = os.path.join(target_dir, "chime_caution.wav")
     caution_tones = [
-        (587.33, 0.12, 0.65),  # D5 chime
-        (0.0, 0.03, 0.0),      # Micro pause
-        (880.00, 0.25, 0.75),  # A5 chime
+        (880.0, 0.09, 0.90),   # Pulse 1 (Loud 880 Hz beep)
+        (0.0, 0.05, 0.0),      # Short silence
+        (880.0, 0.12, 0.95),   # Pulse 2
     ]
     generate_synthesized_wav(caution_path, caution_tones)
 
-    # 2. Critical Alert: Urgent rapid pulsing alert (1046 Hz -> 1318 Hz -> 1046 Hz)
+    # 2. Critical Alarm: Piercing, rapid triple-beep hazard siren (1200 Hz - 1480 Hz)
     critical_path = os.path.join(target_dir, "chime_critical.wav")
     critical_tones = [
-        (1046.50, 0.10, 0.85),  # C6
-        (0.0, 0.04, 0.0),       # Pause
-        (1318.51, 0.12, 0.90),  # E6
-        (0.0, 0.04, 0.0),       # Pause
-        (1046.50, 0.16, 0.85),  # C6
+        (1318.5, 0.08, 0.98),  # E6 Beep 1
+        (0.0, 0.035, 0.0),     # Pause
+        (1479.9, 0.08, 0.98),  # F#6 Beep 2
+        (0.0, 0.035, 0.0),     # Pause
+        (1318.5, 0.12, 0.98),  # E6 Beep 3
+        (0.0, 0.04, 0.0),      # Pause
+        (1567.9, 0.14, 1.00),  # G6 Beep 4 (Climax)
     ]
     generate_synthesized_wav(critical_path, critical_tones)
 

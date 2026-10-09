@@ -94,20 +94,32 @@ class LaneDepartureDetector:
                 elif slope > 0 and min(x1, x2) > center_x - 50:
                     right_lines.append((slope, y1 - slope * x1))
 
-        # 4. Fit Representative Left and Right Lines
+        # 4. Fit Representative Left and Right Lines for Rider's Single Immediate Ego Lane
         y_bottom = float(h)
-        left_x_bottom = self._calculate_line_x(left_lines, y_bottom, self.prev_left_x)
-        right_x_bottom = self._calculate_line_x(right_lines, y_bottom, self.prev_right_x)
+        raw_left_x = self._calculate_line_x(left_lines, y_bottom, None)
+        raw_right_x = self._calculate_line_x(right_lines, y_bottom, None)
+
+        # Enforce realistic ego lane boundaries:
+        # The rider's immediate lane boundaries should bound the center (w/2 = 427px)
+        # Left boundary must be left of center (e.g. 200 - 410px), right boundary right of center (440 - 680px)
+        # Typical lane width is 200 - 350 pixels. If detected lines span across two lanes, isolate the immediate one.
+        valid_left = raw_left_x if (raw_left_x is not None and 180.0 <= raw_left_x <= center_x - 30.0) else None
+        valid_right = raw_right_x if (raw_right_x is not None and center_x + 30.0 <= raw_right_x <= 680.0) else None
+
+        # If only one lane line is visible, estimate the other using standard highway lane width (260 px)
+        standard_lane_width = 260.0
+        if valid_left is not None and valid_right is None:
+            valid_right = valid_left + standard_lane_width
+        elif valid_right is not None and valid_left is None:
+            valid_left = valid_right - standard_lane_width
 
         # Temporal smoothing
-        if left_x_bottom is not None:
-            self.prev_left_x = left_x_bottom if self.prev_left_x is None else 0.7 * self.prev_left_x + 0.3 * left_x_bottom
-        if right_x_bottom is not None:
-            self.prev_right_x = right_x_bottom if self.prev_right_x is None else 0.7 * self.prev_right_x + 0.3 * right_x_bottom
+        if valid_left is not None:
+            self.prev_left_x = valid_left if self.prev_left_x is None else 0.85 * self.prev_left_x + 0.15 * valid_left
+        if valid_right is not None:
+            self.prev_right_x = valid_right if self.prev_right_x is None else 0.85 * self.prev_right_x + 0.15 * valid_right
 
         # 5. Evaluate Lateral Departure
-        # Default lane center is image center
-        lane_center = center_x
         if self.prev_left_x is not None and self.prev_right_x is not None:
             lane_center = (self.prev_left_x + self.prev_right_x) / 2.0
             self.offset_px = center_x - lane_center
@@ -145,15 +157,29 @@ class LaneDepartureDetector:
         return (y_eval - avg_intercept) / avg_slope
 
     def draw_lanes(self, frame: cv2.Mat, ldw_info: Dict[str, Any]) -> None:
-        """Renders subtle lane guides on the lower road surface."""
+        """Renders clear perspective lane guides and travel corridor on the asphalt."""
         h, w = frame.shape[:2]
         left_x = ldw_info.get("left_lane_x")
         right_x = ldw_info.get("right_lane_x")
         status = ldw_info.get("status", "NORMAL")
 
-        color = (0, 220, 0) if status == "NORMAL" else (0, 140, 255)
+        # Color: Light Green for centered, Amber for drifting
+        line_color = (0, 240, 100) if status == "NORMAL" else (0, 140, 255)
 
-        if left_x and 0 <= left_x <= w:
-            cv2.line(frame, (int(left_x), h), (int(w * 0.42), int(h * 0.65)), color, 2, cv2.LINE_AA)
-        if right_x and 0 <= right_x <= w:
-            cv2.line(frame, (int(right_x), h), (int(w * 0.58), int(h * 0.65)), color, 2, cv2.LINE_AA)
+        if left_x and right_x and 0 <= left_x < right_x <= w:
+            top_y = int(h * 0.65)
+            # Perspective convergence towards horizon
+            top_left_x = int(left_x * 0.45 + (w * 0.45) * 0.55)
+            top_right_x = int(right_x * 0.45 + (w * 0.55) * 0.55)
+
+            # Draw translucent green lane corridor on asphalt
+            overlay = frame.copy()
+            corridor_pts = np.array([
+                [(int(left_x), h), (top_left_x, top_y), (top_right_x, top_y), (int(right_x), h)]
+            ], dtype=np.int32)
+            cv2.fillPoly(overlay, corridor_pts, (20, 80, 20) if status == "NORMAL" else (20, 60, 120))
+            cv2.addWeighted(overlay, 0.25, frame, 0.75, 0, frame)
+
+            # Left and Right Lane Edge Lines
+            cv2.line(frame, (int(left_x), h), (top_left_x, top_y), line_color, 3, cv2.LINE_AA)
+            cv2.line(frame, (int(right_x), h), (top_right_x, top_y), line_color, 3, cv2.LINE_AA)
