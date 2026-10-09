@@ -82,4 +82,70 @@ public final class RoadWatchAPIService {
         
         return [nil, alert1, alert2, alert3, nil]
     }
+    
+    // MARK: - Live WebSocket Alert Channel
+    public func createWebSocketTask(
+        onAlert: @escaping @Sendable (RiderAlertDTO?) -> Void,
+        onError: @escaping @Sendable (Error) -> Void
+    ) -> URLSessionWebSocketTask? {
+        guard var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true) else {
+            return nil
+        }
+        components.scheme = (components.scheme == "https") ? "wss" : "ws"
+        components.path = "/api/v1/ws/alerts"
+        
+        guard let wsURL = components.url else { return nil }
+        let wsTask = session.webSocketTask(with: wsURL)
+        listenWebSocket(wsTask: wsTask, onAlert: onAlert, onError: onError)
+        wsTask.resume()
+        return wsTask
+    }
+    
+    private func listenWebSocket(
+        wsTask: URLSessionWebSocketTask,
+        onAlert: @escaping @Sendable (RiderAlertDTO?) -> Void,
+        onError: @escaping @Sendable (Error) -> Void
+    ) {
+        wsTask.receive { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .failure(let error):
+                onError(error)
+            case .success(let message):
+                switch message {
+                case .string(let text):
+                    self.parseWebSocketPayload(text, onAlert: onAlert)
+                case .data(let data):
+                    if let text = String(data: data, encoding: .utf8) {
+                        self.parseWebSocketPayload(text, onAlert: onAlert)
+                    }
+                @unknown default:
+                    break
+                }
+                // Continue receiving subsequent messages
+                self.listenWebSocket(wsTask: wsTask, onAlert: onAlert, onError: onError)
+            }
+        }
+    }
+    
+    private func parseWebSocketPayload(
+        _ text: String,
+        onAlert: @escaping @Sendable (RiderAlertDTO?) -> Void
+    ) {
+        guard let data = text.data(using: .utf8),
+              let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let event = json["event"] as? String else {
+            return
+        }
+        
+        if event == "NEW_ALERT",
+           let payloadDict = json["payload"] as? [String: Any],
+           let payloadData = try? JSONSerialization.data(withJSONObject: payloadDict),
+           let alert = try? self.decoder.decode(RiderAlertDTO.self, from: payloadData) {
+            onAlert(alert)
+        } else if event == "ALL_CLEAR" {
+            onAlert(nil)
+        }
+    }
 }
+

@@ -1,0 +1,317 @@
+"""
+RoadWatch AI - Milestone 11: Real-Time End-to-End Stream Runner
+--------------------------------------------------------------
+Executes the live closed-loop pipeline:
+  Video Stream / Camera Feed -> Frame Ingestion -> YOLO Detection
+  -> ByteTrack -> Spatial Geometry -> Kinematic Features -> Risk Engine
+  -> Human-Centered Warning Engine -> FastAPI Shared State & WebSocket Broadcast.
+
+Can run in two modes:
+1. PACE_MODE (default): Paces frames to exactly 25.0 FPS to simulate a real live dashcam feed.
+2. MAX_SPEED_MODE: Processes frames at maximum Apple Silicon hardware throughput.
+"""
+
+import os
+import sys
+import time
+import argparse
+import threading
+from typing import Optional, Dict, Any
+import cv2
+import requests
+
+# Ensure root directory is on sys.path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from src.vehicle_tracker import VehicleTracker
+from src.road_geometry import RoadGeometryAnalyzer
+from src.feature_extractor import BehaviouralFeatureExtractor
+from src.risk_engine import RiskEngine
+from src.warning_engine import WarningEngine, RiderAlert
+from src.api import pipeline_state
+
+
+class LiveStreamRunner:
+    """
+    Simulates a live dashcam hardware stream connected directly to the RoadWatch AI engine.
+    Updates the shared backend state and prints real-time cockpit telemetry.
+    """
+
+    def __init__(
+        self,
+        video_path: str = "data/raw/sample_dashcam.mp4",
+        target_fps: float = 25.0,
+        conf_threshold: float = 0.25,
+        debounce_frames: int = 3,
+        cooldown_seconds: float = 3.5,
+        pace_stream: bool = True,
+        save_annotated_stream: bool = True,
+        output_stream_path: str = "outputs/stream_runner_output.mp4",
+    ):
+        self.video_path = video_path
+        self.target_fps = target_fps
+        self.frame_interval = 1.0 / target_fps if target_fps > 0 else 0.04
+        self.pace_stream = pace_stream
+        self.save_annotated_stream = save_annotated_stream
+        self.output_stream_path = output_stream_path
+
+        # Vision & Risk Modules
+        self.tracker = VehicleTracker(conf_threshold=conf_threshold)
+        self.geometry = RoadGeometryAnalyzer()
+        self.feature_extractor: Optional[BehaviouralFeatureExtractor] = None
+        self.risk_engine = RiskEngine()
+        self.warning_engine = WarningEngine(
+            debounce_frames=debounce_frames,
+            cooldown_seconds=cooldown_seconds,
+        )
+
+        self.running = False
+        self.stats = {
+            "total_frames": 0,
+            "processed_frames": 0,
+            "total_alerts": 0,
+            "caution_alerts": 0,
+            "critical_alerts": 0,
+            "average_fps": 0.0,
+            "active_vehicles_peak": 0,
+        }
+
+    def run(self, max_frames: Optional[int] = None) -> Dict[str, Any]:
+        """
+        Executes stream loop, updating FastAPI pipeline_state in real time.
+        """
+        if not os.path.exists(self.video_path):
+            raise FileNotFoundError(f"Video file not found at '{self.video_path}'")
+
+        cap = cv2.VideoCapture(self.video_path)
+        if not cap.isOpened():
+            raise RuntimeError(f"Failed to open video capture for '{self.video_path}'")
+
+        width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+        height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        video_fps = float(cap.get(cv2.CAP_PROP_FPS)) or 25.0
+        total_video_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        limit_frames = min(total_video_frames, max_frames) if max_frames else total_video_frames
+
+        # Configure geometry and feature extractor bounds
+        self.geometry.frame_width = width
+        self.geometry.frame_height = height
+        self.geometry.ego_min_x = 0.35 * width
+        self.geometry.ego_max_x = 0.65 * width
+
+        self.feature_extractor = BehaviouralFeatureExtractor(
+            fps=self.target_fps,
+            frame_width=width,
+            frame_height=height,
+            window_size=8,
+        )
+
+        out_writer = None
+        if self.save_annotated_stream:
+            os.makedirs(os.path.dirname(self.output_stream_path), exist_ok=True)
+            fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+            out_writer = cv2.VideoWriter(self.output_stream_path, fourcc, video_fps, (width, height))
+
+        print("=" * 66)
+        print("  RoadWatch AI - Live End-to-End Stream Runner (Milestone 11)")
+        print("=" * 66)
+        print(f" Source Video       : {self.video_path}")
+        print(f" Frame Resolution   : {width} x {height}")
+        print(f" Stream Rate        : {self.target_fps} FPS ({'Paced real-time' if self.pace_stream else 'Max throughput'})")
+        print(f" Total Frames       : {limit_frames}")
+        print(f" Target Device      : {self.tracker.device.upper()}")
+        print("-" * 66)
+
+        self.running = True
+        frame_idx = 0
+        overall_start = time.time()
+
+        try:
+            while cap.isOpened() and self.running:
+                loop_start = time.time()
+                success, frame = cap.read()
+                if not success or (max_frames and frame_idx >= max_frames):
+                    break
+
+                frame_idx += 1
+                timestamp_sec = round(frame_idx / self.target_fps, 2)
+
+                # 1. Multi-Object Tracking (YOLOv8 + ByteTrack)
+                annotated_frame, tracks = self.tracker.track_frame(frame, persist=True)
+
+                vehicle_evaluations = []
+                response_vehicles = []
+
+                for t in tracks:
+                    track_id = t["track_id"]
+                    if track_id is None:
+                        continue
+
+                    # 2. Road Geometry & Spatial Positioning
+                    spatial_data = self.geometry.analyze_vehicle(frame_idx, t)
+                    proximity = spatial_data["proximity_score"]
+
+                    # 3. Kinematic Feature Extraction
+                    features = self.feature_extractor.extract_features(
+                        frame_idx=frame_idx,
+                        vehicle_id=track_id,
+                        class_name=t["class_name"],
+                        bbox=t["bbox"],
+                        proximity_score=proximity,
+                    )
+
+                    # 4. Hybrid Risk Estimation
+                    risk_eval = self.risk_engine.evaluate_risk(features)
+                    combined = {**features, **risk_eval, "lateral_zone": spatial_data["lateral_zone"]}
+                    vehicle_evaluations.append(combined)
+
+                    response_vehicles.append({
+                        "vehicle_id": track_id,
+                        "class_name": t["class_name"],
+                        "confidence": t["confidence"],
+                        "bbox": t["bbox"],
+                        "center": t["center"],
+                        "lateral_zone": spatial_data["lateral_zone"],
+                        "proximity_band": spatial_data["proximity_band"],
+                        "proximity_score": proximity,
+                        "movement": spatial_data["longitudinal_movement"],
+                        "risk_score": risk_eval["risk_score"],
+                        "risk_level": risk_eval["risk_level"],
+                        "primary_factor": risk_eval["primary_factor"],
+                    })
+
+                # 5. Warning Engine (Debouncing, Cooldown, Prioritization)
+                new_alert = self.warning_engine.process_frame(frame_idx, timestamp_sec, vehicle_evaluations)
+                active_alert = self.warning_engine.active_display_alert
+
+                # 6. Synchronize with FastAPI backend shared pipeline state
+                pipeline_state.frame_counter = frame_idx
+                if new_alert:
+                    alert_dict = new_alert.to_dict()
+                    pipeline_state.session_alerts.append(alert_dict)
+                    self.stats["total_alerts"] += 1
+                    if new_alert.level.value == "CRITICAL":
+                        self.stats["critical_alerts"] += 1
+                    else:
+                        self.stats["caution_alerts"] += 1
+
+                pipeline_state.warning_engine = self.warning_engine
+
+                if len(tracks) > self.stats["active_vehicles_peak"]:
+                    self.stats["active_vehicles_peak"] = len(tracks)
+
+                # Render Cockpit HUD on output video stream
+                if out_writer:
+                    self._render_hud(annotated_frame, frame_idx, timestamp_sec, active_alert, len(tracks))
+                    out_writer.write(annotated_frame)
+
+                # Print terminal status update every 25 frames (1 second of video)
+                if frame_idx % 25 == 0 or new_alert:
+                    elapsed = time.time() - overall_start
+                    fps_current = frame_idx / elapsed if elapsed > 0 else 0
+                    hud_status = "NORMAL" if not active_alert else f"{active_alert.level.value} ({active_alert.direction.upper()})"
+                    alert_tag = f" -> FIRED: {new_alert.title}" if new_alert else ""
+                    print(
+                        f"Frame {frame_idx:04d}/{limit_frames:04d} | "
+                        f"Time: {timestamp_sec:5.2f}s | "
+                        f"Vehicles: {len(tracks):2d} | "
+                        f"HUD: {hud_status:12s} | "
+                        f"Speed: {fps_current:4.1f} FPS{alert_tag}"
+                    )
+
+                # Pace stream if real-time pacing is enabled
+                if self.pace_stream:
+                    loop_time = time.time() - loop_start
+                    sleep_time = self.frame_interval - loop_time
+                    if sleep_time > 0:
+                        time.sleep(sleep_time)
+
+        finally:
+            cap.release()
+            if out_writer:
+                out_writer.release()
+            self.running = False
+
+        total_elapsed = time.time() - overall_start
+        self.stats["processed_frames"] = frame_idx
+        self.stats["total_frames"] = limit_frames
+        self.stats["average_fps"] = round(frame_idx / total_elapsed, 2) if total_elapsed > 0 else 0
+
+        print("-" * 66)
+        print("  Stream Runner Execution Completed")
+        print("-" * 66)
+        print(f" Processed Frames : {self.stats['processed_frames']} / {self.stats['total_frames']}")
+        print(f" Processing Time  : {total_elapsed:.2f} seconds")
+        print(f" Average Speed    : {self.stats['average_fps']} FPS")
+        print(f" Peak Vehicles    : {self.stats['active_vehicles_peak']} tracked simultaneously")
+        print(f" Fired Warnings   : {self.stats['total_alerts']} ({self.stats['caution_alerts']} Caution, {self.stats['critical_alerts']} Critical)")
+        if self.save_annotated_stream:
+            print(f" Output Video     : {self.output_stream_path}")
+        print("=" * 66)
+
+        return self.stats
+
+    def _render_hud(
+        self,
+        frame: cv2.Mat,
+        frame_idx: int,
+        timestamp_sec: float,
+        alert: Optional[RiderAlert],
+        vehicle_count: int,
+    ) -> None:
+        """Renders cockpit banner and metrics on the frame."""
+        h, w = frame.shape[:2]
+
+        # Top status bar
+        cv2.rectangle(frame, (0, 0), (w, 42), (20, 20, 20), -1)
+        status_text = (
+            f"ROADWATCH AI LIVE  |  FRAME: {frame_idx:04d}  |  "
+            f"TIME: {timestamp_sec:5.2f}s  |  TRACKED: {vehicle_count} VEHICLES"
+        )
+        cv2.putText(frame, status_text, (16, 26), cv2.FONT_HERSHEY_SIMPLEX, 0.55, (220, 220, 220), 1, cv2.LINE_AA)
+
+        # Cockpit Hazard Banner
+        if alert:
+            is_critical = (alert.level.value == "CRITICAL")
+            bg_color = (0, 0, 220) if is_critical else (0, 140, 255)
+            cv2.rectangle(frame, (w // 2 - 250, 48), (w // 2 + 250, 108), bg_color, -1)
+            cv2.rectangle(frame, (w // 2 - 250, 48), (w // 2 + 250, 108), (255, 255, 255), 2)
+            cv2.putText(
+                frame,
+                f"[{alert.level.value}] {alert.title.upper()}",
+                (w // 2 - 240, 74),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.55,
+                (255, 255, 255),
+                2,
+                cv2.LINE_AA,
+            )
+            cv2.putText(
+                frame,
+                f"{alert.suggested_action}",
+                (w // 2 - 240, 98),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.45,
+                (240, 240, 240),
+                1,
+                cv2.LINE_AA,
+            )
+
+
+def main():
+    parser = argparse.ArgumentParser(description="RoadWatch AI Live End-to-End Stream Runner")
+    parser.add_argument("--video", type=str, default="data/raw/sample_dashcam.mp4", help="Video path")
+    parser.add_argument("--frames", type=int, default=200, help="Max frames to run")
+    parser.add_argument("--no-pace", action="store_true", help="Run at max hardware speed instead of 25 FPS")
+    args = parser.parse_args()
+
+    runner = LiveStreamRunner(
+        video_path=args.video,
+        pace_stream=not args.no_pace,
+        save_annotated_stream=True,
+    )
+    runner.run(max_frames=args.frames)
+
+
+if __name__ == "__main__":
+    main()

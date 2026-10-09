@@ -71,7 +71,7 @@ pip install -r requirements.txt
 - [x] **Milestone 8: Warning Engine**
 - [x] **Milestone 9: Backend API (FastAPI)**
 - [x] **Milestone 10: iOS Client Prototype (SwiftUI)**
-- [ ] **Milestone 11: End-to-End Pipeline Integration**
+- [x] **Milestone 11: End-to-End Pipeline Integration**
 - [ ] **Milestone 12: Real-Time Stream Performance Profiling**
 - [ ] **Milestone 13: Advanced Features & Context Analysis**
 

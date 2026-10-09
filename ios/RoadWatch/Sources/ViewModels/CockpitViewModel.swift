@@ -28,14 +28,31 @@ public final class CockpitViewModel: ObservableObject {
         startSimulation()
     }
     
-    // MARK: - Live Backend Polling Mode
+    // MARK: - Live Backend Mode (WebSocket with Polling Health Check)
+    private var webSocketTask: URLSessionWebSocketTask?
+    
     public func enableLiveBackendMode(baseURLString: String = "http://127.0.0.1:8000") {
         if let url = URL(string: baseURLString) {
             apiService.baseURL = url
         }
         isSimulationMode = false
         stopSimulation()
+        startWebSocketStreaming()
         startPolling()
+    }
+    
+    public func startWebSocketStreaming() {
+        webSocketTask?.cancel(with: .normalClosure, reason: nil)
+        webSocketTask = apiService.createWebSocketTask(
+            onAlert: { [weak self] alert in
+                Task { @MainActor [weak self] in
+                    self?.handleReceivedAlert(alert)
+                }
+            },
+            onError: { _ in
+                // Falls back gracefully to the polling loop
+            }
+        )
     }
     
     public func startPolling() {
@@ -50,6 +67,8 @@ public final class CockpitViewModel: ObservableObject {
     public func stopPolling() {
         pollingTimer?.invalidate()
         pollingTimer = nil
+        webSocketTask?.cancel(with: .normalClosure, reason: nil)
+        webSocketTask = nil
     }
     
     private func pollBackend() async {
