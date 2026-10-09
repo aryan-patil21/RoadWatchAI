@@ -78,23 +78,42 @@ class RiskEngine:
             factors.append(f"low TTC ({ttc:.1f}s)")
 
         # 3. Trajectory Conflict & Lane Cutting (up to 30 points)
+        # Check whether vehicle is diverging away from rider's path (e.g. opposing traffic across divider)
+        is_diverging_away = (
+            (not in_ego)
+            and not is_cutting
+            and ((v_lat <= 5.0 and features.get("cx", 0.0) < 350.0) or (v_lat >= -5.0 and features.get("cx", 0.0) > 550.0))
+        )
+
         if is_cutting:
             score += 30.0
             factors.append("aggressive lane cutting")
         elif in_ego:
             score += 15.0
             factors.append("directly in rider path")
+        elif is_diverging_away:
+            # Vehicle is in adjacent or opposing lane (e.g. across a divider) and NOT moving into rider path.
+            # Its lateral trajectory is completely non-conflicting.
+            # Neutralize rapid approach and critical TTC points since it will pass safely on the other side.
+            score = min(score, 25.0)  # Cap score well below CAUTION threshold (40.0)
+            factors = [f for f in factors if "TTC" not in f and "approach" not in f and "closing" not in f]
+            if factors:
+                factors.append("safe opposing/adjacent traffic")
         else:
-            # Vehicle is in adjacent or opposing lane with no trajectory conflict
-            # Discount score slightly to avoid false positives on divided roads
+            # Adjacent vehicle with minor lateral drift
             if proximity < 0.60 and approach_rate <= 0.05:
                 score = max(0.0, score - 10.0)
 
 
         # 4. Sudden Deceleration / Braking Event (up to 15 points)
-        if sudden_brake and proximity > 0.35:
+        # Only relevant for vehicles directly in front or cutting into our lane
+        if sudden_brake and proximity > 0.35 and (in_ego or is_cutting):
             score += 15.0
             factors.append("sudden braking ahead")
+
+        # Diverging vehicle across divider / separate lane: hard cap to SAFE baseline
+        if is_diverging_away:
+            score = min(score, 20.0)
 
         # Clamp score between 0.0 and 100.0
         final_score = min(100.0, max(0.0, round(score, 1)))
