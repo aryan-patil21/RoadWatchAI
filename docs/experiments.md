@@ -269,4 +269,30 @@
   2. *Predictable Real-Time Execution*: With a $p95$ of 30.43 ms against a 40 ms threshold, RoadWatch AI operates safely within real-time limits on Apple Silicon without dropping frames during high-traffic maneuvers.
   3. *Optimization Path for Milestone 13*: To push throughput beyond 60 FPS for high-refresh mobile displays, quantizing YOLO to CoreML Int8 / FP16 on the Apple Neural Engine (ANE) and ROI-cropping for lane detection will yield immediate latency gains.
 
+## Experiment 13: Milestone 13 - Advanced Features & Context Analysis (Metric Distance, Relative Speed & 2D BEV Radar)
+- **Objective**: Elevate RoadWatch AI from qualitative bounding boxes to quantitative metric telemetry and full spatial awareness by implementing:
+  1. Monocular Inverse Perspective Mapping (IPM) to estimate physical longitudinal distance $Z$ in meters and lateral offset $X$ in meters.
+  2. Continuous relative approach velocity calculation in km/h ($\Delta Z / \Delta t$).
+  3. A top-down 2D Bird's-Eye View (BEV) Cockpit Radar widget visualizing 360-degree surrounding traffic envelopes with real-time hazard targeting reticles.
+- **Components Developed**:
+  - [`MetricGroundProjector`](file:///Users/apple/Desktop/RoadwatchAI/src/spatial_radar.py): Calibrated ground-plane projection using the road horizon line ($y=265$ px), camera mounting height ($h_{\text{cam}} = 1.25$ m), and focal length ($f = 720$ px). Projects bottom tire-contact coordinates to physical ground coordinates ($X_{\text{m}}, Z_{\text{m}}$).
+  - Relative Speed Derivation: Tracks 10-snapshot rolling metric histories to compute differential velocity: $v_{\text{rel}} = \frac{\Delta Z}{\Delta t} \times 3.6$ km/h.
+  - [`CockpitRadarWidget`](file:///Users/apple/Desktop/RoadwatchAI/src/spatial_radar.py): 2D top-down BEV radar widget (150x190 px) rendered in the bottom-right HUD with:
+    - Concentric distance range rings ($10$m, $20$m, $30$m, $40$m).
+    - Physical $3.5$m ego road lane corridor guidelines.
+    - Cyan ego rider motorcycle indicator at center-bottom.
+    - Color-coded vehicle positions (Green = safe, Amber = caution, Red = high risk).
+    - Dynamic pulsing red tracking reticle locking onto the primary critical threat.
+  - Integrated into [`LiveStreamRunner`](file:///Users/apple/Desktop/RoadwatchAI/src/stream_runner.py): Every detected vehicle now features a floating HUD telemetry tag (`10.2m | -8 km/h` or `9.9m | -28 km/h`) directly above its bounding box.
+  - Automated Unit Testing: [`TestSpatialRadar`](file:///Users/apple/Desktop/RoadwatchAI/tests/test_spatial_radar.py) verifying ground projection distance monotonicity, relative speed differentials, and radar array rendering.
+- **Result**:
+  - All 37 automated tests passing with 0 failures (`100% pass rate`).
+  - Output video generated at `outputs/stream_runner_output.mp4` featuring:
+    1. Real physical distance and relative closing speeds on all vehicles.
+    2. Active 2D Bird's-Eye View radar in the bottom-right corner.
+    3. QuickTime-native Apple H.264 video + Stereo AAC automotive warning beeps.
+- **Key Concepts Learned**:
+  1. *Physical Ground Homography vs. Heuristics*: Transforming pixel coordinates into metric meters enables standard automotive stopping distance formulas ($d < v^2 / 2\mu g$), making risk estimation physically grounded rather than arbitrary.
+  2. *Glanceable Spatial Radar*: Riders have limited attention to scan individual distant vehicles. A top-down 2D radar provides instant, sub-second situational awareness of where threats are located relative to the motorcycle.
+
 

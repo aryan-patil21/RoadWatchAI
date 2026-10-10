@@ -73,7 +73,7 @@ pip install -r requirements.txt
 - [x] **Milestone 10: iOS Client Prototype (SwiftUI)**
 - [x] **Milestone 11: End-to-End Pipeline Integration**
 - [x] **Milestone 12: Real-Time Stream Performance Profiling**
-- [ ] **Milestone 13: Advanced Features & Context Analysis**
+- [x] **Milestone 13: Advanced Features & Context Analysis (Metric Distance, Speed & 2D BEV Radar)**
 
 
 

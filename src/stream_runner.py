@@ -30,6 +30,7 @@ from src.feature_extractor import BehaviouralFeatureExtractor
 from src.risk_engine import RiskEngine
 from src.warning_engine import WarningEngine, RiderAlert
 from src.lane_detector import LaneDepartureDetector
+from src.spatial_radar import MetricGroundProjector, CockpitRadarWidget
 from src.api import pipeline_state
 
 
@@ -68,6 +69,8 @@ class LiveStreamRunner:
         self.lane_detector = LaneDepartureDetector() if enable_ldw else None
         self.feature_extractor: Optional[BehaviouralFeatureExtractor] = None
         self.risk_engine = RiskEngine()
+        self.metric_projector = MetricGroundProjector(fps=target_fps)
+        self.radar_widget = CockpitRadarWidget(widget_width=150, widget_height=190, range_m=40.0)
         self.warning_engine = WarningEngine(
             debounce_frames=debounce_frames,
             cooldown_seconds=cooldown_seconds,
@@ -168,7 +171,14 @@ class LiveStreamRunner:
                     spatial_data = self.geometry.analyze_vehicle(frame_idx, t)
                     proximity = spatial_data["proximity_score"]
 
-                    # 3. Kinematic Feature Extraction
+                    # 3. Metric Ground-Plane Projection (Meters & Relative Speed km/h)
+                    metric_state = self.metric_projector.estimate_vehicle_metric_state(
+                        track_id=track_id,
+                        bbox=t["bbox"],
+                        timestamp_sec=timestamp_sec,
+                    )
+
+                    # 4. Kinematic Feature Extraction
                     features = self.feature_extractor.extract_features(
                         frame_idx=frame_idx,
                         vehicle_id=track_id,
@@ -177,10 +187,27 @@ class LiveStreamRunner:
                         proximity_score=proximity,
                     )
 
-                    # 4. Hybrid Risk Estimation
+                    # 5. Hybrid Risk Estimation
                     risk_eval = self.risk_engine.evaluate_risk(features)
-                    combined = {**features, **risk_eval, "lateral_zone": spatial_data["lateral_zone"]}
+                    combined = {**features, **risk_eval, "lateral_zone": spatial_data["lateral_zone"], **metric_state}
                     vehicle_evaluations.append(combined)
+
+                    # Draw clean metric pill directly above vehicle bounding box
+                    # Format: "14.2m | +12 km/h" or "8.5m | -16 km/h"
+                    x1, y1, x2, y2 = t["bbox"]
+                    dist_str = f"{metric_state['z_m']:.1f}m"
+                    spd_val = metric_state['rel_speed_kmh']
+                    spd_str = f"{spd_val:+.0f} km/h" if abs(spd_val) >= 2.0 else "0 km/h"
+                    metric_tag = f"{dist_str} | {spd_str}"
+
+                    # Tag background color based on threat
+                    tag_bg = (0, 0, 180) if risk_eval["risk_level"] == "HIGH_RISK" else ((0, 140, 255) if risk_eval["risk_level"] == "CAUTION" else (30, 40, 45))
+                    (mt_w, mt_h), mt_bl = cv2.getTextSize(metric_tag, cv2.FONT_HERSHEY_SIMPLEX, 0.40, 1)
+                    tag_x = max(0, x1)
+                    tag_y = max(mt_h + 4, y1 - 18)
+                    cv2.rectangle(annotated_frame, (tag_x, tag_y - mt_h - 2), (tag_x + mt_w + 6, tag_y + 2), tag_bg, -1)
+                    cv2.rectangle(annotated_frame, (tag_x, tag_y - mt_h - 2), (tag_x + mt_w + 6, tag_y + 2), (220, 220, 220), 1)
+                    cv2.putText(annotated_frame, metric_tag, (tag_x + 3, tag_y - 1), cv2.FONT_HERSHEY_SIMPLEX, 0.40, (255, 255, 255), 1, cv2.LINE_AA)
 
                     response_vehicles.append({
                         "vehicle_id": track_id,
@@ -195,6 +222,9 @@ class LiveStreamRunner:
                         "risk_score": risk_eval["risk_score"],
                         "risk_level": risk_eval["risk_level"],
                         "primary_factor": risk_eval["primary_factor"],
+                        "x_m": metric_state["x_m"],
+                        "z_m": metric_state["z_m"],
+                        "rel_speed_kmh": metric_state["rel_speed_kmh"],
                     })
 
                 # 5. Lane Departure Warning (LDW) Analysis
@@ -231,9 +261,19 @@ class LiveStreamRunner:
                 if len(tracks) > self.stats["active_vehicles_peak"]:
                     self.stats["active_vehicles_peak"] = len(tracks)
 
-                # Render Continuous Cockpit HUD on output video stream
+                # Render Continuous Cockpit HUD & 2D Spatial Radar on output video stream
                 if out_writer:
-                    self._render_hud(annotated_frame, frame_idx, timestamp_sec, active_alert, len(tracks), ldw_info)
+                    top_threat_id = active_alert.vehicle_id if active_alert else None
+                    self._render_hud(
+                        annotated_frame,
+                        frame_idx,
+                        timestamp_sec,
+                        active_alert,
+                        len(tracks),
+                        ldw_info,
+                        vehicle_evaluations=vehicle_evaluations,
+                        top_threat_id=top_threat_id,
+                    )
                     out_writer.write(annotated_frame)
 
                 # Print terminal status update every 25 frames (1 second of video)
@@ -380,8 +420,10 @@ class LiveStreamRunner:
         alert: Optional[RiderAlert],
         vehicle_count: int,
         ldw_info: Dict[str, Any],
+        vehicle_evaluations: Optional[List[Dict[str, Any]]] = None,
+        top_threat_id: Optional[int] = None,
     ) -> None:
-        """Renders continuous, high-visibility Cockpit banner and lane radar on the frame."""
+        """Renders continuous, high-visibility Cockpit banner, lane radar, and 2D BEV radar on the frame."""
         h, w = frame.shape[:2]
 
         # 1. Continuous Safety Status Banner at top (Green / Amber / Red)
@@ -446,6 +488,22 @@ class LiveStreamRunner:
                 2,
                 cv2.LINE_AA,
             )
+
+        # 4. Top-Down 2D Bird's-Eye View (BEV) Radar Overlay (bottom-right corner)
+        if self.radar_widget:
+            radar_img = self.radar_widget.render(
+                vehicles=vehicle_evaluations or [],
+                top_threat_id=top_threat_id,
+            )
+            rw, rh = self.radar_widget.w, self.radar_widget.h
+            rx = w - rw - 14
+            ry = h - rh - 14
+
+            # Alpha blend radar onto video frame
+            roi = frame[ry : ry + rh, rx : rx + rw]
+            blended = cv2.addWeighted(roi, 0.20, radar_img, 0.80, 0)
+            frame[ry : ry + rh, rx : rx + rw] = blended
+            cv2.rectangle(frame, (rx, ry), (rx + rw, ry + rh), (100, 130, 150), 1)
 
 
 
