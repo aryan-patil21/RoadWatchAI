@@ -295,4 +295,30 @@
   1. *Physical Ground Homography vs. Heuristics*: Transforming pixel coordinates into metric meters enables standard automotive stopping distance formulas ($d < v^2 / 2\mu g$), making risk estimation physically grounded rather than arbitrary.
   2. *Glanceable Spatial Radar*: Riders have limited attention to scan individual distant vehicles. A top-down 2D radar provides instant, sub-second situational awareness of where threats are located relative to the motorcycle.
 
+## Experiment 14: Milestone 14 - System Hardening, TorchScript Edge Export & Incident Blackbox Auto-Recorder
+- **Objective**: Harden the system for real-world deployment, enable mobile/embedded edge inference without Python runtime dependencies, implement an automated dashcam blackbox forensic auto-recorder for insurance/evidence capture, and document the end-to-end system architecture.
+- **Components Developed**:
+  - [`IncidentBlackboxRecorder`](file:///Users/apple/Desktop/RoadwatchAI/src/incident_recorder.py):
+    - Implements a low-overhead circular ring buffer (`collections.deque`) maintaining 5.0 seconds of rolling pre-incident video history.
+    - Triggered automatically upon occurrence of any `CRITICAL` rider safety hazard (e.g. severe tailgating, sudden cut-in, collision course).
+    - Captures an additional 5.0 seconds of post-event recovery footage to package a complete 10-second forensic incident dossier.
+    - Automatically encodes incident video into QuickTime-compliant H.264 (`yuv420p`, `avc1`) with embedded synchronized stereo AAC automotive warning chimes.
+    - Exports a structured forensic telemetry manifest (`outputs/incidents/incident_<idx>_<time>s_telemetry.json`) capturing threat vehicle tracking ID, metric distance ($Z$), relative approach velocity ($v_{\text{rel}}$), TTC proxy, and risk score progression.
+    - Features graceful stream termination flushing in [`LiveStreamRunner`](file:///Users/apple/Desktop/RoadwatchAI/src/stream_runner.py) to finalize active recordings even if the video stream terminates abruptly.
+  - **Edge Model Export**:
+    - Serialized PyTorch YOLOv8 weights into a standalone TorchScript format ([`yolov8n.torchscript`](file:///Users/apple/Desktop/RoadwatchAI/yolov8n.torchscript), 12.4 MB).
+    - Enables lightweight, zero-Python inference on edge devices via LibTorch, iOS Swift, and Android C++ NDK runtimes.
+  - **Comprehensive Unit Testing**:
+    - Created [`tests/test_incident_recorder.py`](file:///Users/apple/Desktop/RoadwatchAI/tests/test_incident_recorder.py) verifying ring buffer capacity limits, threshold-driven event triggers, video transcoding, and telemetry JSON schema compliance.
+  - **System Architecture Blueprint**:
+    - Authored [`docs/architecture.md`](file:///Users/apple/Desktop/RoadwatchAI/docs/architecture.md) detailing the complete multi-stage pipeline across all 14 milestones.
+- **Result**:
+  - Full test suite: **38 unit & integration tests passing with 0 failures** (`100% pass rate`).
+  - Successfully captured real commute incident: `outputs/incidents/incident_001_49s.mp4` with corresponding forensic JSON `outputs/incidents/incident_001_49s_telemetry.json`.
+  - Edge model artifact validated: `yolov8n.torchscript` ready for embedded deployment.
+- **Key Concepts Learned**:
+  1. *Forensic Circular Buffering*: In high-stress collision or near-miss scenarios, manual record button pressing by two-wheeler riders is impossible and dangerous. Algorithmic pre-event buffering ensures the critical cause of the hazard is preserved without consuming continuous disk write bandwidth.
+  2. *Edge Portability*: Exporting to TorchScript bridges the gap between Python prototyping and low-latency, sandboxed on-device mobile hardware execution.
+
+
 

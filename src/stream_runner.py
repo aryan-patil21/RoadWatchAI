@@ -31,6 +31,7 @@ from src.risk_engine import RiskEngine
 from src.warning_engine import WarningEngine, RiderAlert
 from src.lane_detector import LaneDepartureDetector
 from src.spatial_radar import MetricGroundProjector, CockpitRadarWidget
+from src.incident_recorder import IncidentBlackboxRecorder
 from src.api import pipeline_state
 
 
@@ -75,6 +76,7 @@ class LiveStreamRunner:
             debounce_frames=debounce_frames,
             cooldown_seconds=cooldown_seconds,
         )
+        self.blackbox_recorder = IncidentBlackboxRecorder(fps=target_fps)
 
         self.alert_audio_events: List[Tuple[float, str]] = []
         self.running = False
@@ -276,6 +278,20 @@ class LiveStreamRunner:
                     )
                     out_writer.write(annotated_frame)
 
+                # 8. Automated Near-Miss Incident Blackbox Auto-Recorder (Milestone 14)
+                top_telemetry = None
+                if vehicle_evaluations and active_alert:
+                    matching = [v for v in vehicle_evaluations if v.get("vehicle_id") == active_alert.vehicle_id]
+                    top_telemetry = matching[0] if matching else vehicle_evaluations[0]
+
+                self.blackbox_recorder.push_frame(
+                    frame=annotated_frame,
+                    frame_idx=frame_idx,
+                    timestamp_sec=timestamp_sec,
+                    active_alert=active_alert,
+                    top_vehicle_telemetry=top_telemetry,
+                )
+
                 # Print terminal status update every 25 frames (1 second of video)
                 if frame_idx % 25 == 0 or new_alert:
                     elapsed = time.time() - overall_start
@@ -302,6 +318,9 @@ class LiveStreamRunner:
             cap.release()
             if out_writer:
                 out_writer.release()
+            # Flush and finalize any in-flight incident recording
+            if hasattr(self, "blackbox_recorder") and self.blackbox_recorder.is_recording:
+                self.blackbox_recorder._finalize_incident()
             self.running = False
 
         total_elapsed = time.time() - overall_start
