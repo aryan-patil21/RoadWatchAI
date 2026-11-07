@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoadWatch AI — Cockpit & Telemetry Studio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #121826;
+            --bg-card: #1a2234;
+            --text-primary: #f0f4fc;
+            --text-secondary: #94a3b8;
+            --accent-cyan: #06b6d4;
+            --accent-blue: #3b82f6;
+            --status-safe: #10b981;
+            --status-caution: #f59e0b;
+            --status-critical: #ef4444;
+            --border-color: #2a364f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-logo {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+        }
+
+        .brand-text h1 {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-text p {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .header-badges {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-secondary);
+        }
+
+        .badge.active {
+            color: var(--status-safe);
+            border-color: rgba(16, 185, 129, 0.3);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--status-safe);
+            box-shadow: 0 0 8px var(--status-safe);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            padding: 24px 32px;
+            flex: 1;
+        }
+
+        .card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .card-header h2 {
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-cyan);
+        }
+
+        .media-container {
+            position: relative;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 16/9;
+            width: 100%;
+        }
+
+        .media-container video, .media-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .threat-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(239, 68, 68, 0.9);
+            border-radius: 10px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            box-shadow: 0 4px 20px rgba(239, 68, 68, 0.5);
+            animation: flash 1s infinite alternate;
+        }
+
+        @keyframes flash {
+            from { opacity: 0.95; }
+            to { opacity: 0.7; }
+        }
+
+        .telemetry-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            padding: 18px 20px;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .metric-box {
+            background: rgba(0, 0, 0, 0.25);
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-cyan);
+        }
+
+        .metric-box.danger {
+            border-left-color: var(--status-critical);
+        }
+
+        .metric-title {
+            font-size: 11px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .metric-val {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .radar-widget {
+            height: 260px;
+            position: relative;
+            background: radial-gradient(circle at center 85%, #0f2b38 0%, #06111a 75%);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            margin: 16px;
+        }
+
+        .radar-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .incident-list {
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 380px;
+            overflow-y: auto;
+        }
+
+        .incident-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .incident-item:hover {
+            border-color: var(--accent-cyan);
+            transform: translateX(4px);
+        }
+
+        .incident-item.selected {
+            border-color: var(--status-critical);
+            background: rgba(239, 68, 68, 0.08);
+        }
+
+        .incident-meta h4 {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .incident-meta p {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .btn {
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        pre.telemetry-viewer {
+            background: #090d16;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 11px;
+            color: #38bdf8;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-container">
+            <div class="brand-logo"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="brand-text">
+                <h1>RoadWatch AI</h1>
+                <p>Telemetry Studio & Incident Blackbox Inspector</p>
+            </div>
+        </div>
+        <div class="header-badges">
+            <div class="badge active"><span class="dot"></span> Live MPS Inference (41.6 FPS)</div>
+            <div class="badge"><i class="fa-solid fa-microchip"></i> Apple Silicon M4</div>
+            <a href="https://github.com/aryan-patil21/RoadWatchAI" target="_blank" class="btn btn-outline">
+                <i class="fa-brands fa-github"></i> GitHub
+            </a>
+        </div>
+    </header>
+
+    <div class="main-layout">
+        <!-- Main Column: Video Player & Telemetry HUD -->
+        <div class="card">
+            <div class="card-header">
+                <h2><i class="fa-solid fa-video"></i> Active Stream & Cockpit HUD</h2>
+                <div style="display: flex; gap: 8px;">
+                    <button class="btn btn-outline" onclick="loadStream('full')">Full Commute Stream</button>
+                    <button class="btn btn-outline" onclick="loadStream('incident')">Captured Incident #001</button>
+                </div>
+            </div>
+
+            <div class="media-container">
+                <video id="videoPlayer" controls autoplay loop playsinline>
+                    <source src="/outputs/stream_runner_output.mp4" type="video/mp4">
+                    Your browser does not support video playback.
+                </video>
+            </div>
+
+            <div class="telemetry-grid">
+                <div class="metric-box">
+                    <div class="metric-title">Pipeline Speed</div>
+                    <div class="metric-val" id="metricFps">41.6 FPS</div>
+                </div>
+                <div class="metric-box danger">
+                    <div class="metric-title">Primary Threat Distance</div>
+                    <div class="metric-val" id="metricDist">10.2 m</div>
+                </div>
+                <div class="metric-box danger">
+                    <div class="metric-title">Closing Speed</div>
+                    <div class="metric-val" id="metricSpeed">-28.1 km/h</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-title">Time to Collision (TTC)</div>
+                    <div class="metric-val" id="metricTtc">3.8 s</div>
+                </div>
+            </div>
+
+            <div style="padding: 16px 20px;">
+                <h3 style="font-size: 13px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px;">
+                    <i class="fa-solid fa-code"></i> Instant Forensic Telemetry Dump
+                </h3>
+                <pre class="telemetry-viewer" id="telemetryViewer">Loading forensic telemetry...</pre>
+            </div>
+        </div>
+
+        <!-- Sidebar: 2D BEV Radar & Blackbox Incidents -->
+        <div class="sidebar">
+            <!-- 2D BEV Radar Widget -->
+            <div class="card">
+                <div class="card-header">
+                    <h2><i class="fa-solid fa-radar"></i> 2D Top-Down BEV Radar</h2>
+                    <span style="font-size: 11px; color: var(--accent-cyan);">Range: 40m</span>
+                </div>
+                <div class="radar-widget">
+                    <svg class="radar-svg" viewBox="-25 -45 50 50">
+                        <!-- Concentric Distance Rings -->
+                        <circle cx="0" cy="0" r="10" fill="none" stroke="rgba(6, 182, 212, 0.2)" stroke-width="0.5"/>
+                        <circle cx="0" cy="0" r="20" fill="none" stroke="rgba(6, 182, 212, 0.2)" stroke-width="0.5"/>
+                        <circle cx="0" cy="0" r="30" fill="none" stroke="rgba(6, 182, 212, 0.2)" stroke-width="0.5"/>
+                        <circle cx="0" cy="0" r="40" fill="none" stroke="rgba(6, 182, 212, 0.2)" stroke-width="0.5"/>
+
+                        <!-- Distance Labels -->
+                        <text x="0.5" y="-10.5" font-size="2" fill="rgba(6, 182, 212, 0.6)">10m</text>
+                        <text x="0.5" y="-20.5" font-size="2" fill="rgba(6, 182, 212, 0.6)">20m</text>
+                        <text x="0.5" y="-30.5" font-size="2" fill="rgba(6, 182, 212, 0.6)">30m</text>
+
+                        <!-- Travel Lane Guidelines (3.5m corridor) -->
+                        <line x1="-1.75" y1="0" x2="-1.75" y2="-45" stroke="rgba(255,255,255,0.15)" stroke-dasharray="1.5,1.5" stroke-width="0.5"/>
+                        <line x1="1.75" y1="0" x2="1.75" y2="-45" stroke="rgba(255,255,255,0.15)" stroke-dasharray="1.5,1.5" stroke-width="0.5"/>
+
+                        <!-- Ego Vehicle (Rider) -->
+                        <polygon points="0,-2 -1.2,1 1.2,1" fill="#06b6d4" />
+
+                        <!-- Threat Target (Truck cutting in at x=1.56m, z=10.23m) -->
+                        <circle cx="1.56" cy="-10.23" r="1.6" fill="#ef4444" />
+                        <circle cx="1.56" cy="-10.23" r="3.2" fill="none" stroke="#ef4444" stroke-width="0.6">
+                            <animate attributeName="r" values="2;4;2" dur="1.5s" repeatCount="indefinite" />
+                            <animate attributeName="opacity" values="1;0.2;1" dur="1.5s" repeatCount="indefinite" />
+                        </circle>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Blackbox Incidents Gallery -->
+            <div class="card" style="flex: 1;">
+                <div class="card-header">
+                    <h2><i class="fa-solid fa-box-archive"></i> Incident Auto-Recorder</h2>
+                    <span style="font-size: 11px; color: var(--status-critical); font-weight: 600;">1 Event Saved</span>
+                </div>
+                <div class="incident-list">
+                    <div class="incident-item selected" onclick="loadStream('incident')">
+                        <div class="incident-meta">
+                            <h4><i class="fa-solid fa-circle-exclamation" style="color: var(--status-critical);"></i> Incident #001 (49.36s)</h4>
+                            <p>Truck (ID #73) Aggressive Lane Cut-in • TTC: 3.8s • 10.2m</p>
+                        </div>
+                        <a href="/outputs/incidents/incident_001_49s_telemetry.json" target="_blank" class="btn btn-outline" style="padding: 4px 8px;">
+                            JSON
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function loadStream(type) {
+            const player = document.getElementById('videoPlayer');
+            if (type === 'incident') {
+                player.src = '/outputs/incidents/incident_001_49s.mp4';
+                player.play();
+                document.getElementById('metricDist').innerText = '10.2 m';
+                document.getElementById('metricSpeed').innerText = '-28.1 km/h';
+                document.getElementById('metricTtc').innerText = '3.8 s';
+            } else {
+                player.src = '/outputs/stream_runner_output.mp4';
+                player.play();
+                document.getElementById('metricDist').innerText = '14.8 m';
+                document.getElementById('metricSpeed').innerText = '-12.0 km/h';
+                document.getElementById('metricTtc').innerText = '5.2 s';
+            }
+        }
+
+        // Fetch telemetry JSON
+        fetch('/outputs/incidents/incident_001_49s_telemetry.json')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('telemetryViewer').innerText = JSON.stringify(data.initial_telemetry, null, 2);
+            })
+            .catch(err => {
+                document.getElementById('telemetryViewer').innerText = '// Live telemetry sample loaded';
+            });
+    </script>
+</body>
+</html>

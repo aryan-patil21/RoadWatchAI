@@ -22,6 +22,7 @@ import cv2
 import numpy as np
 from fastapi import FastAPI, File, UploadFile, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.responses import JSONResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -75,12 +76,29 @@ class HealthResponse(BaseModel):
     alerts_fired: int
 
 
+# Mount static files and outputs for Interactive Web Studio
+if os.path.exists("outputs"):
+    app.mount("/outputs", StaticFiles(directory="outputs"), name="outputs")
+
+if os.path.exists("static"):
+    app.mount("/static", StaticFiles(directory="static"), name="static")
+
+
+@app.get("/studio", tags=["Studio"])
+def studio_dashboard():
+    index_file = os.path.join("static", "index.html")
+    if os.path.exists(index_file):
+        return FileResponse(index_file)
+    return {"message": "Static studio file not found"}
+
+
 @app.get("/", tags=["General"])
 def root():
     return {
         "message": "RoadWatch AI Backend Service is running",
         "docs_url": "/docs",
         "health_url": "/health",
+        "studio_url": "/studio",
     }
 
 
