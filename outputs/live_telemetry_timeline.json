@@ -1,0 +1,6914 @@
+[
+  {
+    "time_sec": 0.0,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.96,
+        "z_m": 24.32,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 21.1,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 2,
+        "class_name": "car",
+        "x_m": -1.06,
+        "z_m": 25.0,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 21.1,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 3,
+        "class_name": "car",
+        "x_m": -7.82,
+        "z_m": 13.64,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 7.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.04,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.95,
+        "z_m": 23.68,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 21.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 2,
+        "class_name": "car",
+        "x_m": -1.03,
+        "z_m": 24.32,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 21.2,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.08,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.95,
+        "z_m": 23.68,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 21.2,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.12,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.95,
+        "z_m": 23.68,
+        "rel_speed_kmh": -19.2,
+        "risk_level": "LOW",
+        "risk_score": 21.2,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.16,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.99,
+        "z_m": 23.68,
+        "rel_speed_kmh": -14.4,
+        "risk_level": "LOW",
+        "risk_score": 21.2,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.2,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.0,
+        "z_m": 23.68,
+        "rel_speed_kmh": -11.5,
+        "risk_level": "LOW",
+        "risk_score": 21.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.1,
+        "z_m": 12.5,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 23.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.24,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.02,
+        "z_m": 23.68,
+        "rel_speed_kmh": -9.6,
+        "risk_level": "LOW",
+        "risk_score": 21.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.14,
+        "z_m": 12.86,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 23.8,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.28,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.02,
+        "z_m": 23.68,
+        "rel_speed_kmh": -8.2,
+        "risk_level": "LOW",
+        "risk_score": 21.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.13,
+        "z_m": 12.68,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 23.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.32,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.04,
+        "z_m": 23.68,
+        "rel_speed_kmh": -7.2,
+        "risk_level": "LOW",
+        "risk_score": 21.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.14,
+        "z_m": 12.68,
+        "rel_speed_kmh": 5.4,
+        "risk_level": "LOW",
+        "risk_score": 23.8,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.36,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.02,
+        "z_m": 23.68,
+        "rel_speed_kmh": -6.4,
+        "risk_level": "LOW",
+        "risk_score": 21.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.2,
+        "z_m": 13.04,
+        "rel_speed_kmh": 12.1,
+        "risk_level": "LOW",
+        "risk_score": 23.7,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.4,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.02,
+        "z_m": 23.68,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 21.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.2,
+        "z_m": 12.86,
+        "rel_speed_kmh": 6.5,
+        "risk_level": "LOW",
+        "risk_score": 23.8,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.44,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.02,
+        "z_m": 23.68,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 21.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.19,
+        "z_m": 12.68,
+        "rel_speed_kmh": 2.7,
+        "risk_level": "LOW",
+        "risk_score": 23.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.48,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.01,
+        "z_m": 23.08,
+        "rel_speed_kmh": -6.0,
+        "risk_level": "LOW",
+        "risk_score": 21.3,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.2,
+        "z_m": 12.5,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 24.0,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.52,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.03,
+        "z_m": 23.08,
+        "rel_speed_kmh": -6.0,
+        "risk_level": "LOW",
+        "risk_score": 21.3,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.2,
+        "z_m": 12.33,
+        "rel_speed_kmh": -1.9,
+        "risk_level": "LOW",
+        "risk_score": 24.0,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 7,
+        "class_name": "motorcycle",
+        "x_m": -5.9,
+        "z_m": 12.0,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 8.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.56,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.05,
+        "z_m": 23.68,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 21.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.2,
+        "z_m": 12.16,
+        "rel_speed_kmh": -3.4,
+        "risk_level": "LOW",
+        "risk_score": 24.1,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.6,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.04,
+        "z_m": 23.08,
+        "rel_speed_kmh": -6.0,
+        "risk_level": "LOW",
+        "risk_score": 21.3,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.22,
+        "z_m": 12.16,
+        "rel_speed_kmh": -7.0,
+        "risk_level": "LOW",
+        "risk_score": 24.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 7,
+        "class_name": "motorcycle",
+        "x_m": -5.91,
+        "z_m": 11.54,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 9.1,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.64,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.06,
+        "z_m": 23.08,
+        "rel_speed_kmh": -6.0,
+        "risk_level": "LOW",
+        "risk_score": 21.3,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.23,
+        "z_m": 12.16,
+        "rel_speed_kmh": -5.2,
+        "risk_level": "LOW",
+        "risk_score": 39.2,
+        "ttc_sec": 12.2
+      },
+      {
+        "vehicle_id": 7,
+        "class_name": "motorcycle",
+        "x_m": -5.91,
+        "z_m": 11.25,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 7.5
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.68,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.06,
+        "z_m": 23.08,
+        "rel_speed_kmh": -6.0,
+        "risk_level": "LOW",
+        "risk_score": 21.3,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.25,
+        "z_m": 12.16,
+        "rel_speed_kmh": -5.2,
+        "risk_level": "LOW",
+        "risk_score": 24.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 7,
+        "class_name": "motorcycle",
+        "x_m": -5.91,
+        "z_m": 10.98,
+        "rel_speed_kmh": -22.9,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 5.8
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.72,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.07,
+        "z_m": 23.08,
+        "rel_speed_kmh": -6.0,
+        "risk_level": "LOW",
+        "risk_score": 21.3,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.36,
+        "z_m": 12.68,
+        "rel_speed_kmh": -3.6,
+        "risk_level": "LOW",
+        "risk_score": 24.0,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.76,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.07,
+        "z_m": 23.08,
+        "rel_speed_kmh": -6.0,
+        "risk_level": "LOW",
+        "risk_score": 21.3,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.4,
+        "z_m": 12.86,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 23.9,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 7,
+        "class_name": "car",
+        "x_m": -6.06,
+        "z_m": 11.11,
+        "rel_speed_kmh": -13.4,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 11.0
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.8,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.09,
+        "z_m": 23.08,
+        "rel_speed_kmh": -6.0,
+        "risk_level": "LOW",
+        "risk_score": 21.3,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.4,
+        "z_m": 12.68,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 24.0,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.84,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.06,
+        "z_m": 22.5,
+        "rel_speed_kmh": -5.8,
+        "risk_level": "LOW",
+        "risk_score": 21.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.41,
+        "z_m": 12.5,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 24.1,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.88,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.06,
+        "z_m": 22.5,
+        "rel_speed_kmh": -5.8,
+        "risk_level": "LOW",
+        "risk_score": 21.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.41,
+        "z_m": 12.33,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 24.2,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.92,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.06,
+        "z_m": 22.5,
+        "rel_speed_kmh": -11.8,
+        "risk_level": "LOW",
+        "risk_score": 21.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.38,
+        "z_m": 11.84,
+        "rel_speed_kmh": -3.2,
+        "risk_level": "LOW",
+        "risk_score": 24.4,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 0.96,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.06,
+        "z_m": 22.5,
+        "rel_speed_kmh": -5.8,
+        "risk_level": "LOW",
+        "risk_score": 21.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.41,
+        "z_m": 11.84,
+        "rel_speed_kmh": -3.2,
+        "risk_level": "LOW",
+        "risk_score": 24.4,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 1.0,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.08,
+        "z_m": 22.5,
+        "rel_speed_kmh": -5.8,
+        "risk_level": "LOW",
+        "risk_score": 21.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.38,
+        "z_m": 11.25,
+        "rel_speed_kmh": -9.1,
+        "risk_level": "LOW",
+        "risk_score": 39.8,
+        "ttc_sec": 7.3
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 1.04,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.09,
+        "z_m": 22.5,
+        "rel_speed_kmh": -5.8,
+        "risk_level": "LOW",
+        "risk_score": 21.3,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 1.08,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.07,
+        "z_m": 21.95,
+        "rel_speed_kmh": -11.3,
+        "risk_level": "LOW",
+        "risk_score": 21.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.46,
+        "z_m": 11.39,
+        "rel_speed_kmh": -6.9,
+        "risk_level": "LOW",
+        "risk_score": 39.6,
+        "ttc_sec": 8.7
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 1.12,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.08,
+        "z_m": 21.95,
+        "rel_speed_kmh": -11.3,
+        "risk_level": "LOW",
+        "risk_score": 21.4,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 1.16,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.1,
+        "z_m": 21.95,
+        "rel_speed_kmh": -11.3,
+        "risk_level": "LOW",
+        "risk_score": 21.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.58,
+        "z_m": 11.84,
+        "rel_speed_kmh": -6.9,
+        "risk_level": "LOW",
+        "risk_score": 24.4,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 1.2,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.1,
+        "z_m": 21.95,
+        "rel_speed_kmh": -5.5,
+        "risk_level": "LOW",
+        "risk_score": 21.4,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 1.24,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.11,
+        "z_m": 21.95,
+        "rel_speed_kmh": -5.5,
+        "risk_level": "LOW",
+        "risk_score": 21.4,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 1.28,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.11,
+        "z_m": 21.95,
+        "rel_speed_kmh": -5.5,
+        "risk_level": "LOW",
+        "risk_score": 21.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.58,
+        "z_m": 11.11,
+        "rel_speed_kmh": -12.1,
+        "risk_level": "LOW",
+        "risk_score": 39.8,
+        "ttc_sec": 12.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 1.32,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.11,
+        "z_m": 21.95,
+        "rel_speed_kmh": -5.5,
+        "risk_level": "LOW",
+        "risk_score": 21.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "motorcycle",
+        "x_m": -1.52,
+        "z_m": 10.47,
+        "rel_speed_kmh": -15.3,
+        "risk_level": "MEDIUM",
+        "risk_score": 40.0,
+        "ttc_sec": 10.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 1.36,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.13,
+        "z_m": 21.95,
+        "rel_speed_kmh": -5.5,
+        "risk_level": "LOW",
+        "risk_score": 21.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.55,
+        "z_m": 10.47,
+        "rel_speed_kmh": -14.1,
+        "risk_level": "MEDIUM",
+        "risk_score": 40.2,
+        "ttc_sec": 12.1
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 1.4,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.13,
+        "z_m": 21.95,
+        "rel_speed_kmh": -5.5,
+        "risk_level": "LOW",
+        "risk_score": 21.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.55,
+        "z_m": 10.34,
+        "rel_speed_kmh": -13.8,
+        "risk_level": "MEDIUM",
+        "risk_score": 40.3,
+        "ttc_sec": 9.6
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 1.44,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.1,
+        "z_m": 21.43,
+        "rel_speed_kmh": -5.2,
+        "risk_level": "LOW",
+        "risk_score": 21.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.59,
+        "z_m": 10.34,
+        "rel_speed_kmh": -10.4,
+        "risk_level": "LOW",
+        "risk_score": 25.3,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 1.48,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.1,
+        "z_m": 21.43,
+        "rel_speed_kmh": -5.2,
+        "risk_level": "LOW",
+        "risk_score": 21.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.64,
+        "z_m": 10.47,
+        "rel_speed_kmh": -9.5,
+        "risk_level": "LOW",
+        "risk_score": 25.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 18,
+        "class_name": "motorcycle",
+        "x_m": -1.53,
+        "z_m": 9.68,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 25.1,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 1.52,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.12,
+        "z_m": 21.43,
+        "rel_speed_kmh": -5.2,
+        "risk_level": "LOW",
+        "risk_score": 21.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.65,
+        "z_m": 10.34,
+        "rel_speed_kmh": -6.3,
+        "risk_level": "MEDIUM",
+        "risk_score": 40.2,
+        "ttc_sec": 9.5
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 1.56,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.13,
+        "z_m": 21.43,
+        "rel_speed_kmh": -5.2,
+        "risk_level": "LOW",
+        "risk_score": 21.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.66,
+        "z_m": 10.34,
+        "rel_speed_kmh": -7.9,
+        "risk_level": "LOW",
+        "risk_score": 25.2,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 1.6,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.12,
+        "z_m": 21.43,
+        "rel_speed_kmh": -5.2,
+        "risk_level": "LOW",
+        "risk_score": 21.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.7,
+        "z_m": 10.23,
+        "rel_speed_kmh": -13.2,
+        "risk_level": "LOW",
+        "risk_score": 25.3,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 1.64,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.09,
+        "z_m": 20.93,
+        "rel_speed_kmh": -10.2,
+        "risk_level": "LOW",
+        "risk_score": 21.5,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.75,
+        "z_m": 10.11,
+        "rel_speed_kmh": -10.0,
+        "risk_level": "LOW",
+        "risk_score": 25.4,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 1.68,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.1,
+        "z_m": 20.93,
+        "rel_speed_kmh": -10.2,
+        "risk_level": "LOW",
+        "risk_score": 21.6,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.73,
+        "z_m": 9.78,
+        "rel_speed_kmh": -6.9,
+        "risk_level": "MEDIUM",
+        "risk_score": 40.7,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 1.72,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.1,
+        "z_m": 20.93,
+        "rel_speed_kmh": -10.2,
+        "risk_level": "LOW",
+        "risk_score": 21.6,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.78,
+        "z_m": 9.89,
+        "rel_speed_kmh": -5.8,
+        "risk_level": "LOW",
+        "risk_score": 10.6,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 1.76,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.1,
+        "z_m": 20.93,
+        "rel_speed_kmh": -10.2,
+        "risk_level": "LOW",
+        "risk_score": 21.6,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.83,
+        "z_m": 10.0,
+        "rel_speed_kmh": -3.4,
+        "risk_level": "LOW",
+        "risk_score": 10.6,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 1.8,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.1,
+        "z_m": 20.93,
+        "rel_speed_kmh": -5.0,
+        "risk_level": "LOW",
+        "risk_score": 21.6,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.99,
+        "z_m": 10.59,
+        "rel_speed_kmh": 2.5,
+        "risk_level": "LOW",
+        "risk_score": 10.1,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 1.84,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.12,
+        "z_m": 20.93,
+        "rel_speed_kmh": -5.0,
+        "risk_level": "LOW",
+        "risk_score": 21.6,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.05,
+        "z_m": 10.71,
+        "rel_speed_kmh": 2.4,
+        "risk_level": "LOW",
+        "risk_score": 10.1,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 1.88,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.13,
+        "z_m": 20.93,
+        "rel_speed_kmh": -5.0,
+        "risk_level": "LOW",
+        "risk_score": 21.6,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.05,
+        "z_m": 10.47,
+        "rel_speed_kmh": 1.3,
+        "risk_level": "LOW",
+        "risk_score": 10.3,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 1.92,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.11,
+        "z_m": 20.45,
+        "rel_speed_kmh": -9.8,
+        "risk_level": "LOW",
+        "risk_score": 21.7,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -1.96,
+        "z_m": 9.89,
+        "rel_speed_kmh": -4.5,
+        "risk_level": "LOW",
+        "risk_score": 10.7,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 1.96,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.11,
+        "z_m": 20.45,
+        "rel_speed_kmh": -9.8,
+        "risk_level": "LOW",
+        "risk_score": 21.7,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.05,
+        "z_m": 10.11,
+        "rel_speed_kmh": -1.2,
+        "risk_level": "LOW",
+        "risk_score": 10.5,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 26,
+        "class_name": "person",
+        "x_m": -2.36,
+        "z_m": 11.39,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 9.7,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.72,
+        "z_m": 8.41,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 10.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.0,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.11,
+        "z_m": 20.0,
+        "rel_speed_kmh": -9.3,
+        "risk_level": "LOW",
+        "risk_score": 21.8,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.03,
+        "z_m": 9.68,
+        "rel_speed_kmh": -4.3,
+        "risk_level": "LOW",
+        "risk_score": 10.9,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 26,
+        "class_name": "person",
+        "x_m": -2.27,
+        "z_m": 10.59,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 10.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.7,
+        "z_m": 8.26,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 11.1,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.04,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.11,
+        "z_m": 20.0,
+        "rel_speed_kmh": -9.3,
+        "risk_level": "LOW",
+        "risk_score": 21.8,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.13,
+        "z_m": 10.0,
+        "rel_speed_kmh": 2.2,
+        "risk_level": "LOW",
+        "risk_score": 10.6,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.72,
+        "z_m": 8.18,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 4.2
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.08,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.11,
+        "z_m": 20.0,
+        "rel_speed_kmh": -9.3,
+        "risk_level": "LOW",
+        "risk_score": 21.8,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.24,
+        "z_m": 10.34,
+        "rel_speed_kmh": 4.5,
+        "risk_level": "LOW",
+        "risk_score": 10.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.72,
+        "z_m": 7.89,
+        "rel_speed_kmh": -15.6,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 3.5
+      },
+      {
+        "vehicle_id": 26,
+        "class_name": "person",
+        "x_m": -2.58,
+        "z_m": 11.69,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 9.6,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.12,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.11,
+        "z_m": 20.0,
+        "rel_speed_kmh": -9.3,
+        "risk_level": "LOW",
+        "risk_score": 21.8,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.24,
+        "z_m": 10.0,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 9.5
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.69,
+        "z_m": 7.69,
+        "rel_speed_kmh": -16.2,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 3.5
+      },
+      {
+        "vehicle_id": 26,
+        "class_name": "person",
+        "x_m": -2.39,
+        "z_m": 10.34,
+        "rel_speed_kmh": -23.6,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 4.2
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.16,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.12,
+        "z_m": 20.0,
+        "rel_speed_kmh": -9.3,
+        "risk_level": "LOW",
+        "risk_score": 21.8,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.09,
+        "z_m": 9.18,
+        "rel_speed_kmh": -14.1,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 5.1
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.7,
+        "z_m": 7.56,
+        "rel_speed_kmh": -15.3,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 3.8
+      },
+      {
+        "vehicle_id": 26,
+        "class_name": "person",
+        "x_m": -2.37,
+        "z_m": 10.11,
+        "rel_speed_kmh": -23.0,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 4.5
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.2,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.11,
+        "z_m": 19.57,
+        "rel_speed_kmh": -13.6,
+        "risk_level": "LOW",
+        "risk_score": 21.8,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.17,
+        "z_m": 9.38,
+        "rel_speed_kmh": -13.3,
+        "risk_level": "LOW",
+        "risk_score": 11.1,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.71,
+        "z_m": 7.5,
+        "rel_speed_kmh": -13.6,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 3.7
+      },
+      {
+        "vehicle_id": 26,
+        "class_name": "person",
+        "x_m": -2.64,
+        "z_m": 11.11,
+        "rel_speed_kmh": -4.2,
+        "risk_level": "LOW",
+        "risk_score": 9.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.24,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.11,
+        "z_m": 19.57,
+        "rel_speed_kmh": -13.6,
+        "risk_level": "LOW",
+        "risk_score": 21.9,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.11,
+        "z_m": 9.0,
+        "rel_speed_kmh": -14.7,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 5.6
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.69,
+        "z_m": 7.26,
+        "rel_speed_kmh": -14.8,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 3.3
+      },
+      {
+        "vehicle_id": 26,
+        "class_name": "person",
+        "x_m": -2.55,
+        "z_m": 10.59,
+        "rel_speed_kmh": -10.3,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 9.7
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.28,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.11,
+        "z_m": 19.57,
+        "rel_speed_kmh": -8.8,
+        "risk_level": "LOW",
+        "risk_score": 21.9,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.06,
+        "z_m": 8.65,
+        "rel_speed_kmh": -12.4,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 5.3
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.69,
+        "z_m": 7.09,
+        "rel_speed_kmh": -14.9,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 3.7
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.32,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.13,
+        "z_m": 19.57,
+        "rel_speed_kmh": -8.8,
+        "risk_level": "LOW",
+        "risk_score": 21.9,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.13,
+        "z_m": 8.74,
+        "rel_speed_kmh": -13.7,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 4.3
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.68,
+        "z_m": 6.92,
+        "rel_speed_kmh": -14.9,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 3.5
+      },
+      {
+        "vehicle_id": 40,
+        "class_name": "person",
+        "x_m": -2.03,
+        "z_m": 8.74,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 11.7,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.36,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.11,
+        "z_m": 19.57,
+        "rel_speed_kmh": -4.3,
+        "risk_level": "LOW",
+        "risk_score": 21.9,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.7,
+        "z_m": 6.82,
+        "rel_speed_kmh": -14.4,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 3.6
+      },
+      {
+        "vehicle_id": 26,
+        "class_name": "person",
+        "x_m": -2.78,
+        "z_m": 10.59,
+        "rel_speed_kmh": -7.2,
+        "risk_level": "LOW",
+        "risk_score": 10.3,
+        "ttc_sec": 13.2
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.4,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.13,
+        "z_m": 19.57,
+        "rel_speed_kmh": -4.3,
+        "risk_level": "LOW",
+        "risk_score": 21.9,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.7,
+        "z_m": 6.67,
+        "rel_speed_kmh": -15.1,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 3.8
+      },
+      {
+        "vehicle_id": 26,
+        "class_name": "person",
+        "x_m": -2.74,
+        "z_m": 10.11,
+        "rel_speed_kmh": -10.5,
+        "risk_level": "LOW",
+        "risk_score": 10.6,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.07,
+        "z_m": 8.26,
+        "rel_speed_kmh": -12.8,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 3.6
+      },
+      {
+        "vehicle_id": 40,
+        "class_name": "person",
+        "x_m": -1.98,
+        "z_m": 8.26,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 12.1,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.44,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.1,
+        "z_m": 19.15,
+        "rel_speed_kmh": -8.5,
+        "risk_level": "LOW",
+        "risk_score": 22.0,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.71,
+        "z_m": 6.57,
+        "rel_speed_kmh": -13.2,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 3.4
+      },
+      {
+        "vehicle_id": 26,
+        "class_name": "person",
+        "x_m": -2.78,
+        "z_m": 10.0,
+        "rel_speed_kmh": -10.4,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 5.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.05,
+        "z_m": 7.89,
+        "rel_speed_kmh": -19.0,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 2.8
+      },
+      {
+        "vehicle_id": 40,
+        "class_name": "person",
+        "x_m": -1.96,
+        "z_m": 8.04,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 3.1
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.48,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.1,
+        "z_m": 19.15,
+        "rel_speed_kmh": -8.5,
+        "risk_level": "LOW",
+        "risk_score": 22.0,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.71,
+        "z_m": 6.38,
+        "rel_speed_kmh": -13.1,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 3.0
+      },
+      {
+        "vehicle_id": 26,
+        "class_name": "person",
+        "x_m": -2.88,
+        "z_m": 10.11,
+        "rel_speed_kmh": -3.6,
+        "risk_level": "LOW",
+        "risk_score": 10.7,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.19,
+        "z_m": 8.18,
+        "rel_speed_kmh": -19.4,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 4.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.52,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.09,
+        "z_m": 19.15,
+        "rel_speed_kmh": -8.5,
+        "risk_level": "LOW",
+        "risk_score": 22.0,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.71,
+        "z_m": 6.25,
+        "rel_speed_kmh": -13.1,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 3.0
+      },
+      {
+        "vehicle_id": 26,
+        "class_name": "person",
+        "x_m": -2.92,
+        "z_m": 10.0,
+        "rel_speed_kmh": -13.8,
+        "risk_level": "LOW",
+        "risk_score": 10.8,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.55,
+        "z_m": 9.28,
+        "rel_speed_kmh": -6.5,
+        "risk_level": "LOW",
+        "risk_score": 11.4,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.56,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.1,
+        "z_m": 19.15,
+        "rel_speed_kmh": -4.2,
+        "risk_level": "LOW",
+        "risk_score": 22.0,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.71,
+        "z_m": 6.08,
+        "rel_speed_kmh": -14.2,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 2.6
+      },
+      {
+        "vehicle_id": 26,
+        "class_name": "person",
+        "x_m": -2.85,
+        "z_m": 9.47,
+        "rel_speed_kmh": -7.1,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 4.8
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.48,
+        "z_m": 8.57,
+        "rel_speed_kmh": -5.5,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 8.3
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.6,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.1,
+        "z_m": 19.15,
+        "rel_speed_kmh": -4.2,
+        "risk_level": "LOW",
+        "risk_score": 22.0,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.71,
+        "z_m": 5.92,
+        "rel_speed_kmh": -13.4,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 2.1
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.64,
+        "z_m": 9.0,
+        "rel_speed_kmh": -3.4,
+        "risk_level": "LOW",
+        "risk_score": 11.6,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.64,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.1,
+        "z_m": 19.15,
+        "rel_speed_kmh": -4.2,
+        "risk_level": "LOW",
+        "risk_score": 22.0,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.73,
+        "z_m": 5.81,
+        "rel_speed_kmh": -12.8,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 2.1
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.3,
+        "z_m": 7.63,
+        "rel_speed_kmh": -12.3,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 4.3
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.68,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.1,
+        "z_m": 19.15,
+        "rel_speed_kmh": -4.2,
+        "risk_level": "LOW",
+        "risk_score": 22.0,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.73,
+        "z_m": 5.66,
+        "rel_speed_kmh": -12.6,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.25,
+        "z_m": 7.32,
+        "rel_speed_kmh": -12.0,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 3.3
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.72,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.1,
+        "z_m": 19.15,
+        "rel_speed_kmh": -4.2,
+        "risk_level": "LOW",
+        "risk_score": 22.0,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.76,
+        "z_m": 5.56,
+        "rel_speed_kmh": -12.6,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.8
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.32,
+        "z_m": 7.09,
+        "rel_speed_kmh": -14.8,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 4.2
+      },
+      {
+        "vehicle_id": 26,
+        "class_name": "person",
+        "x_m": -2.98,
+        "z_m": 8.82,
+        "rel_speed_kmh": -8.3,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 6.2
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.76,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.1,
+        "z_m": 19.15,
+        "rel_speed_kmh": -4.2,
+        "risk_level": "LOW",
+        "risk_score": 22.0,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.77,
+        "z_m": 5.42,
+        "rel_speed_kmh": -12.5,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.8
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.37,
+        "z_m": 7.03,
+        "rel_speed_kmh": -12.3,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 3.4
+      },
+      {
+        "vehicle_id": 26,
+        "class_name": "person",
+        "x_m": -3.16,
+        "z_m": 9.0,
+        "rel_speed_kmh": -13.6,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 6.3
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.8,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.08,
+        "z_m": 18.75,
+        "rel_speed_kmh": -4.0,
+        "risk_level": "LOW",
+        "risk_score": 22.1,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.78,
+        "z_m": 5.29,
+        "rel_speed_kmh": -12.8,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.6
+      },
+      {
+        "vehicle_id": 26,
+        "class_name": "person",
+        "x_m": -3.17,
+        "z_m": 8.74,
+        "rel_speed_kmh": -11.9,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 7.0
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.84,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.12,
+        "z_m": 19.15,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 22.0,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.77,
+        "z_m": 5.11,
+        "rel_speed_kmh": -12.7,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.5
+      },
+      {
+        "vehicle_id": 58,
+        "class_name": "person",
+        "x_m": -2.07,
+        "z_m": 6.52,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 14.5,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.36,
+        "z_m": 6.57,
+        "rel_speed_kmh": -11.9,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.6
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.88,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.09,
+        "z_m": 18.75,
+        "rel_speed_kmh": -4.0,
+        "risk_level": "LOW",
+        "risk_score": 22.1,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.77,
+        "z_m": 4.95,
+        "rel_speed_kmh": -13.0,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.5
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.42,
+        "z_m": 6.47,
+        "rel_speed_kmh": -15.4,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.9
+      },
+      {
+        "vehicle_id": 26,
+        "class_name": "person",
+        "x_m": -3.27,
+        "z_m": 8.49,
+        "rel_speed_kmh": -14.5,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 6.6
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.92,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.11,
+        "z_m": 18.75,
+        "rel_speed_kmh": -4.0,
+        "risk_level": "LOW",
+        "risk_score": 22.1,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.74,
+        "z_m": 4.69,
+        "rel_speed_kmh": -13.9,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.2
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.39,
+        "z_m": 6.21,
+        "rel_speed_kmh": -27.6,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.3
+      },
+      {
+        "vehicle_id": 58,
+        "class_name": "person",
+        "x_m": -2.05,
+        "z_m": 6.08,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 15.4,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 2.96,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.07,
+        "z_m": 18.37,
+        "rel_speed_kmh": -7.8,
+        "risk_level": "LOW",
+        "risk_score": 22.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.75,
+        "z_m": 4.55,
+        "rel_speed_kmh": -13.7,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.1
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.38,
+        "z_m": 5.92,
+        "rel_speed_kmh": -23.9,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.7
+      },
+      {
+        "vehicle_id": 58,
+        "class_name": "person",
+        "x_m": -2.05,
+        "z_m": 5.92,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.4
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.0,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.08,
+        "z_m": 18.37,
+        "rel_speed_kmh": -7.8,
+        "risk_level": "LOW",
+        "risk_score": 22.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.77,
+        "z_m": 4.41,
+        "rel_speed_kmh": -14.0,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.0
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.32,
+        "z_m": 5.66,
+        "rel_speed_kmh": -30.1,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.5
+      },
+      {
+        "vehicle_id": 58,
+        "class_name": "person",
+        "x_m": -2.08,
+        "z_m": 5.7,
+        "rel_speed_kmh": -18.4,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.3
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.04,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.08,
+        "z_m": 18.37,
+        "rel_speed_kmh": -7.8,
+        "risk_level": "LOW",
+        "risk_score": 22.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.77,
+        "z_m": 4.25,
+        "rel_speed_kmh": -14.1,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.8
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.31,
+        "z_m": 5.49,
+        "rel_speed_kmh": -19.3,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.4
+      },
+      {
+        "vehicle_id": 58,
+        "class_name": "person",
+        "x_m": -2.08,
+        "z_m": 5.49,
+        "rel_speed_kmh": -18.5,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.3
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.08,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.08,
+        "z_m": 18.37,
+        "rel_speed_kmh": -7.8,
+        "risk_level": "LOW",
+        "risk_score": 22.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.83,
+        "z_m": 4.21,
+        "rel_speed_kmh": -13.5,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.32,
+        "z_m": 5.2,
+        "rel_speed_kmh": -19.1,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.1
+      },
+      {
+        "vehicle_id": 58,
+        "class_name": "person",
+        "x_m": -2.05,
+        "z_m": 5.26,
+        "rel_speed_kmh": -18.9,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.2
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.12,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.08,
+        "z_m": 18.37,
+        "rel_speed_kmh": -7.8,
+        "risk_level": "LOW",
+        "risk_score": 22.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -1.9,
+        "z_m": 4.19,
+        "rel_speed_kmh": -12.3,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.3
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.32,
+        "z_m": 5.0,
+        "rel_speed_kmh": -18.8,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.9
+      },
+      {
+        "vehicle_id": 58,
+        "class_name": "person",
+        "x_m": -2.03,
+        "z_m": 5.06,
+        "rel_speed_kmh": -18.8,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.1
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.16,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.05,
+        "z_m": 18.0,
+        "rel_speed_kmh": -7.5,
+        "risk_level": "LOW",
+        "risk_score": 22.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.24,
+        "z_m": 4.74,
+        "rel_speed_kmh": -20.6,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.8
+      },
+      {
+        "vehicle_id": 58,
+        "class_name": "person",
+        "x_m": -2.06,
+        "z_m": 4.86,
+        "rel_speed_kmh": -18.7,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.0
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.2,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.03,
+        "z_m": 17.65,
+        "rel_speed_kmh": -15.0,
+        "risk_level": "LOW",
+        "risk_score": 22.3,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 58,
+        "class_name": "person",
+        "x_m": -2.12,
+        "z_m": 4.76,
+        "rel_speed_kmh": -17.6,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.0
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -2.01,
+        "z_m": 4.19,
+        "rel_speed_kmh": -9.9,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.24,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.03,
+        "z_m": 17.65,
+        "rel_speed_kmh": -11.0,
+        "risk_level": "LOW",
+        "risk_score": 22.3,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 58,
+        "class_name": "person",
+        "x_m": -2.12,
+        "z_m": 4.59,
+        "rel_speed_kmh": -17.4,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -2.05,
+        "z_m": 4.19,
+        "rel_speed_kmh": -8.3,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 3.1
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.24,
+        "z_m": 4.33,
+        "rel_speed_kmh": -20.2,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.6
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.28,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.04,
+        "z_m": 17.65,
+        "rel_speed_kmh": -11.0,
+        "risk_level": "LOW",
+        "risk_score": 22.3,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 58,
+        "class_name": "person",
+        "x_m": -2.15,
+        "z_m": 4.41,
+        "rel_speed_kmh": -16.7,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.8
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -2.1,
+        "z_m": 4.23,
+        "rel_speed_kmh": -6.5,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 4.8
+      },
+      {
+        "vehicle_id": 4,
+        "class_name": "person",
+        "x_m": -2.24,
+        "z_m": 4.25,
+        "rel_speed_kmh": -20.0,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.7
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.32,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.02,
+        "z_m": 17.31,
+        "rel_speed_kmh": -10.6,
+        "risk_level": "LOW",
+        "risk_score": 22.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 58,
+        "class_name": "person",
+        "x_m": -2.19,
+        "z_m": 4.27,
+        "rel_speed_kmh": -16.5,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.7
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -2.14,
+        "z_m": 4.23,
+        "rel_speed_kmh": -4.1,
+        "risk_level": "LOW",
+        "risk_score": 18.8,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.36,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.02,
+        "z_m": 17.31,
+        "rel_speed_kmh": -10.6,
+        "risk_level": "LOW",
+        "risk_score": 22.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 58,
+        "class_name": "person",
+        "x_m": -2.23,
+        "z_m": 4.21,
+        "rel_speed_kmh": -14.9,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.8
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -2.15,
+        "z_m": 4.21,
+        "rel_speed_kmh": -3.1,
+        "risk_level": "LOW",
+        "risk_score": 18.8,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.4,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.02,
+        "z_m": 17.31,
+        "rel_speed_kmh": -10.6,
+        "risk_level": "LOW",
+        "risk_score": 22.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 58,
+        "class_name": "person",
+        "x_m": -2.23,
+        "z_m": 4.19,
+        "rel_speed_kmh": -13.0,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.8
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -2.16,
+        "z_m": 4.21,
+        "rel_speed_kmh": -1.8,
+        "risk_level": "LOW",
+        "risk_score": 19.1,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.44,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.02,
+        "z_m": 17.31,
+        "rel_speed_kmh": -10.6,
+        "risk_level": "LOW",
+        "risk_score": 22.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "person",
+        "x_m": -2.18,
+        "z_m": 4.19,
+        "rel_speed_kmh": -0.5,
+        "risk_level": "LOW",
+        "risk_score": 19.0,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.48,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.0,
+        "z_m": 16.98,
+        "rel_speed_kmh": -13.9,
+        "risk_level": "LOW",
+        "risk_score": 22.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -2.22,
+        "z_m": 4.21,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 19.1,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.52,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.0,
+        "z_m": 16.98,
+        "rel_speed_kmh": -10.2,
+        "risk_level": "LOW",
+        "risk_score": 22.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 27,
+        "class_name": "motorcycle",
+        "x_m": -2.26,
+        "z_m": 4.23,
+        "rel_speed_kmh": 0.4,
+        "risk_level": "LOW",
+        "risk_score": 19.0,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.56,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.0,
+        "z_m": 16.98,
+        "rel_speed_kmh": -6.7,
+        "risk_level": "LOW",
+        "risk_score": 22.4,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.6,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.0,
+        "z_m": 16.98,
+        "rel_speed_kmh": -6.7,
+        "risk_level": "LOW",
+        "risk_score": 22.5,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.64,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.01,
+        "z_m": 16.98,
+        "rel_speed_kmh": -6.7,
+        "risk_level": "LOW",
+        "risk_score": 22.5,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.68,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.01,
+        "z_m": 16.98,
+        "rel_speed_kmh": -3.3,
+        "risk_level": "LOW",
+        "risk_score": 22.5,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.72,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.01,
+        "z_m": 16.98,
+        "rel_speed_kmh": -3.3,
+        "risk_level": "LOW",
+        "risk_score": 22.5,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.76,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.03,
+        "z_m": 16.98,
+        "rel_speed_kmh": -3.3,
+        "risk_level": "LOW",
+        "risk_score": 22.5,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.8,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.01,
+        "z_m": 16.67,
+        "rel_speed_kmh": -6.4,
+        "risk_level": "LOW",
+        "risk_score": 22.6,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.84,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.01,
+        "z_m": 16.67,
+        "rel_speed_kmh": -3.1,
+        "risk_level": "LOW",
+        "risk_score": 22.6,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.88,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.01,
+        "z_m": 16.67,
+        "rel_speed_kmh": -3.1,
+        "risk_level": "LOW",
+        "risk_score": 22.6,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0001",
+      "timestamp_sec": 1.4,
+      "frame_idx": 1085,
+      "vehicle_id": 4,
+      "level": "CAUTION",
+      "title": "CAUTION: Person directly ahead",
+      "message": "Person nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 40.3,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 3.92,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.99,
+        "z_m": 16.36,
+        "rel_speed_kmh": -6.2,
+        "risk_level": "LOW",
+        "risk_score": 22.6,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 3.96,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.0,
+        "z_m": 16.36,
+        "rel_speed_kmh": -6.2,
+        "risk_level": "LOW",
+        "risk_score": 22.6,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.0,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.0,
+        "z_m": 16.36,
+        "rel_speed_kmh": -6.2,
+        "risk_level": "LOW",
+        "risk_score": 22.6,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.04,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.0,
+        "z_m": 16.36,
+        "rel_speed_kmh": -6.2,
+        "risk_level": "LOW",
+        "risk_score": 22.6,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.08,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.0,
+        "z_m": 16.36,
+        "rel_speed_kmh": -6.2,
+        "risk_level": "LOW",
+        "risk_score": 22.6,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.12,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.01,
+        "z_m": 16.36,
+        "rel_speed_kmh": -6.2,
+        "risk_level": "LOW",
+        "risk_score": 22.7,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.16,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.02,
+        "z_m": 16.36,
+        "rel_speed_kmh": -3.1,
+        "risk_level": "LOW",
+        "risk_score": 22.7,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.2,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.02,
+        "z_m": 16.36,
+        "rel_speed_kmh": -3.1,
+        "risk_level": "LOW",
+        "risk_score": 22.6,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.24,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.99,
+        "z_m": 16.07,
+        "rel_speed_kmh": -6.0,
+        "risk_level": "LOW",
+        "risk_score": 22.7,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.28,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.99,
+        "z_m": 16.07,
+        "rel_speed_kmh": -2.9,
+        "risk_level": "LOW",
+        "risk_score": 22.7,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.32,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.99,
+        "z_m": 16.07,
+        "rel_speed_kmh": -2.9,
+        "risk_level": "LOW",
+        "risk_score": 22.7,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.36,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.0,
+        "z_m": 16.07,
+        "rel_speed_kmh": -2.9,
+        "risk_level": "LOW",
+        "risk_score": 22.7,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.4,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.99,
+        "z_m": 15.79,
+        "rel_speed_kmh": -5.7,
+        "risk_level": "LOW",
+        "risk_score": 22.8,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.44,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.0,
+        "z_m": 15.79,
+        "rel_speed_kmh": -5.7,
+        "risk_level": "LOW",
+        "risk_score": 22.8,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.48,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.99,
+        "z_m": 15.79,
+        "rel_speed_kmh": -5.7,
+        "risk_level": "LOW",
+        "risk_score": 22.8,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.52,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.97,
+        "z_m": 15.52,
+        "rel_speed_kmh": -8.4,
+        "risk_level": "LOW",
+        "risk_score": 22.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.56,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.97,
+        "z_m": 15.52,
+        "rel_speed_kmh": -8.4,
+        "risk_level": "LOW",
+        "risk_score": 22.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.6,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.97,
+        "z_m": 15.52,
+        "rel_speed_kmh": -5.5,
+        "risk_level": "LOW",
+        "risk_score": 22.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.64,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.97,
+        "z_m": 15.52,
+        "rel_speed_kmh": -5.5,
+        "risk_level": "LOW",
+        "risk_score": 22.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.68,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.98,
+        "z_m": 15.52,
+        "rel_speed_kmh": -5.5,
+        "risk_level": "LOW",
+        "risk_score": 22.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.72,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.99,
+        "z_m": 15.52,
+        "rel_speed_kmh": -5.5,
+        "risk_level": "LOW",
+        "risk_score": 22.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.76,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.0,
+        "z_m": 15.52,
+        "rel_speed_kmh": -2.7,
+        "risk_level": "LOW",
+        "risk_score": 22.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.8,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.99,
+        "z_m": 15.25,
+        "rel_speed_kmh": -5.4,
+        "risk_level": "LOW",
+        "risk_score": 23.0,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.84,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.99,
+        "z_m": 15.25,
+        "rel_speed_kmh": -5.4,
+        "risk_level": "LOW",
+        "risk_score": 23.0,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.88,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.99,
+        "z_m": 15.25,
+        "rel_speed_kmh": -2.7,
+        "risk_level": "LOW",
+        "risk_score": 23.0,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.92,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.96,
+        "z_m": 15.0,
+        "rel_speed_kmh": -5.2,
+        "risk_level": "LOW",
+        "risk_score": 23.1,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 4.96,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.96,
+        "z_m": 15.0,
+        "rel_speed_kmh": -5.2,
+        "risk_level": "LOW",
+        "risk_score": 23.1,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.0,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.95,
+        "z_m": 14.75,
+        "rel_speed_kmh": -7.7,
+        "risk_level": "LOW",
+        "risk_score": 23.2,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.04,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.96,
+        "z_m": 14.75,
+        "rel_speed_kmh": -7.7,
+        "risk_level": "LOW",
+        "risk_score": 23.2,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.08,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.96,
+        "z_m": 14.52,
+        "rel_speed_kmh": -10.0,
+        "risk_level": "LOW",
+        "risk_score": 23.3,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.12,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.96,
+        "z_m": 14.52,
+        "rel_speed_kmh": -10.0,
+        "risk_level": "LOW",
+        "risk_score": 23.3,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.16,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.93,
+        "z_m": 14.29,
+        "rel_speed_kmh": -9.6,
+        "risk_level": "LOW",
+        "risk_score": 23.4,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.2,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.92,
+        "z_m": 14.29,
+        "rel_speed_kmh": -9.6,
+        "risk_level": "LOW",
+        "risk_score": 23.4,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.24,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.91,
+        "z_m": 14.06,
+        "rel_speed_kmh": -11.9,
+        "risk_level": "LOW",
+        "risk_score": 23.5,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.28,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.9,
+        "z_m": 14.06,
+        "rel_speed_kmh": -9.4,
+        "risk_level": "LOW",
+        "risk_score": 23.5,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.32,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.88,
+        "z_m": 13.85,
+        "rel_speed_kmh": -11.5,
+        "risk_level": "LOW",
+        "risk_score": 23.5,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.36,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.88,
+        "z_m": 13.85,
+        "rel_speed_kmh": -9.0,
+        "risk_level": "LOW",
+        "risk_score": 23.5,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.4,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.87,
+        "z_m": 13.64,
+        "rel_speed_kmh": -11.1,
+        "risk_level": "LOW",
+        "risk_score": 23.6,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.44,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.87,
+        "z_m": 13.64,
+        "rel_speed_kmh": -8.8,
+        "risk_level": "LOW",
+        "risk_score": 23.6,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 0.82,
+        "z_m": 20.0,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 21.8,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.48,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.88,
+        "z_m": 13.64,
+        "rel_speed_kmh": -8.8,
+        "risk_level": "LOW",
+        "risk_score": 23.6,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 0.83,
+        "z_m": 19.57,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 21.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.52,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.87,
+        "z_m": 13.43,
+        "rel_speed_kmh": -8.6,
+        "risk_level": "LOW",
+        "risk_score": 23.7,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 0.84,
+        "z_m": 19.57,
+        "rel_speed_kmh": 0.0,
+        "risk_level": "LOW",
+        "risk_score": 21.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.56,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.87,
+        "z_m": 13.43,
+        "rel_speed_kmh": -8.6,
+        "risk_level": "LOW",
+        "risk_score": 23.7,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 0.86,
+        "z_m": 19.57,
+        "rel_speed_kmh": -12.9,
+        "risk_level": "LOW",
+        "risk_score": 21.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.6,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.87,
+        "z_m": 13.43,
+        "rel_speed_kmh": -6.3,
+        "risk_level": "LOW",
+        "risk_score": 23.7,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 0.86,
+        "z_m": 19.57,
+        "rel_speed_kmh": -9.7,
+        "risk_level": "LOW",
+        "risk_score": 21.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.64,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.85,
+        "z_m": 13.24,
+        "rel_speed_kmh": -8.2,
+        "risk_level": "LOW",
+        "risk_score": 23.8,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 0.88,
+        "z_m": 19.57,
+        "rel_speed_kmh": -7.7,
+        "risk_level": "LOW",
+        "risk_score": 21.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.68,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.86,
+        "z_m": 13.24,
+        "rel_speed_kmh": -6.1,
+        "risk_level": "LOW",
+        "risk_score": 23.8,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 0.88,
+        "z_m": 19.57,
+        "rel_speed_kmh": -6.5,
+        "risk_level": "LOW",
+        "risk_score": 21.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.72,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.85,
+        "z_m": 13.24,
+        "rel_speed_kmh": -6.1,
+        "risk_level": "LOW",
+        "risk_score": 23.8,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 0.91,
+        "z_m": 19.57,
+        "rel_speed_kmh": -5.5,
+        "risk_level": "LOW",
+        "risk_score": 21.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.76,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.86,
+        "z_m": 13.24,
+        "rel_speed_kmh": -4.0,
+        "risk_level": "LOW",
+        "risk_score": 23.8,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 0.92,
+        "z_m": 19.57,
+        "rel_speed_kmh": -4.8,
+        "risk_level": "LOW",
+        "risk_score": 21.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.8,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.84,
+        "z_m": 13.04,
+        "rel_speed_kmh": -6.0,
+        "risk_level": "LOW",
+        "risk_score": 23.8,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 0.95,
+        "z_m": 19.57,
+        "rel_speed_kmh": -4.3,
+        "risk_level": "LOW",
+        "risk_score": 21.9,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.84,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.83,
+        "z_m": 12.86,
+        "rel_speed_kmh": -7.8,
+        "risk_level": "LOW",
+        "risk_score": 23.9,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 0.94,
+        "z_m": 19.15,
+        "rel_speed_kmh": -4.2,
+        "risk_level": "LOW",
+        "risk_score": 22.0,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.88,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.83,
+        "z_m": 12.86,
+        "rel_speed_kmh": -5.7,
+        "risk_level": "LOW",
+        "risk_score": 23.9,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 0.97,
+        "z_m": 19.15,
+        "rel_speed_kmh": -4.2,
+        "risk_level": "LOW",
+        "risk_score": 22.0,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.92,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.83,
+        "z_m": 12.86,
+        "rel_speed_kmh": -5.7,
+        "risk_level": "LOW",
+        "risk_score": 23.9,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 0.98,
+        "z_m": 18.75,
+        "rel_speed_kmh": -8.2,
+        "risk_level": "LOW",
+        "risk_score": 22.1,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 5.96,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.83,
+        "z_m": 12.86,
+        "rel_speed_kmh": -5.7,
+        "risk_level": "LOW",
+        "risk_score": 23.9,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 0.99,
+        "z_m": 18.75,
+        "rel_speed_kmh": -8.2,
+        "risk_level": "LOW",
+        "risk_score": 22.1,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.0,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.82,
+        "z_m": 12.68,
+        "rel_speed_kmh": -5.6,
+        "risk_level": "LOW",
+        "risk_score": 24.0,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 0.99,
+        "z_m": 18.37,
+        "rel_speed_kmh": -12.0,
+        "risk_level": "LOW",
+        "risk_score": 22.2,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.04,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.81,
+        "z_m": 12.68,
+        "rel_speed_kmh": -5.6,
+        "risk_level": "LOW",
+        "risk_score": 24.0,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.03,
+        "z_m": 18.37,
+        "rel_speed_kmh": -12.0,
+        "risk_level": "LOW",
+        "risk_score": 22.2,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.08,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.81,
+        "z_m": 12.68,
+        "rel_speed_kmh": -5.6,
+        "risk_level": "LOW",
+        "risk_score": 24.0,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.04,
+        "z_m": 18.0,
+        "rel_speed_kmh": -15.7,
+        "risk_level": "LOW",
+        "risk_score": 22.3,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.12,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.8,
+        "z_m": 12.5,
+        "rel_speed_kmh": -7.4,
+        "risk_level": "LOW",
+        "risk_score": 24.1,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.05,
+        "z_m": 17.65,
+        "rel_speed_kmh": -19.2,
+        "risk_level": "LOW",
+        "risk_score": 22.4,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.16,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.81,
+        "z_m": 12.5,
+        "rel_speed_kmh": -5.4,
+        "risk_level": "LOW",
+        "risk_score": 24.1,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.07,
+        "z_m": 17.65,
+        "rel_speed_kmh": -19.2,
+        "risk_level": "LOW",
+        "risk_score": 22.4,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.2,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.8,
+        "z_m": 12.33,
+        "rel_speed_kmh": -5.3,
+        "risk_level": "LOW",
+        "risk_score": 24.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.07,
+        "z_m": 17.31,
+        "rel_speed_kmh": -18.4,
+        "risk_level": "LOW",
+        "risk_score": 22.4,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.24,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.8,
+        "z_m": 12.33,
+        "rel_speed_kmh": -5.3,
+        "risk_level": "LOW",
+        "risk_score": 24.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.09,
+        "z_m": 17.31,
+        "rel_speed_kmh": -18.4,
+        "risk_level": "LOW",
+        "risk_score": 22.4,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.28,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.81,
+        "z_m": 12.33,
+        "rel_speed_kmh": -5.3,
+        "risk_level": "LOW",
+        "risk_score": 24.2,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.32,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.8,
+        "z_m": 12.16,
+        "rel_speed_kmh": -7.0,
+        "risk_level": "LOW",
+        "risk_score": 24.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.16,
+        "z_m": 16.67,
+        "rel_speed_kmh": -18.7,
+        "risk_level": "LOW",
+        "risk_score": 22.6,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.36,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.78,
+        "z_m": 12.0,
+        "rel_speed_kmh": -6.8,
+        "risk_level": "LOW",
+        "risk_score": 24.3,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.17,
+        "z_m": 16.67,
+        "rel_speed_kmh": -18.7,
+        "risk_level": "LOW",
+        "risk_score": 22.6,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.4,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.78,
+        "z_m": 11.84,
+        "rel_speed_kmh": -8.4,
+        "risk_level": "LOW",
+        "risk_score": 24.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.16,
+        "z_m": 16.36,
+        "rel_speed_kmh": -18.1,
+        "risk_level": "LOW",
+        "risk_score": 22.7,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.44,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.79,
+        "z_m": 11.84,
+        "rel_speed_kmh": -8.4,
+        "risk_level": "LOW",
+        "risk_score": 24.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.16,
+        "z_m": 16.07,
+        "rel_speed_kmh": -20.7,
+        "risk_level": "LOW",
+        "risk_score": 22.8,
+        "ttc_sec": 99.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.48,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.77,
+        "z_m": 11.69,
+        "rel_speed_kmh": -8.1,
+        "risk_level": "LOW",
+        "risk_score": 24.5,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.16,
+        "z_m": 15.79,
+        "rel_speed_kmh": -19.9,
+        "risk_level": "LOW",
+        "risk_score": 22.9,
+        "ttc_sec": 13.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.52,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.77,
+        "z_m": 11.54,
+        "rel_speed_kmh": -9.6,
+        "risk_level": "LOW",
+        "risk_score": 24.6,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.2,
+        "z_m": 15.52,
+        "rel_speed_kmh": -19.2,
+        "risk_level": "LOW",
+        "risk_score": 23.0,
+        "ttc_sec": 13.1
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.56,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.77,
+        "z_m": 11.39,
+        "rel_speed_kmh": -9.4,
+        "risk_level": "LOW",
+        "risk_score": 39.7,
+        "ttc_sec": 12.7
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.6,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.76,
+        "z_m": 11.25,
+        "rel_speed_kmh": -10.8,
+        "risk_level": "LOW",
+        "risk_score": 39.8,
+        "ttc_sec": 11.1
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.28,
+        "z_m": 15.0,
+        "rel_speed_kmh": -21.7,
+        "risk_level": "LOW",
+        "risk_score": 23.2,
+        "ttc_sec": 10.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.64,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.76,
+        "z_m": 11.25,
+        "rel_speed_kmh": -10.8,
+        "risk_level": "LOW",
+        "risk_score": 24.8,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.26,
+        "z_m": 14.75,
+        "rel_speed_kmh": -20.9,
+        "risk_level": "LOW",
+        "risk_score": 23.2,
+        "ttc_sec": 12.2
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.68,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.76,
+        "z_m": 11.11,
+        "rel_speed_kmh": -10.5,
+        "risk_level": "LOW",
+        "risk_score": 24.8,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.25,
+        "z_m": 14.52,
+        "rel_speed_kmh": -22.8,
+        "risk_level": "LOW",
+        "risk_score": 23.3,
+        "ttc_sec": 11.0
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.72,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.76,
+        "z_m": 11.11,
+        "rel_speed_kmh": -8.9,
+        "risk_level": "LOW",
+        "risk_score": 24.8,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.25,
+        "z_m": 14.29,
+        "rel_speed_kmh": -21.4,
+        "risk_level": "LOW",
+        "risk_score": 23.4,
+        "ttc_sec": 11.0
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.76,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.77,
+        "z_m": 11.11,
+        "rel_speed_kmh": -7.3,
+        "risk_level": "LOW",
+        "risk_score": 24.8,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.27,
+        "z_m": 14.06,
+        "rel_speed_kmh": -23.5,
+        "risk_level": "LOW",
+        "risk_score": 23.5,
+        "ttc_sec": 10.0
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.8,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.78,
+        "z_m": 11.11,
+        "rel_speed_kmh": -7.3,
+        "risk_level": "LOW",
+        "risk_score": 24.8,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.29,
+        "z_m": 13.64,
+        "rel_speed_kmh": -24.5,
+        "risk_level": "LOW",
+        "risk_score": 23.6,
+        "ttc_sec": 8.8
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.84,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.79,
+        "z_m": 11.11,
+        "rel_speed_kmh": -5.8,
+        "risk_level": "LOW",
+        "risk_score": 24.9,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.3,
+        "z_m": 13.43,
+        "rel_speed_kmh": -23.8,
+        "risk_level": "LOW",
+        "risk_score": 23.7,
+        "ttc_sec": 9.1
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.88,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.8,
+        "z_m": 10.98,
+        "rel_speed_kmh": -5.6,
+        "risk_level": "LOW",
+        "risk_score": 25.0,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "truck",
+        "x_m": 1.34,
+        "z_m": 13.24,
+        "rel_speed_kmh": -23.0,
+        "risk_level": "LOW",
+        "risk_score": 23.9,
+        "ttc_sec": 8.6
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.92,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.82,
+        "z_m": 10.98,
+        "rel_speed_kmh": -4.1,
+        "risk_level": "LOW",
+        "risk_score": 25.0,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.39,
+        "z_m": 13.04,
+        "rel_speed_kmh": -22.3,
+        "risk_level": "LOW",
+        "risk_score": 23.9,
+        "ttc_sec": 8.2
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 6.96,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.82,
+        "z_m": 10.98,
+        "rel_speed_kmh": -2.7,
+        "risk_level": "LOW",
+        "risk_score": 25.0,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.38,
+        "z_m": 13.04,
+        "rel_speed_kmh": -19.6,
+        "risk_level": "LOW",
+        "risk_score": 24.0,
+        "ttc_sec": 8.5
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 7.0,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.84,
+        "z_m": 10.98,
+        "rel_speed_kmh": -2.7,
+        "risk_level": "LOW",
+        "risk_score": 25.0,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "truck",
+        "x_m": 1.4,
+        "z_m": 12.68,
+        "rel_speed_kmh": -20.7,
+        "risk_level": "LOW",
+        "risk_score": 39.1,
+        "ttc_sec": 7.8
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 7.04,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.81,
+        "z_m": 10.71,
+        "rel_speed_kmh": -4.0,
+        "risk_level": "LOW",
+        "risk_score": 25.1,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.4,
+        "z_m": 12.33,
+        "rel_speed_kmh": -21.9,
+        "risk_level": "LOW",
+        "risk_score": 39.3,
+        "ttc_sec": 6.9
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 7.08,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.84,
+        "z_m": 10.84,
+        "rel_speed_kmh": -2.7,
+        "risk_level": "LOW",
+        "risk_score": 25.0,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.42,
+        "z_m": 12.0,
+        "rel_speed_kmh": -22.9,
+        "risk_level": "LOW",
+        "risk_score": 39.5,
+        "ttc_sec": 7.1
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 7.12,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.83,
+        "z_m": 10.71,
+        "rel_speed_kmh": -4.0,
+        "risk_level": "LOW",
+        "risk_score": 25.1,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.45,
+        "z_m": 11.84,
+        "rel_speed_kmh": -22.2,
+        "risk_level": "LOW",
+        "risk_score": 39.6,
+        "ttc_sec": 6.8
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 7.16,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.84,
+        "z_m": 10.71,
+        "rel_speed_kmh": -4.0,
+        "risk_level": "LOW",
+        "risk_score": 25.1,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.47,
+        "z_m": 11.54,
+        "rel_speed_kmh": -21.0,
+        "risk_level": "LOW",
+        "risk_score": 39.8,
+        "ttc_sec": 6.1
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 7.2,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.85,
+        "z_m": 10.59,
+        "rel_speed_kmh": -5.2,
+        "risk_level": "LOW",
+        "risk_score": 25.2,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.48,
+        "z_m": 11.25,
+        "rel_speed_kmh": -21.8,
+        "risk_level": "MEDIUM",
+        "risk_score": 40.0,
+        "ttc_sec": 5.5
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 7.24,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.85,
+        "z_m": 10.47,
+        "rel_speed_kmh": -5.1,
+        "risk_level": "LOW",
+        "risk_score": 25.3,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "truck",
+        "x_m": 1.49,
+        "z_m": 10.84,
+        "rel_speed_kmh": -24.0,
+        "risk_level": "MEDIUM",
+        "risk_score": 50.2,
+        "ttc_sec": 4.4
+      }
+    ],
+    "active_alert": null
+  },
+  {
+    "time_sec": 7.28,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.87,
+        "z_m": 10.47,
+        "rel_speed_kmh": -5.1,
+        "risk_level": "LOW",
+        "risk_score": 25.3,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "truck",
+        "x_m": 1.53,
+        "z_m": 10.59,
+        "rel_speed_kmh": -24.5,
+        "risk_level": "MEDIUM",
+        "risk_score": 60.4,
+        "ttc_sec": 4.2
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0002",
+      "timestamp_sec": 7.28,
+      "frame_idx": 1232,
+      "vehicle_id": 73,
+      "level": "CAUTION",
+      "title": "CAUTION: Truck directly ahead",
+      "message": "Truck nearby (rapid approach).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 60.4,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 7.32,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.88,
+        "z_m": 10.34,
+        "rel_speed_kmh": -6.4,
+        "risk_level": "LOW",
+        "risk_score": 25.3,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "truck",
+        "x_m": 1.56,
+        "z_m": 10.23,
+        "rel_speed_kmh": -28.1,
+        "risk_level": "HIGH",
+        "risk_score": 75.7,
+        "ttc_sec": 3.8
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0003",
+      "timestamp_sec": 7.32,
+      "frame_idx": 1233,
+      "vehicle_id": 73,
+      "level": "CRITICAL",
+      "title": "DANGER: High-Risk TRUCK DIRECTLY AHEAD",
+      "message": "Truck closing distance rapidly (directly ahead).",
+      "suggested_action": "Slow down and give vehicle wide berth.",
+      "risk_score": 75.7,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_critical.wav"
+    }
+  },
+  {
+    "time_sec": 7.36,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.88,
+        "z_m": 10.23,
+        "rel_speed_kmh": -7.5,
+        "risk_level": "LOW",
+        "risk_score": 25.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "truck",
+        "x_m": 1.59,
+        "z_m": 9.89,
+        "rel_speed_kmh": -27.9,
+        "risk_level": "HIGH",
+        "risk_score": 76.0,
+        "ttc_sec": 3.5
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0003",
+      "timestamp_sec": 7.32,
+      "frame_idx": 1233,
+      "vehicle_id": 73,
+      "level": "CRITICAL",
+      "title": "DANGER: High-Risk TRUCK DIRECTLY AHEAD",
+      "message": "Truck closing distance rapidly (directly ahead).",
+      "suggested_action": "Slow down and give vehicle wide berth.",
+      "risk_score": 75.7,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_critical.wav"
+    }
+  },
+  {
+    "time_sec": 7.4,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.89,
+        "z_m": 10.23,
+        "rel_speed_kmh": -4.8,
+        "risk_level": "LOW",
+        "risk_score": 25.4,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "truck",
+        "x_m": 1.62,
+        "z_m": 9.57,
+        "rel_speed_kmh": -27.6,
+        "risk_level": "HIGH",
+        "risk_score": 76.2,
+        "ttc_sec": 3.2
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0003",
+      "timestamp_sec": 7.32,
+      "frame_idx": 1233,
+      "vehicle_id": 73,
+      "level": "CRITICAL",
+      "title": "DANGER: High-Risk TRUCK DIRECTLY AHEAD",
+      "message": "Truck closing distance rapidly (directly ahead).",
+      "suggested_action": "Slow down and give vehicle wide berth.",
+      "risk_score": 75.7,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_critical.wav"
+    }
+  },
+  {
+    "time_sec": 7.44,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.9,
+        "z_m": 10.11,
+        "rel_speed_kmh": -7.3,
+        "risk_level": "LOW",
+        "risk_score": 25.5,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "truck",
+        "x_m": 1.62,
+        "z_m": 9.09,
+        "rel_speed_kmh": -29.1,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 2.7
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0003",
+      "timestamp_sec": 7.32,
+      "frame_idx": 1233,
+      "vehicle_id": 73,
+      "level": "CRITICAL",
+      "title": "DANGER: High-Risk TRUCK DIRECTLY AHEAD",
+      "message": "Truck closing distance rapidly (directly ahead).",
+      "suggested_action": "Slow down and give vehicle wide berth.",
+      "risk_score": 75.7,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_critical.wav"
+    }
+  },
+  {
+    "time_sec": 7.48,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.9,
+        "z_m": 10.0,
+        "rel_speed_kmh": -7.1,
+        "risk_level": "LOW",
+        "risk_score": 25.6,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "bus",
+        "x_m": 1.63,
+        "z_m": 8.74,
+        "rel_speed_kmh": -31.0,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 2.4
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0003",
+      "timestamp_sec": 7.32,
+      "frame_idx": 1233,
+      "vehicle_id": 73,
+      "level": "CRITICAL",
+      "title": "DANGER: High-Risk TRUCK DIRECTLY AHEAD",
+      "message": "Truck closing distance rapidly (directly ahead).",
+      "suggested_action": "Slow down and give vehicle wide berth.",
+      "risk_score": 75.7,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_critical.wav"
+    }
+  },
+  {
+    "time_sec": 7.52,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.92,
+        "z_m": 10.0,
+        "rel_speed_kmh": -7.1,
+        "risk_level": "LOW",
+        "risk_score": 25.6,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.65,
+        "z_m": 8.33,
+        "rel_speed_kmh": -32.1,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 2.2
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0003",
+      "timestamp_sec": 7.32,
+      "frame_idx": 1233,
+      "vehicle_id": 73,
+      "level": "CRITICAL",
+      "title": "DANGER: High-Risk TRUCK DIRECTLY AHEAD",
+      "message": "Truck closing distance rapidly (directly ahead).",
+      "suggested_action": "Slow down and give vehicle wide berth.",
+      "risk_score": 75.7,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_critical.wav"
+    }
+  },
+  {
+    "time_sec": 7.56,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.92,
+        "z_m": 9.89,
+        "rel_speed_kmh": -7.0,
+        "risk_level": "LOW",
+        "risk_score": 25.6,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.68,
+        "z_m": 7.96,
+        "rel_speed_kmh": -32.9,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0003",
+      "timestamp_sec": 7.32,
+      "frame_idx": 1233,
+      "vehicle_id": 73,
+      "level": "CRITICAL",
+      "title": "DANGER: High-Risk TRUCK DIRECTLY AHEAD",
+      "message": "Truck closing distance rapidly (directly ahead).",
+      "suggested_action": "Slow down and give vehicle wide berth.",
+      "risk_score": 75.7,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_critical.wav"
+    }
+  },
+  {
+    "time_sec": 7.6,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.92,
+        "z_m": 9.68,
+        "rel_speed_kmh": -7.9,
+        "risk_level": "MEDIUM",
+        "risk_score": 40.8,
+        "ttc_sec": 12.0
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.69,
+        "z_m": 7.5,
+        "rel_speed_kmh": -33.4,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.7
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0003",
+      "timestamp_sec": 7.32,
+      "frame_idx": 1233,
+      "vehicle_id": 73,
+      "level": "CRITICAL",
+      "title": "DANGER: High-Risk TRUCK DIRECTLY AHEAD",
+      "message": "Truck closing distance rapidly (directly ahead).",
+      "suggested_action": "Slow down and give vehicle wide berth.",
+      "risk_score": 75.7,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_critical.wav"
+    }
+  },
+  {
+    "time_sec": 7.64,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.92,
+        "z_m": 9.57,
+        "rel_speed_kmh": -9.0,
+        "risk_level": "MEDIUM",
+        "risk_score": 40.9,
+        "ttc_sec": 11.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.69,
+        "z_m": 6.98,
+        "rel_speed_kmh": -36.1,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.3
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0003",
+      "timestamp_sec": 7.32,
+      "frame_idx": 1233,
+      "vehicle_id": 73,
+      "level": "CRITICAL",
+      "title": "DANGER: High-Risk TRUCK DIRECTLY AHEAD",
+      "message": "Truck closing distance rapidly (directly ahead).",
+      "suggested_action": "Slow down and give vehicle wide berth.",
+      "risk_score": 75.7,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_critical.wav"
+    }
+  },
+  {
+    "time_sec": 7.68,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.92,
+        "z_m": 9.38,
+        "rel_speed_kmh": -9.6,
+        "risk_level": "MEDIUM",
+        "risk_score": 41.0,
+        "ttc_sec": 8.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.71,
+        "z_m": 6.52,
+        "rel_speed_kmh": -37.1,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 1.1
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 7.72,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.93,
+        "z_m": 9.28,
+        "rel_speed_kmh": -9.5,
+        "risk_level": "MEDIUM",
+        "risk_score": 41.1,
+        "ttc_sec": 9.3
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "truck",
+        "x_m": 1.75,
+        "z_m": 6.08,
+        "rel_speed_kmh": -38.1,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 7.76,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.93,
+        "z_m": 9.18,
+        "rel_speed_kmh": -10.5,
+        "risk_level": "MEDIUM",
+        "risk_score": 41.2,
+        "ttc_sec": 8.8
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "truck",
+        "x_m": 1.78,
+        "z_m": 5.59,
+        "rel_speed_kmh": -39.8,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.7
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 7.8,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.94,
+        "z_m": 9.09,
+        "rel_speed_kmh": -10.2,
+        "risk_level": "MEDIUM",
+        "risk_score": 41.3,
+        "ttc_sec": 7.3
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "truck",
+        "x_m": 1.79,
+        "z_m": 5.14,
+        "rel_speed_kmh": -39.5,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.6
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 7.84,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.96,
+        "z_m": 9.0,
+        "rel_speed_kmh": -10.0,
+        "risk_level": "MEDIUM",
+        "risk_score": 41.3,
+        "ttc_sec": 7.6
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "truck",
+        "x_m": 1.86,
+        "z_m": 4.81,
+        "rel_speed_kmh": -39.3,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.5
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 7.88,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.98,
+        "z_m": 8.91,
+        "rel_speed_kmh": -10.9,
+        "risk_level": "MEDIUM",
+        "risk_score": 41.4,
+        "ttc_sec": 8.3
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "truck",
+        "x_m": 1.79,
+        "z_m": 4.39,
+        "rel_speed_kmh": -39.4,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.3
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 7.92,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -0.97,
+        "z_m": 8.82,
+        "rel_speed_kmh": -10.7,
+        "risk_level": "MEDIUM",
+        "risk_score": 41.5,
+        "ttc_sec": 8.2
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "truck",
+        "x_m": 1.79,
+        "z_m": 4.23,
+        "rel_speed_kmh": -37.3,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.3
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 7.96,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.0,
+        "z_m": 8.82,
+        "rel_speed_kmh": -8.6,
+        "risk_level": "MEDIUM",
+        "risk_score": 41.5,
+        "ttc_sec": 10.8
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "bus",
+        "x_m": 1.8,
+        "z_m": 4.19,
+        "rel_speed_kmh": -33.1,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.3
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.0,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.01,
+        "z_m": 8.74,
+        "rel_speed_kmh": -8.3,
+        "risk_level": "MEDIUM",
+        "risk_score": 41.6,
+        "ttc_sec": 10.1
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "truck",
+        "x_m": 1.83,
+        "z_m": 4.19,
+        "rel_speed_kmh": -27.9,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.3
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.04,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.03,
+        "z_m": 8.74,
+        "rel_speed_kmh": -6.4,
+        "risk_level": "MEDIUM",
+        "risk_score": 41.6,
+        "ttc_sec": 99.9
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "car",
+        "x_m": 1.88,
+        "z_m": 4.19,
+        "rel_speed_kmh": -23.3,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.4
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.08,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.03,
+        "z_m": 8.57,
+        "rel_speed_kmh": -7.1,
+        "risk_level": "MEDIUM",
+        "risk_score": 56.8,
+        "ttc_sec": 10.0
+      },
+      {
+        "vehicle_id": 73,
+        "class_name": "truck",
+        "x_m": 1.94,
+        "z_m": 4.19,
+        "rel_speed_kmh": -18.9,
+        "risk_level": "LOW",
+        "risk_score": 20.0,
+        "ttc_sec": 0.6
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.12,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.05,
+        "z_m": 8.57,
+        "rel_speed_kmh": -6.1,
+        "risk_level": "MEDIUM",
+        "risk_score": 56.8,
+        "ttc_sec": 11.3
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.16,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.07,
+        "z_m": 8.49,
+        "rel_speed_kmh": -6.0,
+        "risk_level": "MEDIUM",
+        "risk_score": 56.9,
+        "ttc_sec": 9.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.2,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.07,
+        "z_m": 8.41,
+        "rel_speed_kmh": -5.9,
+        "risk_level": "MEDIUM",
+        "risk_score": 57.0,
+        "ttc_sec": 9.9
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.24,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.09,
+        "z_m": 8.33,
+        "rel_speed_kmh": -5.8,
+        "risk_level": "MEDIUM",
+        "risk_score": 57.1,
+        "ttc_sec": 8.4
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.28,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.1,
+        "z_m": 8.33,
+        "rel_speed_kmh": -4.9,
+        "risk_level": "MEDIUM",
+        "risk_score": 57.1,
+        "ttc_sec": 8.8
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.32,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.11,
+        "z_m": 8.26,
+        "rel_speed_kmh": -5.6,
+        "risk_level": "MEDIUM",
+        "risk_score": 57.3,
+        "ttc_sec": 7.5
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.36,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.12,
+        "z_m": 8.18,
+        "rel_speed_kmh": -5.6,
+        "risk_level": "MEDIUM",
+        "risk_score": 57.3,
+        "ttc_sec": 9.2
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.4,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.13,
+        "z_m": 8.11,
+        "rel_speed_kmh": -6.3,
+        "risk_level": "MEDIUM",
+        "risk_score": 57.4,
+        "ttc_sec": 7.8
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.44,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.13,
+        "z_m": 7.96,
+        "rel_speed_kmh": -6.1,
+        "risk_level": "MEDIUM",
+        "risk_score": 57.6,
+        "ttc_sec": 7.1
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.48,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.15,
+        "z_m": 7.89,
+        "rel_speed_kmh": -6.8,
+        "risk_level": "MEDIUM",
+        "risk_score": 57.7,
+        "ttc_sec": 7.0
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.52,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.14,
+        "z_m": 7.76,
+        "rel_speed_kmh": -7.3,
+        "risk_level": "MEDIUM",
+        "risk_score": 57.8,
+        "ttc_sec": 6.4
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.56,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.15,
+        "z_m": 7.69,
+        "rel_speed_kmh": -7.2,
+        "risk_level": "MEDIUM",
+        "risk_score": 57.9,
+        "ttc_sec": 6.1
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.6,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.16,
+        "z_m": 7.56,
+        "rel_speed_kmh": -7.7,
+        "risk_level": "MEDIUM",
+        "risk_score": 58.1,
+        "ttc_sec": 5.8
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.64,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.18,
+        "z_m": 7.5,
+        "rel_speed_kmh": -8.3,
+        "risk_level": "MEDIUM",
+        "risk_score": 58.1,
+        "ttc_sec": 5.8
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.68,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.18,
+        "z_m": 7.32,
+        "rel_speed_kmh": -9.4,
+        "risk_level": "MEDIUM",
+        "risk_score": 68.4,
+        "ttc_sec": 4.7
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.72,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.2,
+        "z_m": 7.32,
+        "rel_speed_kmh": -8.6,
+        "risk_level": "MEDIUM",
+        "risk_score": 58.4,
+        "ttc_sec": 5.5
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  },
+  {
+    "time_sec": 8.76,
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "class_name": "car",
+        "x_m": -1.22,
+        "z_m": 7.26,
+        "rel_speed_kmh": -8.5,
+        "risk_level": "MEDIUM",
+        "risk_score": 58.5,
+        "ttc_sec": 5.7
+      }
+    ],
+    "active_alert": {
+      "alert_id": "RW-ALERT-0004",
+      "timestamp_sec": 7.68,
+      "frame_idx": 1242,
+      "vehicle_id": 1,
+      "level": "CAUTION",
+      "title": "CAUTION: Car directly ahead",
+      "message": "Car nearby (closing distance).",
+      "suggested_action": "Monitor vehicle and maintain safe buffer.",
+      "risk_score": 41.0,
+      "direction": "ahead",
+      "sound_cue": "assets/sounds/chime_caution.wav"
+    }
+  }
+]

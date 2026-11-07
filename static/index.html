@@ -159,31 +159,10 @@
             width: 100%;
         }
 
-        .media-container video, .media-container img {
+        .media-container video {
             width: 100%;
             height: 100%;
             object-fit: contain;
-        }
-
-        .threat-overlay {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            right: 20px;
-            background: rgba(239, 68, 68, 0.9);
-            border-radius: 10px;
-            padding: 12px 18px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            color: white;
-            box-shadow: 0 4px 20px rgba(239, 68, 68, 0.5);
-            animation: flash 1s infinite alternate;
-        }
-
-        @keyframes flash {
-            from { opacity: 0.95; }
-            to { opacity: 0.7; }
         }
 
         .telemetry-grid {
@@ -200,10 +179,15 @@
             padding: 12px;
             border-radius: 8px;
             border-left: 3px solid var(--accent-cyan);
+            transition: border-color 0.2s;
         }
 
         .metric-box.danger {
-            border-left-color: var(--status-critical);
+            border-left-color: var(--status-critical) !important;
+        }
+
+        .metric-box.caution {
+            border-left-color: var(--status-caution) !important;
         }
 
         .metric-title {
@@ -226,9 +210,9 @@
         }
 
         .radar-widget {
-            height: 260px;
+            height: 290px;
             position: relative;
-            background: radial-gradient(circle at center 85%, #0f2b38 0%, #06111a 75%);
+            background: radial-gradient(circle at center 88%, #0f2b38 0%, #06111a 75%);
             border-radius: 12px;
             overflow: hidden;
             display: flex;
@@ -318,6 +302,12 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
+        .btn-outline.active-btn {
+            border-color: var(--accent-cyan);
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--accent-cyan);
+        }
+
         pre.telemetry-viewer {
             background: #090d16;
             padding: 12px;
@@ -325,7 +315,7 @@
             font-family: monospace;
             font-size: 11px;
             color: #38bdf8;
-            max-height: 200px;
+            max-height: 220px;
             overflow-y: auto;
             border: 1px solid var(--border-color);
         }
@@ -338,12 +328,12 @@
             <div class="brand-logo"><i class="fa-solid fa-shield-halved"></i></div>
             <div class="brand-text">
                 <h1>RoadWatch AI</h1>
-                <p>Telemetry Studio & Incident Blackbox Inspector</p>
+                <p>Live Telemetry Studio & Dynamic 2D BEV Radar</p>
             </div>
         </div>
         <div class="header-badges">
-            <div class="badge active"><span class="dot"></span> Live MPS Inference (41.6 FPS)</div>
-            <div class="badge"><i class="fa-solid fa-microchip"></i> Apple Silicon M4</div>
+            <div class="badge active"><span class="dot"></span> Live Dynamic Radar Sync</div>
+            <div class="badge"><i class="fa-solid fa-microchip"></i> Apple Silicon M4 (41.6 FPS)</div>
             <a href="https://github.com/aryan-patil21/RoadWatchAI" target="_blank" class="btn btn-outline">
                 <i class="fa-brands fa-github"></i> GitHub
             </a>
@@ -356,79 +346,77 @@
             <div class="card-header">
                 <h2><i class="fa-solid fa-video"></i> Active Stream & Cockpit HUD</h2>
                 <div style="display: flex; gap: 8px;">
-                    <button class="btn btn-outline" onclick="loadStream('full')">Full Commute Stream</button>
-                    <button class="btn btn-outline" onclick="loadStream('incident')">Captured Incident #001</button>
+                    <button id="btnFullStream" class="btn btn-outline active-btn" onclick="switchStream('full')">Full Commute Stream</button>
+                    <button id="btnIncidentStream" class="btn btn-outline" onclick="switchStream('incident')">Captured Incident #001</button>
                 </div>
             </div>
 
             <div class="media-container">
-                <video id="videoPlayer" controls autoplay loop playsinline>
+                <video id="videoPlayer" controls autoplay loop playsinline muted>
                     <source src="/outputs/stream_runner_output.mp4" type="video/mp4">
                     Your browser does not support video playback.
                 </video>
             </div>
 
             <div class="telemetry-grid">
-                <div class="metric-box">
-                    <div class="metric-title">Pipeline Speed</div>
+                <div class="metric-box" id="boxFps">
+                    <div class="metric-title">Pipeline Throughput</div>
                     <div class="metric-val" id="metricFps">41.6 FPS</div>
                 </div>
-                <div class="metric-box danger">
-                    <div class="metric-title">Primary Threat Distance</div>
-                    <div class="metric-val" id="metricDist">10.2 m</div>
+                <div class="metric-box" id="boxDist">
+                    <div class="metric-title">Threat Distance (Z)</div>
+                    <div class="metric-val" id="metricDist">12.5 m</div>
                 </div>
-                <div class="metric-box danger">
-                    <div class="metric-title">Closing Speed</div>
-                    <div class="metric-val" id="metricSpeed">-28.1 km/h</div>
+                <div class="metric-box" id="boxSpeed">
+                    <div class="metric-title">Closing Speed (ΔZ/Δt)</div>
+                    <div class="metric-val" id="metricSpeed">-15.2 km/h</div>
                 </div>
-                <div class="metric-box">
+                <div class="metric-box" id="boxTtc">
                     <div class="metric-title">Time to Collision (TTC)</div>
-                    <div class="metric-val" id="metricTtc">3.8 s</div>
+                    <div class="metric-val" id="metricTtc">4.2 s</div>
                 </div>
             </div>
 
             <div style="padding: 16px 20px;">
                 <h3 style="font-size: 13px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px;">
-                    <i class="fa-solid fa-code"></i> Instant Forensic Telemetry Dump
+                    <i class="fa-solid fa-code"></i> Live Kinematic & Threat Telemetry Feed
                 </h3>
-                <pre class="telemetry-viewer" id="telemetryViewer">Loading forensic telemetry...</pre>
+                <pre class="telemetry-viewer" id="telemetryViewer">Connecting telemetry stream...</pre>
             </div>
         </div>
 
-        <!-- Sidebar: 2D BEV Radar & Blackbox Incidents -->
+        <!-- Sidebar: Dynamic 2D BEV Radar & Blackbox Incidents -->
         <div class="sidebar">
             <!-- 2D BEV Radar Widget -->
             <div class="card">
                 <div class="card-header">
                     <h2><i class="fa-solid fa-radar"></i> 2D Top-Down BEV Radar</h2>
-                    <span style="font-size: 11px; color: var(--accent-cyan);">Range: 40m</span>
+                    <span id="radarStatusBadge" style="font-size: 11px; color: var(--status-safe); font-weight: 600;">ACTIVE SYNC</span>
                 </div>
                 <div class="radar-widget">
-                    <svg class="radar-svg" viewBox="-25 -45 50 50">
+                    <svg class="radar-svg" id="radarSvg" viewBox="-25 -48 50 54">
                         <!-- Concentric Distance Rings -->
-                        <circle cx="0" cy="0" r="10" fill="none" stroke="rgba(6, 182, 212, 0.2)" stroke-width="0.5"/>
-                        <circle cx="0" cy="0" r="20" fill="none" stroke="rgba(6, 182, 212, 0.2)" stroke-width="0.5"/>
-                        <circle cx="0" cy="0" r="30" fill="none" stroke="rgba(6, 182, 212, 0.2)" stroke-width="0.5"/>
-                        <circle cx="0" cy="0" r="40" fill="none" stroke="rgba(6, 182, 212, 0.2)" stroke-width="0.5"/>
+                        <circle cx="0" cy="0" r="10" fill="none" stroke="rgba(6, 182, 212, 0.25)" stroke-width="0.5"/>
+                        <circle cx="0" cy="0" r="20" fill="none" stroke="rgba(6, 182, 212, 0.25)" stroke-width="0.5"/>
+                        <circle cx="0" cy="0" r="30" fill="none" stroke="rgba(6, 182, 212, 0.25)" stroke-width="0.5"/>
+                        <circle cx="0" cy="0" r="40" fill="none" stroke="rgba(6, 182, 212, 0.25)" stroke-width="0.5"/>
 
                         <!-- Distance Labels -->
                         <text x="0.5" y="-10.5" font-size="2" fill="rgba(6, 182, 212, 0.6)">10m</text>
                         <text x="0.5" y="-20.5" font-size="2" fill="rgba(6, 182, 212, 0.6)">20m</text>
                         <text x="0.5" y="-30.5" font-size="2" fill="rgba(6, 182, 212, 0.6)">30m</text>
+                        <text x="0.5" y="-40.5" font-size="2" fill="rgba(6, 182, 212, 0.6)">40m</text>
 
-                        <!-- Travel Lane Guidelines (3.5m corridor) -->
-                        <line x1="-1.75" y1="0" x2="-1.75" y2="-45" stroke="rgba(255,255,255,0.15)" stroke-dasharray="1.5,1.5" stroke-width="0.5"/>
-                        <line x1="1.75" y1="0" x2="1.75" y2="-45" stroke="rgba(255,255,255,0.15)" stroke-dasharray="1.5,1.5" stroke-width="0.5"/>
+                        <!-- Travel Lane Guidelines (3.5m physical corridor) -->
+                        <line x1="-1.75" y1="0" x2="-1.75" y2="-48" stroke="rgba(255,255,255,0.18)" stroke-dasharray="1.5,1.5" stroke-width="0.4"/>
+                        <line x1="1.75" y1="0" x2="1.75" y2="-48" stroke="rgba(255,255,255,0.18)" stroke-dasharray="1.5,1.5" stroke-width="0.4"/>
 
-                        <!-- Ego Vehicle (Rider) -->
+                        <!-- Ego Vehicle (Rider Motorcycle) -->
                         <polygon points="0,-2 -1.2,1 1.2,1" fill="#06b6d4" />
+                        <circle cx="0" cy="0" r="1" fill="#06b6d4" />
 
-                        <!-- Threat Target (Truck cutting in at x=1.56m, z=10.23m) -->
-                        <circle cx="1.56" cy="-10.23" r="1.6" fill="#ef4444" />
-                        <circle cx="1.56" cy="-10.23" r="3.2" fill="none" stroke="#ef4444" stroke-width="0.6">
-                            <animate attributeName="r" values="2;4;2" dur="1.5s" repeatCount="indefinite" />
-                            <animate attributeName="opacity" values="1;0.2;1" dur="1.5s" repeatCount="indefinite" />
-                        </circle>
+                        <!-- Dynamic Target Blips Layer -->
+                        <g id="radarTargetsLayer"></g>
                     </svg>
                 </div>
             </div>
@@ -437,13 +425,13 @@
             <div class="card" style="flex: 1;">
                 <div class="card-header">
                     <h2><i class="fa-solid fa-box-archive"></i> Incident Auto-Recorder</h2>
-                    <span style="font-size: 11px; color: var(--status-critical); font-weight: 600;">1 Event Saved</span>
+                    <span style="font-size: 11px; color: var(--status-critical); font-weight: 600;">1 Event Captured</span>
                 </div>
                 <div class="incident-list">
-                    <div class="incident-item selected" onclick="loadStream('incident')">
+                    <div class="incident-item" id="incidentItem001" onclick="switchStream('incident')">
                         <div class="incident-meta">
                             <h4><i class="fa-solid fa-circle-exclamation" style="color: var(--status-critical);"></i> Incident #001 (49.36s)</h4>
-                            <p>Truck (ID #73) Aggressive Lane Cut-in • TTC: 3.8s • 10.2m</p>
+                            <p>Truck (ID #73) Rapid Cut-In • TTC: 3.8s • 10.2m</p>
                         </div>
                         <a href="/outputs/incidents/incident_001_49s_telemetry.json" target="_blank" class="btn btn-outline" style="padding: 4px 8px;">
                             JSON
@@ -455,32 +443,156 @@
     </div>
 
     <script>
-        function loadStream(type) {
-            const player = document.getElementById('videoPlayer');
-            if (type === 'incident') {
-                player.src = '/outputs/incidents/incident_001_49s.mp4';
-                player.play();
-                document.getElementById('metricDist').innerText = '10.2 m';
-                document.getElementById('metricSpeed').innerText = '-28.1 km/h';
-                document.getElementById('metricTtc').innerText = '3.8 s';
-            } else {
-                player.src = '/outputs/stream_runner_output.mp4';
-                player.play();
-                document.getElementById('metricDist').innerText = '14.8 m';
-                document.getElementById('metricSpeed').innerText = '-12.0 km/h';
-                document.getElementById('metricTtc').innerText = '5.2 s';
+        const video = document.getElementById('videoPlayer');
+        const radarTargetsLayer = document.getElementById('radarTargetsLayer');
+        const telemetryViewer = document.getElementById('telemetryViewer');
+        const metricDist = document.getElementById('metricDist');
+        const metricSpeed = document.getElementById('metricSpeed');
+        const metricTtc = document.getElementById('metricTtc');
+        const boxDist = document.getElementById('boxDist');
+        const boxSpeed = document.getElementById('boxSpeed');
+        const boxTtc = document.getElementById('boxTtc');
+        const radarStatusBadge = document.getElementById('radarStatusBadge');
+
+        let timelineData = [];
+        let currentMode = 'full';
+
+        // Load timeline telemetry
+        fetch('/outputs/live_telemetry_timeline.json')
+            .then(res => res.json())
+            .then(data => {
+                timelineData = data;
+                console.log(`Loaded ${timelineData.length} telemetry frames`);
+            })
+            .catch(err => console.error('Failed loading timeline:', err));
+
+        // Sync radar & telemetry cards dynamically as video plays
+        video.addEventListener('timeupdate', () => {
+            if (timelineData.length === 0) return;
+
+            const curTime = video.currentTime;
+            // Find closest telemetry frame by timestamp
+            let closestFrame = timelineData[0];
+            let minDiff = 999;
+            for (const item of timelineData) {
+                const diff = Math.abs(item.time_sec - curTime);
+                if (diff < minDiff) {
+                    minDiff = diff;
+                    closestFrame = item;
+                }
+            }
+
+            renderDynamicRadar(closestFrame);
+        });
+
+        function renderDynamicRadar(frameData) {
+            if (!frameData) return;
+
+            // Clear previous blips
+            radarTargetsLayer.innerHTML = '';
+
+            let highestThreat = null;
+            let maxRisk = -1;
+
+            (frameData.vehicles || []).forEach(v => {
+                const x = v.x_m;
+                const z = -v.z_m; // In SVG, up is negative y
+
+                if (v.risk_score > maxRisk) {
+                    maxRisk = v.risk_score;
+                    highestThreat = v;
+                }
+
+                // Determine blip color
+                let color = '#10b981'; // SAFE green
+                if (v.risk_level === 'HIGH' || v.risk_score >= 60) color = '#ef4444'; // RED
+                else if (v.risk_level === 'CAUTION' || v.risk_score >= 40) color = '#f59e0b'; // AMBER
+
+                // Render vehicle blip
+                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', x);
+                circle.setAttribute('cy', z);
+                circle.setAttribute('r', '1.6');
+                circle.setAttribute('fill', color);
+                radarTargetsLayer.appendChild(circle);
+
+                // If high threat, draw active pulsing lock-on reticle
+                if (v.risk_score >= 60 || v.risk_level === 'HIGH') {
+                    const reticle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    reticle.setAttribute('cx', x);
+                    reticle.setAttribute('cy', z);
+                    reticle.setAttribute('r', '3.6');
+                    reticle.setAttribute('fill', 'none');
+                    reticle.setAttribute('stroke', '#ef4444');
+                    reticle.setAttribute('stroke-width', '0.6');
+
+                    // Pulsing animation
+                    const anim = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+                    anim.setAttribute('attributeName', 'r');
+                    anim.setAttribute('values', '2.5;4.5;2.5');
+                    anim.setAttribute('dur', '1.2s');
+                    anim.setAttribute('repeatCount', 'indefinite');
+                    reticle.appendChild(anim);
+
+                    radarTargetsLayer.appendChild(reticle);
+                }
+            });
+
+            // Update telemetry metrics HUD cards
+            if (highestThreat) {
+                metricDist.innerText = highestThreat.z_m.toFixed(1) + ' m';
+                metricSpeed.innerText = (highestThreat.rel_speed_kmh > 0 ? '+' : '') + highestThreat.rel_speed_kmh.toFixed(1) + ' km/h';
+                metricTtc.innerText = (highestThreat.ttc_sec ? highestThreat.ttc_sec.toFixed(1) : '5.2') + ' s';
+
+                if (highestThreat.risk_score >= 60) {
+                    boxDist.className = 'metric-box danger';
+                    boxSpeed.className = 'metric-box danger';
+                    boxTtc.className = 'metric-box danger';
+                    radarStatusBadge.style.color = 'var(--status-critical)';
+                    radarStatusBadge.innerText = 'THREAT DETECTED';
+                } else if (highestThreat.risk_score >= 40) {
+                    boxDist.className = 'metric-box caution';
+                    boxSpeed.className = 'metric-box caution';
+                    boxTtc.className = 'metric-box caution';
+                    radarStatusBadge.style.color = 'var(--status-caution)';
+                    radarStatusBadge.innerText = 'CAUTION ZONE';
+                } else {
+                    boxDist.className = 'metric-box';
+                    boxSpeed.className = 'metric-box';
+                    boxTtc.className = 'metric-box';
+                    radarStatusBadge.style.color = 'var(--status-safe)';
+                    radarStatusBadge.innerText = 'LANE CLEAR';
+                }
+
+                telemetryViewer.innerText = JSON.stringify({
+                    timestamp: (video.currentTime).toFixed(2) + 's',
+                    active_alert: frameData.active_alert ? frameData.active_alert.title : 'NORMAL',
+                    primary_threat: highestThreat,
+                    surrounding_vehicles: frameData.vehicles
+                }, null, 2);
             }
         }
 
-        // Fetch telemetry JSON
-        fetch('/outputs/incidents/incident_001_49s_telemetry.json')
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById('telemetryViewer').innerText = JSON.stringify(data.initial_telemetry, null, 2);
-            })
-            .catch(err => {
-                document.getElementById('telemetryViewer').innerText = '// Live telemetry sample loaded';
-            });
+        function switchStream(type) {
+            currentMode = type;
+            const btnFull = document.getElementById('btnFullStream');
+            const btnInc = document.getElementById('btnIncidentStream');
+            const incItem = document.getElementById('incidentItem001');
+
+            if (type === 'incident') {
+                video.src = '/outputs/incidents/incident_001_49s.mp4';
+                video.play();
+                btnFull.className = 'btn btn-outline';
+                btnInc.className = 'btn btn-outline active-btn';
+                incItem.className = 'incident-item selected';
+            } else {
+                video.src = '/outputs/stream_runner_output.mp4';
+                video.play();
+                btnFull.className = 'btn btn-outline active-btn';
+                btnInc.className = 'btn btn-outline';
+                incItem.className = 'incident-item';
+            }
+        }
     </script>
 </body>
 </html>
