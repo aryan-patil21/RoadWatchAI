@@ -2,7 +2,7 @@
 
 <div align="center">
 
-> **Intelligent road safety & predictive driver behaviour analysis system engineered for two-wheeler commuters in high-density urban Indian traffic.**
+> **Intelligent road safety and predictive driver behaviour analysis system engineered for two-wheeler commuters in high-density urban traffic.**
 
 [![GitHub Repo](https://img.shields.io/badge/GitHub-aryan--patil21%2FRoadWatchAI-181717?logo=github&style=for-the-badge)](https://github.com/aryan-patil21/RoadWatchAI)
 [![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white&style=for-the-badge)](https://www.python.org/)
@@ -15,58 +15,71 @@
 
 <img src="assets/demo/showcase_demo.gif" alt="RoadWatch AI Live Stream Demo" width="850px" style="border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.5);" />
 
-*Live Cockpit Stream: Top-down 2D BEV radar locking onto cutting vehicles, Inverse Perspective Mapping metric distance ($Z$) + closing speeds ($\Delta Z / \Delta t$), asphalt stripe lane departure corridor, and synchronized audio alert chimes.*
+*RoadWatch AI Cockpit HUD: Real-time 2D Bird's-Eye View (BEV) radar, Inverse Perspective Mapping metric distance ($Z$) and closing velocity ($\Delta Z / \Delta t$), Top-Hat asphalt stripe travel corridor, and synchronized audio warning system.*
 
 </div>
 
 ---
 
-## 💡 The Core Engineering Principle
+## Executive Summary & Core Principle
 
-Motorcyclists and scooter riders in Indian urban environments (Pune, Mumbai) face severe collision hazards from rapid cut-ins, sudden blind-spot merges, and sudden braking by heavy vehicles. 
+Motorcyclists and scooter commuters in dense urban traffic environments (e.g., Pune, Mumbai) operate under constrained reaction windows when confronted with sudden lane encroachments, blind-spot merges, and hard braking by larger commercial vehicles.
 
-RoadWatch AI eliminates arbitrary heuristics and enforces a **zero-stereotyping** invariant:
-$$\mathbf{Behaviour} \longrightarrow \mathbf{Measurable\ Kinematic\ Features} \longrightarrow \mathbf{Empirical\ Risk\ Estimation} \longrightarrow \mathbf{Multimodal\ Warning}$$
+RoadWatch AI evaluates traffic threats through a strict empirical kinematic paradigm, enforcing zero vehicle-type or brand bias:
 
-We evaluate **observable physical kinematics**, never vehicle brands, models, or stereotypes.
+$$\mathbf{Observable\ Behaviour} \longrightarrow \mathbf{Measurable\ Kinematic\ Features} \longrightarrow \mathbf{Empirical\ Risk\ Estimation} \longrightarrow \mathbf{Actionable\ Warning}$$
 
----
-
-## ⚡ Key Highlights & Technical Capabilities
-
-- 🎯 **Monocular 3D Metric Projection (IPM)**: Projects 2D bounding-box ground contact points into real-world longitudinal distance ($Z_{\text{m}}$) and lateral offset ($X_{\text{m}}$) using calibrated camera height ($1.25$m) and horizon homography ($y=265$px).
-- 📡 **2D Top-Down Bird's-Eye View (BEV) Radar**: Real-time cockpit radar widget rendering $40$m range rings, travel lane boundaries, ego motorcycle position, and dynamic threat-tracking reticles.
-- 🏎️ **Dynamic Approach Velocity & TTC**: Computes instantaneous relative closing velocity ($\Delta Z / \Delta t \times 3.6$ km/h) and Time-To-Collision ($\text{TTC}_{\text{proxy}}$) across a rolling Kalman-filtered history.
-- 🛣️ **Top-Hat Asphalt Stripe Lane Tracker**: Morphological asphalt stripe extraction ($11 \times 1$ structuring element) with perspective boundary clamping ($140$px to $590$px) to prevent multi-lane cross-bleed.
-- 🚨 **Multimodal Warning & QuickTime-Native Audio**: Multi-level state machine (`SAFE` $\to$ `CAUTION` $\to$ `CRITICAL`) with automatic debouncing, cooldown timers, and synchronized stereo AAC automotive warning beeps embedded directly into the video container.
-- 📼 **Automated Forensic Blackbox Recorder**: Circular in-memory buffer (`collections.deque`) maintaining $5$s of pre-incident history. Automatically triggers upon any `CRITICAL` hazard to capture a $10$s incident video clip and structured telemetry JSON manifest.
-- 📱 **FastAPI Backend & Native iOS Cockpit Client**: Sub-50ms push delivery over WebSockets to a native SwiftUI handlebar-mounted dashboard app.
-- ⚡ **TorchScript Edge Model Export**: Zero-Python runtime edge artifact (`yolov8n.torchscript`, 12.4 MB) ready for on-device deployment via LibTorch C++, iOS, or Android NDK.
+Threat levels are derived exclusively from physical trajectory attributes, relative velocity, and spatio-temporal clearance.
 
 ---
 
-## 📊 Apple Silicon M4 Hardware Benchmarks
+## Key Technical Systems
 
-Stage-by-stage profiling benchmark across 220 commute frames on Apple Silicon Metal Performance Shaders (MPS):
+### 1. Monocular 3D Metric Projection (IPM)
+Projects 2D image coordinates from vehicle ground-contact tire interfaces into real-world Cartesian metric coordinates ($X_{\text{m}}, Z_{\text{m}}$) using calibrated camera height ($1.25$ m) and horizon homography ($y = 265$ px):
+$$Z = \frac{f \cdot h_{\text{cam}}}{\max(1, y_{\text{contact}} - y_{\text{horizon}})}, \quad X = \frac{(x_{\text{contact}} - c_x) \cdot Z}{f}$$
 
-| Pipeline Stage | Mean Latency | Median ($p50$) | Tail ($p95$) | % of Budget | Computational Profile |
+### 2. Continuous Approach Velocity & 2D Bird's-Eye View (BEV) Radar
+Computes instantaneous relative closing velocity ($\Delta Z / \Delta t \times 3.6$ km/h) and Time-To-Collision proxy ($\text{TTC}$) across a rolling window. Renders a 40-meter top-down BEV radar widget tracking surrounding traffic density with dynamic threat-locking reticles.
+
+### 3. Top-Hat Asphalt Stripe Corridor Estimation
+Isolates worn road pavement stripes and physical travel boundaries using morphological Top-Hat filtering ($11 \times 1$ horizontal structuring element) combined with perspective corridor boundary clamping ($140$ px to $590$ px at the bottom plane) to prevent cross-lane bleed in unstructured traffic conditions.
+
+### 4. Multimodal Warning Arbitration & Synchronized Audio
+Implements a multi-tier finite-state debouncing machine (`SAFE` $\to$ `CAUTION` $\to$ `CRITICAL`) with cooldown timers and priority escalation overrides. Warning beeps are integrated directly into standard QuickTime-compatible H.264/AAC containers.
+
+### 5. Automated Forensic Incident Blackbox Recorder
+Maintains a 5.0-second circular in-memory buffer (`collections.deque`). Upon detection of a `CRITICAL` safety hazard, the recorder packages an isolated 10-second forensic incident clip accompanied by a structured JSON telemetry manifest capturing kinematic progression at the millisecond level.
+
+### 6. Edge Deployment & Client Architecture
+- **TorchScript Export**: PyTorch model weights compiled into a standalone 12.4 MB TorchScript binary (`yolov8n.torchscript`) for zero-Python embedded deployment.
+- **FastAPI Backend**: Asynchronous REST and WebSocket interface streaming telemetry at sub-50ms latency.
+- **Native iOS Client**: Lightweight SwiftUI handlebar cockpit application supporting real-time radar mapping and haptic/auditory alert delivery.
+
+---
+
+## Hardware Benchmarks & Latency Budget
+
+Evaluated across 220 commute frames on Apple Silicon Metal Performance Shaders (MPS):
+
+| Pipeline Stage | Mean Latency | Median ($p50$) | Tail ($p95$) | % of Frame Budget | Computational Profile |
 |---|---|---|---|---|---|
-| **1. Frame Ingestion & Decode** | 0.23 ms | 0.22 ms | 0.30 ms | 0.9% | Negligible CPU read |
-| **2. YOLOv8n + ByteTrack** | 19.19 ms | 18.98 ms | 24.26 ms | **79.9%** | Primary Neural Load (MPS) |
-| **3. Road Geometry Projection** | 0.01 ms | 0.01 ms | 0.02 ms | <0.1% | Instant vectorized projection |
-| **4. Kinematic Feature Math** | 0.01 ms | 0.01 ms | 0.02 ms | 0.1% | Rolling window kinematics |
-| **5. Risk Scoring Engine** | 0.01 ms | 0.00 ms | 0.01 ms | <0.1% | Instant heuristic evaluation |
-| **6. Top-Hat Lane Corridor** | 2.68 ms | 2.67 ms | 3.13 ms | **11.1%** | Edge & morphology filters |
-| **7. Warning Arbitration** | 0.00 ms | 0.00 ms | 0.01 ms | <0.1% | State machine evaluations |
-| **8. Cockpit HUD & 2D Radar** | 0.05 ms | 0.04 ms | 0.06 ms | 0.2% | Lightweight OpenCV raster |
+| **1. Frame Decode & Ingestion** | 0.23 ms | 0.22 ms | 0.30 ms | 0.9% | Negligible CPU read |
+| **2. YOLOv8n + ByteTrack** | 19.19 ms | 18.98 ms | 24.26 ms | **79.9%** | Primary Neural Inference (MPS) |
+| **3. Road Geometry Projection** | 0.01 ms | 0.01 ms | 0.02 ms | <0.1% | Vectorized spatial math |
+| **4. Kinematic Feature Math** | 0.01 ms | 0.01 ms | 0.02 ms | 0.1% | Rolling window derivation |
+| **5. Risk Scoring Engine** | 0.01 ms | 0.00 ms | 0.01 ms | <0.1% | Heuristic & regression scoring |
+| **6. Top-Hat Lane Corridor** | 2.68 ms | 2.67 ms | 3.13 ms | **11.1%** | Morphological filtering |
+| **7. Warning Arbitration** | 0.00 ms | 0.00 ms | 0.01 ms | <0.1% | State machine evaluation |
+| **8. Cockpit HUD & 2D Radar** | 0.05 ms | 0.04 ms | 0.06 ms | 0.2% | OpenCV rasterization |
 | **9. Frame Serialization** | 1.85 ms | 1.81 ms | 2.14 ms | 7.7% | Video buffer serialization |
 | **Total End-to-End Latency** | **24.03 ms** | **23.58 ms** | **30.43 ms** | **100%** | **41.62 FPS Throughput** |
 
-> **Real-Time Headroom**: At $p95$ latency (30.43 ms), the system operates with **+9.57 ms headroom** inside the 40.0 ms (25 FPS) real-time camera budget.
+**Headroom Analysis**: At $p95$ tail latency (30.43 ms), the pipeline operates with **+9.57 ms headroom** within the 40.0 ms (25 FPS) real-time camera budget, ensuring zero frame dropping under peak multi-vehicle tracking loads.
 
 ---
 
-## 🏗️ Architecture Blueprint
+## End-to-End Pipeline Architecture
 
 ```text
                                  [ Monocular Dashcam Stream (854x480 @ 25 FPS) ]
@@ -111,9 +124,9 @@ Stage-by-stage profiling benchmark across 220 commute frames on Apple Silicon Me
 
 ---
 
-## 🚀 Quickstart & Reproduction
+## Installation & Usage
 
-### 1. Setup Environment
+### 1. Environment Setup
 ```bash
 git clone https://github.com/aryan-patil21/RoadWatchAI.git
 cd RoadWatchAI
@@ -123,55 +136,55 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 2. Run the Interactive Web Cockpit & Telemetry Studio
+### 2. Launch the Interactive Telemetry Studio
 ```bash
-# Launch FastAPI Backend + Web Studio
 python3 -m uvicorn src.api:app --reload --port 8000
 ```
-Open **[http://localhost:8000/studio](http://localhost:8000/studio)** in your browser to view the live cockpit, interactive 2D BEV radar, and inspect the blackbox incident dossiers.
+Navigate to `http://localhost:8000/studio` to access the live video stream, dynamic top-down radar, and incident blackbox explorer.
 
-### 3. Run the End-to-End Stream Runner
+### 3. Run the Live Stream Pipeline
 ```bash
 python3 src/stream_runner.py --start-frame 1000 --max-frames 250 --mode max
 ```
 
-### 4. Run the Full Automated Test Suite
+### 4. Execute Test Suite
 ```bash
 python3 -m unittest discover tests
-# 38 passed in 5.5s (100% pass rate)
 ```
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
+
 ```text
 RoadwatchAI/
-├── README.md               # Visual portfolio presentation
-├── requirements.txt        # Python package dependencies
-├── yolov8n.torchscript     # Standalone TorchScript edge model (12.4 MB)
-├── static/                 # Interactive Web Cockpit & Telemetry Studio
-├── assets/                 # Sounds, icons, and animated demo media
-├── data/raw/               # Raw commute dashcam footage
-├── src/                    # End-to-end vision & risk pipeline
-│   ├── vehicle_tracker.py  # YOLOv8 + ByteTrack multi-object tracking
-│   ├── spatial_radar.py    # IPM metric distance, relative speed, 2D BEV radar
-│   ├── lane_detector.py    # Top-Hat stripe extraction & LDW corridor
+├── README.md               # Architecture documentation and benchmarks
+├── requirements.txt        # Dependency specification
+├── yolov8n.torchscript     # Standalone TorchScript edge binary (12.4 MB)
+├── static/                 # Telemetry Studio frontend interface
+├── assets/                 # Sound assets, reference graphics, and demo media
+├── data/raw/               # Input commute dashcam video streams
+├── src/                    # Core vision and kinematic safety pipeline
+│   ├── vehicle_tracker.py  # YOLOv8 and ByteTrack multi-object tracking
+│   ├── spatial_radar.py    # IPM metric distance, relative speed, 2D radar
+│   ├── lane_detector.py    # Top-Hat stripe extraction and LDW corridor
 │   ├── feature_extractor.py# Kinematic acceleration, TTC, expansion rate
-│   ├── risk_engine.py      # Rule-based & logistic threat evaluation
-│   ├── warning_engine.py   # Debounce state machine & multimodal alerts
+│   ├── risk_engine.py      # Rule-based and regression risk evaluation
+│   ├── warning_engine.py   # Debounce state machine and alert generation
 │   ├── incident_recorder.py# Circular buffer forensic blackbox auto-recorder
-│   ├── stream_runner.py    # Closed-loop live dashcam simulator
+│   ├── stream_runner.py    # End-to-end dashcam stream simulation runner
 │   ├── profiler.py         # Precision stage-by-stage latency profiler
-│   └── api.py              # FastAPI REST, WebSockets & Studio backend
-├── tests/                  # 38 unit and integration tests
-├── outputs/                # Transcoded MP4s, forensic incident JSONs
-├── docs/                   # Architectural blueprints & experiment logs
-│   ├── architecture.md     # Full system architecture specification
-│   └── experiments.md      # Detailed experiment diary (M0 to M14)
+│   └── api.py              # FastAPI REST, WebSockets, and Studio backend
+├── tests/                  # Automated unit and integration test suite
+├── outputs/                # Processed video feeds, telemetry JSON manifests
+├── docs/                   # Engineering specifications and experiment records
+│   ├── architecture.md     # System architecture specification
+│   └── experiments.md      # Milestone experiment records (M0 through M14)
 └── ios/RoadWatch/          # Native SwiftUI handlebar cockpit client
 ```
 
 ---
 
-## 📄 License
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+## License
+
+This project is licensed under the MIT License. Refer to the [LICENSE](LICENSE) file for complete terms.
